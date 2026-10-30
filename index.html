@@ -3,333 +3,740 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PRESENT - Curated Gifts & Experiences</title>
+  <title>PRESENT | Custom Gifts & Sublimation Printing</title>
+  
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/brand_logo_favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/brand_logo_favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/brand_logo_favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/brand_logo_favicon_io/site.webmanifest">
+  
+  <!-- Tailwind CSS & FontAwesome -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .variant-btn.active {
-      border-color: #059669;
-      background-color: #ecfdf5;
-      color: #065f46;
-      font-weight: 600;
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: {
+              800: '#1b4d4f',
+              900: '#123738',
+            },
+            accent: '#d4af37'
+          }
+        }
+      }
     }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
 
-  <!-- Header -->
-  <header class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold text-emerald-600 tracking-wide">PRESENT</h1>
-      <a href="https://wa.me/919000000000" target="_blank" class="bg-emerald-600 text-white px-4 py-2 rounded-full font-medium hover:bg-emerald-700 transition">
-        WhatsApp Us
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-50 glass-nav border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/brand_logo_favicon_io/android-chrome-192x192.png" alt="PRESENT Logo" class="h-10 w-10 object-contain">
+        <span class="text-2xl font-bold tracking-widest text-teal-800">PRESENT</span>
+      </a>
+
+      <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600">
+        <a href="#frames" class="hover:text-teal-800 transition">Photo Frames</a>
+        <a href="#mugs" class="hover:text-teal-800 transition">Mugs</a>
+        <a href="#pillows" class="hover:text-teal-800 transition">Pillows</a>
+        <a href="#keychains" class="hover:text-teal-800 transition">Keychains</a>
+        <a href="#contact" class="hover:text-teal-800 transition">Contact</a>
+      </div>
+
+      <a href="https://wa.me/919123555902" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-full text-xs sm:text-sm font-semibold flex items-center gap-2 shadow transition">
+        <i class="fa-brands fa-whatsapp text-lg"></i>
+        <span>WhatsApp Order</span>
       </a>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="bg-emerald-900 text-white py-12 text-center px-4">
-    <h2 class="text-3xl md:text-4xl font-extrabold mb-2">Customized Photo Gifts For Every Occasion</h2>
-    <p class="text-emerald-100 max-w-xl mx-auto text-sm md:text-base">Personalized mugs, frames, apparel, and decor crafted with premium sublimation printing.</p>
+  <section class="bg-teal-800 text-white py-12 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+    <div class="max-w-4xl mx-auto relative z-10">
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-3">Customized Photo Gifts For Every Occasion</h1>
+      <p class="text-teal-100 text-base sm:text-lg mb-6 max-w-2xl mx-auto">Premium Print Quality, Fast Delivery & Personalized Sublimation Merchandise</p>
+      <div class="inline-flex gap-4">
+        <a href="#mugs" class="bg-white text-teal-800 font-bold px-6 py-2.5 rounded-lg shadow hover:bg-teal-50 transition">Browse Products</a>
+      </div>
+    </div>
   </section>
 
-  <!-- Product Catalog -->
-  <main class="max-w-7xl mx-auto px-4 py-10">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="product-grid">
+  <!-- Main Catalog -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
 
-      <!-- 1. Photo Frames -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-photofram">
-        <div class="p-4">
-          <img id="img-photofram" src="images/photo-frame.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?Text=Photo+Frame';" alt="Photo Frames" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">Custom Photo Frames</h3>
-          <p id="price-photofram" class="text-emerald-700 font-bold text-base mb-2">₹250</p>
-          
-          <label class="text-xs font-semibold text-gray-600 block mb-1">Select Size & Price:</label>
-          <div class="grid grid-cols-2 gap-1.5 mb-3">
-            <button onclick="updatePhotoFrame('8x6', 250)" class="pf-btn active text-xs py-1.5 border rounded-lg active">8x6 (₹250)</button>
-            <button onclick="updatePhotoFrame('12x8', 450)" class="pf-btn text-xs py-1.5 border rounded-lg">12x8 (₹450)</button>
-            <button onclick="updatePhotoFrame('12x15', 750)" class="pf-btn text-xs py-1.5 border rounded-lg">12x15 (₹750)</button>
-            <button onclick="updatePhotoFrame('12x18', 900)" class="pf-btn text-xs py-1.5 border rounded-lg">12x18 (₹900)</button>
-            <button onclick="updatePhotoFrame('16x24', 1800)" class="pf-btn text-xs py-1.5 border rounded-lg">16x24 (₹1800)</button>
-            <button onclick="updatePhotoFrame('20x30', 2800)" class="pf-btn text-xs py-1.5 border rounded-lg">20x30 (₹2800)</button>
-          </div>
-
-          <label class="text-xs font-semibold text-gray-600 block mb-1">Design Style:</label>
-          <select id="style-photofram" class="w-full text-xs p-2 border rounded-lg mb-4 bg-gray-50">
-            <option value="Normal">Normal Print (₹0)</option>
-            <option value="Collage (+₹200)">Collage Frame (+₹200)</option>
-            <option value="Digital Painting / Art (+₹400)">Digital Painting / Art (+₹400)</option>
-          </select>
-        </div>
-        <div class="p-4 pt-0">
-          <button onclick="orderWhatsAppPhotoFrame()" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
-        </div>
+    <!-- Section 1: Photo Frames -->
+    <section id="frames">
+      <div class="border-b border-slate-200 pb-3 mb-8">
+        <h2 class="text-2xl font-bold text-teal-800 tracking-wide uppercase">Photo Frames (1-Inch Frame)</h2>
+        <p class="text-slate-500 text-sm">High-definition glossy prints in durable 1-inch synthetic wood borders</p>
       </div>
 
-      <!-- 2. Mugs -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-mug">
-        <div class="p-4">
-          <img id="img-mug" src="images/mug-white.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Coffee+Mug';" alt="Mug" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">Custom Mugs</h3>
-          <p id="price-mug" class="text-emerald-700 font-bold text-base mb-2">₹250</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-          <label class="text-xs font-semibold text-gray-600 block mb-1">Select Type:</label>
-          <div class="grid grid-cols-2 gap-1.5 mb-4">
-            <button onclick="updateMug('White Mug', 250, 'images/mug-white.webp')" class="mug-btn active text-xs py-1.5 border rounded-lg">White Mug</button>
-            <button onclick="updateMug('Heart Handle White', 350, 'images/mug-heart.webp')" class="mug-btn text-xs py-1.5 border rounded-lg">Heart Handle</button>
-            <button onclick="updateMug('Magic Mug', 350, 'images/mug-magic.webp')" class="mug-btn text-xs py-1.5 border rounded-lg">Magic Mug</button>
-            <button onclick="updateMug('Heart Handle Magic', 400, 'images/mug-heartmagic.webp')" class="mug-btn text-xs py-1.5 border rounded-lg">Magic + Heart</button>
+        <!-- 1. Standard Frame -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-60 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img id="img-frame1" src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x18_frame%20(1).webp" alt="Custom Photo Frame" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/600x400?text=Photo+Frame'">
           </div>
-        </div>
-        <div class="p-4 pt-0">
-          <button onclick="orderWhatsAppMug()" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
-        </div>
-      </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">1-Inch Custom Photo Frame</h3>
+                <span id="price-display-f1" class="text-sm font-black text-teal-800 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">₹230</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">Single photo print inside a durable 1-inch synthetic frame border.</p>
+            </div>
 
-      <!-- 3. Pillows (Heart & Square with Colors) -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-pillows">
-        <div class="p-4">
-          <img id="img-pillow" src="images/fur-heart-red.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Fur+Pillow';" alt="Pillows" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">Custom Fur Pillows</h3>
-          <p class="text-xs text-gray-500 mb-2">Shape: <span id="label-pshape" class="font-semibold text-emerald-700">Heart</span> | Color: <span id="label-pcolor" class="font-semibold text-emerald-700">Red</span></p>
+            <div class="mt-4 space-y-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Select Size:</label>
+                <select id="size-frame1" onchange="calcFramePrice('size-frame1', 'qty-frame1', 'price-display-f1', 'total-frame1', 0, 'img-frame1')" class="w-full text-xs border border-slate-300 rounded p-1.5 bg-slate-50">
+                  <option value="8x6" data-price="230" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x8_collage%20frame.webp">8 x 6 inches - ₹230</option>
+                  <option value="10x8" data-price="270" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x8_collage%20frame%20(4).webp">10 x 8 inches - ₹270</option>
+                  <option value="12x8" data-price="400" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x8_collage%20frame.webp">12 x 8 inches - ₹400</option>
+                  <option value="12x10" data-price="450" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x15_frame%20(2).webp">12 x 10 inches - ₹450</option>
+                  <option value="10x15" data-price="550" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x15_frame%20(2).webp">10 x 15 inches - ₹550</option>
+                  <option value="12x15" data-price="700" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x15_frame%20(2).webp">12 x 15 inches - ₹700</option>
+                  <option value="12x18" data-price="1000" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x18_frame%20(1).webp" selected>12 x 18 inches - ₹1,000</option>
+                  <option value="16x24" data-price="1750" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/24x16%20collage_frame.webp">16 x 24 inches - ₹1,750</option>
+                  <option value="20x30" data-price="3000" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/24x16%20collage_frame.webp">20 x 30 inches - ₹3,000</option>
+                  <option value="24x36" data-price="4300" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/24x16%20collage_frame.webp">24 x 36 inches - ₹4,300</option>
+                </select>
+              </div>
 
-          <label class="text-xs font-semibold text-gray-600 block mb-1">Shape:</label>
-          <div class="flex gap-2 mb-2">
-            <button onclick="updatePillowShape('Heart')" id="btn-pheart" class="variant-btn active text-xs px-3 py-1 border rounded-lg flex-1">Heart</button>
-            <button onclick="updatePillowShape('Square')" id="btn-psquare" class="variant-btn text-xs px-3 py-1 border rounded-lg flex-1">Square</button>
-          </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="changeFrameQty('qty-frame1', -1, 'size-frame1', 'price-display-f1', 'total-frame1', 0, 'img-frame1')" class="px-2 py-0.5 text-xs font-bold">-</button>
+                  <input type="number" id="qty-frame1" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="changeFrameQty('qty-frame1', 1, 'size-frame1', 'price-display-f1', 'total-frame1', 0, 'img-frame1')" class="px-2 py-0.5 text-xs font-bold">+</button>
+                </div>
+              </div>
 
-          <label class="text-xs font-semibold text-gray-600 block mb-1">Color Options:</label>
-          <div class="flex gap-2 mb-4">
-            <button onclick="updatePillowColor('Red')" class="w-6 h-6 rounded-full bg-red-600 border border-gray-300"></button>
-            <button onclick="updatePillowColor('Pink')" class="w-6 h-6 rounded-full bg-pink-400 border border-gray-300"></button>
-            <button onclick="updatePillowColor('Blue')" class="w-6 h-6 rounded-full bg-blue-500 border border-gray-300"></button>
-            <button onclick="updatePillowColor('Yellow')" class="w-6 h-6 rounded-full bg-yellow-400 border border-gray-300"></button>
-            <button onclick="updatePillowColor('Violet')" class="w-6 h-6 rounded-full bg-purple-600 border border-gray-300"></button>
-            <button onclick="updatePillowColor('White')" class="w-6 h-6 rounded-full bg-white border border-gray-400"></button>
+              <div class="flex items-center justify-between text-xs font-semibold text-slate-700 pt-1 border-t border-slate-100">
+                <span>Total Amount:</span>
+                <span id="total-frame1" class="font-bold text-teal-800">₹1,000</span>
+              </div>
+
+              <p class="text-[11px] text-amber-700 bg-amber-50 p-1.5 rounded border border-amber-200 text-center font-medium">
+                📸 Please attach your photos in the WhatsApp chat after clicking order.
+              </p>
+
+              <button onclick="sendFrameOrder('1-Inch Custom Photo Frame', 'size-frame1', 'qty-frame1', 0)" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
           </div>
         </div>
-        <div class="p-4 pt-0">
-          <button onclick="orderWhatsAppPillow()" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
-        </div>
-      </div>
 
-      <!-- 4. Keychains -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-keychain">
-        <div class="p-4">
-          <img src="images/gold-keychain.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Gold+Keychain';" alt="Gold Plastic Keychains" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">Gold Plastic Keychain</h3>
-          <p class="text-xs text-gray-500 mb-3">Double-sided photo printed glossy gold finish keychain.</p>
-        </div>
-        <div class="p-4 pt-0">
-          <button onclick="orderWhatsApp('Gold Plastic Keychain')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
-        </div>
-      </div>
+        <!-- 2. Collage Frame (+₹300) -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-60 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img id="img-frame2" src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x15_collage_frame.webp" alt="Collage Photo Frame" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/600x400?text=Collage+Frame'">
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">Multi-Photo Collage Frame</h3>
+                <span id="price-display-f2" class="text-sm font-black text-teal-800 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">₹700</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">Combines multiple photos in an elegant grid layout (+₹300 collage charge included).</p>
+            </div>
 
-      <!-- 5. Sipper Bottles -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-sipper">
-        <div class="p-4">
-          <img id="img-sipper" src="images/sipper-600ml.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Sipper+Bottle';" alt="Sipper Bottle" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">Sipper Bottle</h3>
-          <p class="text-xs text-gray-500 mb-3">Aluminum sipper bottle with custom print.</p>
-          <label class="text-xs font-semibold text-gray-600 block mb-1">Select Size:</label>
-          <div class="flex gap-2 mb-4">
-            <button onclick="updateSipper('600ml (9x5)', 'images/sipper-600ml.webp')" class="sipper-btn active text-xs px-3 py-1.5 border rounded-lg flex-1">600ml (9x5)</button>
-            <button onclick="updateSipper('750ml (9x7)', 'images/sipper-750ml.webp')" class="sipper-btn text-xs px-3 py-1.5 border rounded-lg flex-1">750ml (9x7)</button>
+            <div class="mt-4 space-y-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Select Size:</label>
+                <select id="size-frame2" onchange="calcFramePrice('size-frame2', 'qty-frame2', 'price-display-f2', 'total-frame2', 300, 'img-frame2')" class="w-full text-xs border border-slate-300 rounded p-1.5 bg-slate-50">
+                  <option value="12x8" data-price="400" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x8_collage%20frame.webp">12 x 8 inches - ₹700 (400 + 300)</option>
+                  <option value="12x15" data-price="700" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x15_collage_frame.webp" selected>12 x 15 inches - ₹1,000 (700 + 300)</option>
+                  <option value="12x18" data-price="1000" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x18_frames%20(3).webp">12 x 18 inches - ₹1,300 (1000 + 300)</option>
+                  <option value="16x24" data-price="1750" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/24x16%20collage_frame.webp">16 x 24 inches - ₹2,050 (1750 + 300)</option>
+                </select>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="changeFrameQty('qty-frame2', -1, 'size-frame2', 'price-display-f2', 'total-frame2', 300, 'img-frame2')" class="px-2 py-0.5 text-xs font-bold">-</button>
+                  <input type="number" id="qty-frame2" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="changeFrameQty('qty-frame2', 1, 'size-frame2', 'price-display-f2', 'total-frame2', 300, 'img-frame2')" class="px-2 py-0.5 text-xs font-bold">+</button>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between text-xs font-semibold text-slate-700 pt-1 border-t border-slate-100">
+                <span>Total Amount:</span>
+                <span id="total-frame2" class="font-bold text-teal-800">₹1,000</span>
+              </div>
+
+              <p class="text-[11px] text-amber-700 bg-amber-50 p-1.5 rounded border border-amber-200 text-center font-medium">
+                📸 Please attach your photos in the WhatsApp chat after clicking order.
+              </p>
+
+              <button onclick="sendFrameOrder('Multi-Photo Collage Frame', 'size-frame2', 'qty-frame2', 300)" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
           </div>
         </div>
-        <div class="p-4 pt-0">
-          <button onclick="orderWhatsAppSipper()" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
-        </div>
-      </div>
 
-      <!-- 6. Glass Frames -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-glass">
-        <div class="p-4">
-          <img src="images/glass-frame.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Glass+Frame';" alt="Sublimation Glass Frame" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">Sublimation Glass Frame</h3>
-          <p class="text-xs text-gray-500 mb-3">Glossy photo printed directly on tempered glass.</p>
-        </div>
-        <div class="p-4 pt-0">
-          <button onclick="orderWhatsApp('Sublimation Glass Frame')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
-        </div>
-      </div>
+        <!-- 3. Digital Painting Frame (+₹500) -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-60 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img id="img-frame3" src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/painting_photo_frame1.webp" alt="Digital Painting Photo Frame" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/600x400?text=Digital+Painting+Frame'">
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">Digital Painting Frame</h3>
+                <span id="price-display-f3" class="text-sm font-black text-teal-800 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">₹1,500</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">Artistic digital oil artwork effect framed to perfection (+₹500 artwork charge included).</p>
+            </div>
 
-      <!-- 7. Crystal Frames -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-crystal">
-        <div class="p-4">
-          <img src="images/crystal-frame.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Crystal+Frame';" alt="Sublimation Crystal Frame" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">Sublimation Crystal Frame</h3>
-          <p class="text-xs text-gray-500 mb-3">High-clarity sparkling crystal photo frame.</p>
-        </div>
-        <div class="p-4 pt-0">
-          <button onclick="orderWhatsApp('Sublimation Crystal Frame')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
-        </div>
-      </div>
+            <div class="mt-4 space-y-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Select Size:</label>
+                <select id="size-frame3" onchange="calcFramePrice('size-frame3', 'qty-frame3', 'price-display-f3', 'total-frame3', 500, 'img-frame3')" class="w-full text-xs border border-slate-300 rounded p-1.5 bg-slate-50">
+                  <option value="12x18" data-price="1000" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/painting_12x18_frame%20(3).webp" selected>12 x 18 inches - ₹1,500 (1000 + 500)</option>
+                  <option value="16x24" data-price="1750" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/painting_photo_frame1.webp">16 x 24 inches - ₹2,250 (1750 + 500)</option>
+                  <option value="20x30" data-price="3000" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/painting_photo_frame1.webp">20 x 30 inches - ₹3,500 (3000 + 500)</option>
+                </select>
+              </div>
 
-      <!-- 8. Wall Hangings -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-wallhanging">
-        <div class="p-4">
-          <img src="images/wall-hanging.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Wall+Hanging';" alt="Wall Hangings" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">Personalized Wall Hanging</h3>
-          <p class="text-xs text-gray-500 mb-3">Multi-panel wooden photo wall decor.</p>
-        </div>
-        <div class="p-4 pt-0">
-          <button onclick="orderWhatsApp('Personalized Wall Hanging')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
-        </div>
-      </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="changeFrameQty('qty-frame3', -1, 'size-frame3', 'price-display-f3', 'total-frame3', 500, 'img-frame3')" class="px-2 py-0.5 text-xs font-bold">-</button>
+                  <input type="number" id="qty-frame3" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="changeFrameQty('qty-frame3', 1, 'size-frame3', 'price-display-f3', 'total-frame3', 500, 'img-frame3')" class="px-2 py-0.5 text-xs font-bold">+</button>
+                </div>
+              </div>
 
-      <!-- 9. Wall Clocks -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-wallclock">
-        <div class="p-4">
-          <img src="images/wall-clock.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Wall+Clock';" alt="Wall Clocks" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">Custom Photo Wall Clock</h3>
-          <p class="text-xs text-gray-500 mb-3">Sublimation printed custom wall clock.</p>
-        </div>
-        <div class="p-4 pt-0">
-          <button onclick="orderWhatsApp('Custom Photo Wall Clock')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
-        </div>
-      </div>
+              <div class="flex items-center justify-between text-xs font-semibold text-slate-700 pt-1 border-t border-slate-100">
+                <span>Total Amount:</span>
+                <span id="total-frame3" class="font-bold text-teal-800">₹1,500</span>
+              </div>
 
-      <!-- 10. T-Shirts -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-tshirt">
-        <div class="p-4">
-          <img src="images/tshirt-white.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=White+T-Shirt';" alt="T-Shirts" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">White Sublimation T-Shirt</h3>
-          <p class="text-xs text-gray-500 mb-3">Premium white polyester custom t-shirt.</p>
-          <label class="text-xs font-semibold text-gray-600 block mb-1">Select Size:</label>
-          <div class="flex gap-1 mb-4">
-            <button onclick="updateTshirt('S')" class="t-btn active text-xs px-2 py-1 border rounded-lg flex-1">S</button>
-            <button onclick="updateTshirt('M')" class="t-btn text-xs px-2 py-1 border rounded-lg flex-1">M</button>
-            <button onclick="updateTshirt('L')" class="t-btn text-xs px-2 py-1 border rounded-lg flex-1">L</button>
-            <button onclick="updateTshirt('XL')" class="t-btn text-xs px-2 py-1 border rounded-lg flex-1">XL</button>
-            <button onclick="updateTshirt('2XL')" class="t-btn text-xs px-2 py-1 border rounded-lg flex-1">2XL</button>
+              <p class="text-[11px] text-amber-700 bg-amber-50 p-1.5 rounded border border-amber-200 text-center font-medium">
+                📸 Please attach your photos in the WhatsApp chat after clicking order.
+              </p>
+
+              <button onclick="sendFrameOrder('Digital Painting Frame', 'size-frame3', 'qty-frame3', 500)" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
           </div>
         </div>
-        <div class="p-4 pt-0">
-          <button onclick="orderWhatsAppTshirt()" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
-        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 2: Mugs -->
+    <section id="mugs">
+      <div class="border-b border-slate-200 pb-3 mb-8">
+        <h2 class="text-2xl font-bold text-teal-800 tracking-wide uppercase">Sublimation Mugs</h2>
+        <p class="text-slate-500 text-sm">Ceramic, magic, glass, radium, coin-collector, and heart-handle mugs</p>
       </div>
 
-    </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Classic White Mug -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-48 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/1_mug/white%20mug/Mug-printing.webp" alt="White Ceramic Mug" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/400x400?text=White+Mug'">
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">Classic White Ceramic Mug</h3>
+                <span class="text-sm font-bold text-teal-800">₹250</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">325ml premium glossy white sublimation mug.</p>
+            </div>
+            <div class="mt-4 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="updateQty('qty-mug1', -1)" class="px-2 py-0.5 text-xs">-</button>
+                  <input type="number" id="qty-mug1" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="updateQty('qty-mug1', 1)" class="px-2 py-0.5 text-xs">+</button>
+                </div>
+              </div>
+              <p class="text-[10px] text-amber-700 bg-amber-50 p-1 rounded text-center">📸 Attach photo in WhatsApp after order</p>
+              <button onclick="sendOrder('Classic White Ceramic Mug', 'qty-mug1')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Magic Color-Changing Mug -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-48 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/1_mug/magic_mug/magicMug.webp" alt="Magic Color Changing Mug" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/400x400?text=Magic+Mug'">
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">Magic Color-Changing Mug</h3>
+                <span class="text-sm font-bold text-teal-800">₹450</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">Photo reveals when hot beverage is poured.</p>
+            </div>
+            <div class="mt-4 space-y-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Finish:</label>
+                <select id="finish-mug2" class="w-full text-xs border border-slate-300 rounded p-1.5">
+                  <option value="Matte Black">Matte Black</option>
+                  <option value="Glossy Black">Glossy Black</option>
+                </select>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="updateQty('qty-mug2', -1)" class="px-2 py-0.5 text-xs">-</button>
+                  <input type="number" id="qty-mug2" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="updateQty('qty-mug2', 1)" class="px-2 py-0.5 text-xs">+</button>
+                </div>
+              </div>
+              <p class="text-[10px] text-amber-700 bg-amber-50 p-1 rounded text-center">📸 Attach photo in WhatsApp after order</p>
+              <button onclick="sendOrder('Magic Color-Changing Mug', 'qty-mug2', ['finish-mug2'])" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Heart-Handle Magic Mug -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-48 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/1_mug/heart_handle_magic_mug/Sublimation-heart-handle-magic-mug-02-1.webp" alt="Heart Handle Magic Mug" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/400x400?text=Heart+Handle+Mug'">
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">Heart-Handle Magic Mug</h3>
+                <span class="text-sm font-bold text-teal-800">₹490</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">Special heart-shaped handle magic color reveal mug.</p>
+            </div>
+            <div class="mt-4 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="updateQty('qty-mug3', -1)" class="px-2 py-0.5 text-xs">-</button>
+                  <input type="number" id="qty-mug3" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="updateQty('qty-mug3', 1)" class="px-2 py-0.5 text-xs">+</button>
+                </div>
+              </div>
+              <p class="text-[10px] text-amber-700 bg-amber-50 p-1 rounded text-center">📸 Attach photo in WhatsApp after order</p>
+              <button onclick="sendOrder('Heart-Handle Magic Mug', 'qty-mug3')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inner Color Mug -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-48 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/1_mug/inner_color_mug/inner-color-mug.webp" alt="Inner Color Ceramic Mug" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/400x400?text=Inner+Color+Mug'">
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">Inner Color Dual-Tone Mug</h3>
+                <span class="text-sm font-bold text-teal-800">₹320</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">White exterior with vivid colored interior and handle.</p>
+            </div>
+            <div class="mt-4 space-y-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Inner Color:</label>
+                <select id="color-mug4" class="w-full text-xs border border-slate-300 rounded p-1.5">
+                  <option value="Red">Red</option>
+                  <option value="Black">Black</option>
+                  <option value="Blue">Blue</option>
+                  <option value="Yellow">Yellow</option>
+                </select>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="updateQty('qty-mug4', -1)" class="px-2 py-0.5 text-xs">-</button>
+                  <input type="number" id="qty-mug4" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="updateQty('qty-mug4', 1)" class="px-2 py-0.5 text-xs">+</button>
+                </div>
+              </div>
+              <p class="text-[10px] text-amber-700 bg-amber-50 p-1 rounded text-center">📸 Attach photo in WhatsApp after order</p>
+              <button onclick="sendOrder('Inner Color Dual-Tone Mug', 'qty-mug4', ['color-mug4'])" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 3: Pillows & Cushions -->
+    <section id="pillows">
+      <div class="border-b border-slate-200 pb-3 mb-8">
+        <h2 class="text-2xl font-bold text-teal-800 tracking-wide uppercase">Custom Pillows & Cushions</h2>
+        <p class="text-slate-500 text-sm">Fur, LED light, magic sequin, emoji, and teddy cushions</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- 1. Fur Pillow (Heart & Square + 5 Colors) -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-56 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img id="img-fur-pillow" src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/2_pillow/fur%20pillow/fur_pillow%20(1).webp" alt="Fur Photo Pillow" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/400x400?text=Fur+Pillow'">
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">Custom Fur Photo Cushion</h3>
+                <span class="text-sm font-bold text-teal-800">₹590</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">Soft plush fur cushion border with glossy photo print.</p>
+            </div>
+            <div class="mt-4 space-y-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Shape:</label>
+                <select id="shape-fur" onchange="updatePillowImage('shape-fur', 'img-fur-pillow', 'fur')" class="w-full text-xs border border-slate-300 rounded p-1.5">
+                  <option value="Heart Shape" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/2_pillow/fur%20pillow/fur_pillow%20(1).webp">Heart Shape Pillow</option>
+                  <option value="Square Shape" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/2_pillow/fur%20pillow/fur_pillow%20(3).webp">Square Shape Pillow</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Fur Color:</label>
+                <select id="color-fur" class="w-full text-xs border border-slate-300 rounded p-1.5">
+                  <option value="Red">Red</option>
+                  <option value="Pink">Pink</option>
+                  <option value="Sky Blue">Sky Blue</option>
+                  <option value="White">White</option>
+                  <option value="Yellow">Yellow</option>
+                </select>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="updateQty('qty-fur', -1)" class="px-2 py-0.5 text-xs">-</button>
+                  <input type="number" id="qty-fur" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="updateQty('qty-fur', 1)" class="px-2 py-0.5 text-xs">+</button>
+                </div>
+              </div>
+              <p class="text-[10px] text-amber-700 bg-amber-50 p-1 rounded text-center">📸 Attach photo in WhatsApp after order</p>
+              <button onclick="sendOrder('Custom Fur Photo Cushion', 'qty-fur', ['shape-fur', 'color-fur'])" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Magic Sequin Pillow (Heart & Square - Red) -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-56 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img id="img-magic-pillow" src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/2_pillow/magic/magic_pillow%20(1).webp" alt="Magic Sequin Reversible Cushion" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/400x400?text=Magic+Pillow'">
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">Magic Sequin Reversible Cushion</h3>
+                <span class="text-sm font-bold text-teal-800">₹650</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">Swipe sequins up/down to reveal hidden photo artwork.</p>
+            </div>
+            <div class="mt-4 space-y-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Shape:</label>
+                <select id="shape-magic" onchange="updatePillowImage('shape-magic', 'img-magic-pillow', 'magic')" class="w-full text-xs border border-slate-300 rounded p-1.5">
+                  <option value="Heart Shape" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/2_pillow/magic/magic_pillow%20(1).webp">Heart Shape</option>
+                  <option value="Square Shape" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/2_pillow/magic/magic_pillow%20(2).webp">Square Shape</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Color:</label>
+                <input type="text" value="Red" readonly class="w-full text-xs border border-slate-200 rounded p-1.5 bg-slate-100 text-slate-600 cursor-not-allowed font-medium">
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="updateQty('qty-magic-pil', -1)" class="px-2 py-0.5 text-xs">-</button>
+                  <input type="number" id="qty-magic-pil" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="updateQty('qty-magic-pil', 1)" class="px-2 py-0.5 text-xs">+</button>
+                </div>
+              </div>
+              <p class="text-[10px] text-amber-700 bg-amber-50 p-1 rounded text-center">📸 Attach photo in WhatsApp after order</p>
+              <button onclick="sendOrder('Magic Sequin Reversible Cushion (Red)', 'qty-magic-pil', ['shape-magic'])" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. LED Glowing Pillow -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-56 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/2_pillow/led/led_pillow%20(1).webp" alt="LED Light Up Pillow" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/400x400?text=LED+Pillow'">
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">LED Light-Up Photo Cushion</h3>
+                <span class="text-sm font-bold text-teal-800">₹750</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">Battery-operated inner LED glowing cushion.</p>
+            </div>
+            <div class="mt-4 space-y-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Shape:</label>
+                <select id="shape-led" class="w-full text-xs border border-slate-300 rounded p-1.5">
+                  <option value="Heart Shape">Heart Shape</option>
+                  <option value="Square Shape">Square Shape</option>
+                </select>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="updateQty('qty-led', -1)" class="px-2 py-0.5 text-xs">-</button>
+                  <input type="number" id="qty-led" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="updateQty('qty-led', 1)" class="px-2 py-0.5 text-xs">+</button>
+                </div>
+              </div>
+              <p class="text-[10px] text-amber-700 bg-amber-50 p-1 rounded text-center">📸 Attach photo in WhatsApp after order</p>
+              <button onclick="sendOrder('LED Light-Up Photo Cushion', 'qty-led', ['shape-led'])" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 4: Keychains -->
+    <section id="keychains">
+      <div class="border-b border-slate-200 pb-3 mb-8">
+        <h2 class="text-2xl font-bold text-teal-800 tracking-wide uppercase">Custom Keychains</h2>
+        <p class="text-slate-500 text-sm">Wooden MDF, metallic silver, and acrylic photo keychains</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Wooden MDF Keychain -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-44 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/3_keychain/wood/mdf_keychain%20(1).webp" alt="Wooden MDF Keychain" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/400x400?text=MDF+Keychain'">
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">Wooden MDF Photo Keychain</h3>
+                <span class="text-sm font-bold text-teal-800">₹120</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">Glossy double-sided wooden photo keychain.</p>
+            </div>
+            <div class="mt-4 space-y-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Shape:</label>
+                <select id="shape-kc1" class="w-full text-xs border border-slate-300 rounded p-1.5">
+                  <option value="Heart Shape">Heart Shape</option>
+                  <option value="Square">Square</option>
+                  <option value="Circle">Circle</option>
+                  <option value="Rectangle">Rectangle</option>
+                </select>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="updateQty('qty-kc1', -1)" class="px-2 py-0.5 text-xs">-</button>
+                  <input type="number" id="qty-kc1" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="updateQty('qty-kc1', 1)" class="px-2 py-0.5 text-xs">+</button>
+                </div>
+              </div>
+              <p class="text-[10px] text-amber-700 bg-amber-50 p-1 rounded text-center">📸 Attach photo in WhatsApp after order</p>
+              <button onclick="sendOrder('Wooden MDF Photo Keychain', 'qty-kc1', ['shape-kc1'])" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metallic Silver Keychain -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-44 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/3_keychain/silver/silverkeychain%20(1).webp" alt="Metallic Silver Keychain" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/400x400?text=Silver+Keychain'">
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">Metallic Silver Keychain</h3>
+                <span class="text-sm font-bold text-teal-800">₹180</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">Durable metal casing with insert photo disc.</p>
+            </div>
+            <div class="mt-4 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="updateQty('qty-kc2', -1)" class="px-2 py-0.5 text-xs">-</button>
+                  <input type="number" id="qty-kc2" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="updateQty('qty-kc2', 1)" class="px-2 py-0.5 text-xs">+</button>
+                </div>
+              </div>
+              <p class="text-[10px] text-amber-700 bg-amber-50 p-1 rounded text-center">📸 Attach photo in WhatsApp after order</p>
+              <button onclick="sendOrder('Metallic Silver Keychain', 'qty-kc2')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
+  <!-- Footer -->
+  <footer id="contact" class="bg-teal-900 text-white pt-12 pb-8 border-t border-teal-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <h3 class="text-xl font-bold mb-3 tracking-wider">PRESENT</h3>
+        <p class="text-teal-200 text-xs leading-relaxed">
+          Your trusted local partner for customized sublimation gifts, photo frames, coffee mugs, cushions, and corporate merchandise.
+        </p>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold mb-3 uppercase tracking-wider text-teal-300">Contact Info</h4>
+        <ul class="text-xs space-y-2 text-teal-100">
+          <li class="flex items-center gap-2"><i class="fa-solid fa-user"></i> Sathish Kumar M (Proprietor)</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-phone"></i> +91 91235 55902</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-envelope"></i> presentgifts555@gmail.com</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-globe"></i> www.presentgifts.store</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold mb-3 uppercase tracking-wider text-teal-300">Address</h4>
+        <p class="text-xs text-teal-100 leading-relaxed">
+          Devaki Nagar, Ponniammanmedu,<br>
+          Madhavaram, Chennai - 600110,<br>
+          Tamil Nadu, India
+        </p>
+      </div>
+    </div>
+    <div class="text-center text-xs text-teal-400 pt-6 border-t border-teal-800">
+      &copy; 2026 PRESENT Custom Printing. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- JavaScript Integration -->
   <script>
-    // State for Photo Frames
-    let currentPFSize = '8x6';
-    let currentPFRate = 250;
+    const PHONE_NUMBER = "919123555902";
 
-    function updatePhotoFrame(size, price) {
-      currentPFSize = size;
-      currentPFRate = price;
-      document.getElementById('price-photofram').innerText = `₹${price}`;
-
-      const buttons = document.querySelectorAll('#prod-photofram .pf-btn');
-      buttons.forEach(btn => {
-        if(btn.innerText.includes(size)) btn.classList.add('active');
-        else btn.classList.remove('active');
-      });
+    function updateQty(id, change) {
+      const input = document.getElementById(id);
+      let current = parseInt(input.value) || 1;
+      current = Math.max(1, current + change);
+      input.value = current;
     }
 
-    function orderWhatsAppPhotoFrame() {
-      const style = document.getElementById('style-photofram').value;
-      const phone = "919000000000";
-      const message = `Hello PRESENT, I would like to order: Custom Photo Frames (Size: ${currentPFSize}, Style: ${style}, Base Price: ₹${currentPFRate}). Please share details.`;
-      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+    function changeFrameQty(qtyId, change, selectId, priceDisplayId, totalDisplayId, extraCharge = 0, imgId = null) {
+      updateQty(qtyId, change);
+      calcFramePrice(selectId, qtyId, priceDisplayId, totalDisplayId, extraCharge, imgId);
     }
 
-    // State for Mugs
-    let currentMugName = 'White Mug';
-    let currentMugPrice = 250;
+    function calcFramePrice(selectId, qtyId, priceDisplayId, totalDisplayId, extraCharge = 0, imgId = null) {
+      const select = document.getElementById(selectId);
+      const selectedOption = select.options[select.selectedIndex];
+      const basePrice = parseInt(selectedOption.getAttribute('data-price')) || 230;
+      const unitPrice = basePrice + extraCharge;
+      const qty = parseInt(document.getElementById(qtyId).value) || 1;
+      const total = unitPrice * qty;
 
-    function updateMug(name, price, imgPath) {
-      currentMugName = name;
-      currentMugPrice = price;
-      document.getElementById('price-mug').innerText = `₹${price}`;
-      document.getElementById('img-mug').src = imgPath;
+      document.getElementById(priceDisplayId).innerText = `₹${unitPrice.toLocaleString('en-IN')}`;
+      document.getElementById(totalDisplayId).innerText = `₹${total.toLocaleString('en-IN')}`;
 
-      const buttons = document.querySelectorAll('.mug-btn');
-      buttons.forEach(btn => {
-        if(btn.innerText.toLowerCase().includes(name.split(' ')[0].toLowerCase())) btn.classList.add('active');
-        else btn.classList.remove('active');
-      });
-    }
-
-    function orderWhatsAppMug() {
-      const phone = "919000000000";
-      const message = `Hello PRESENT, I would like to order: ${currentMugName} (Price: ₹${currentMugPrice}). Please share details.`;
-      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
-    }
-
-    // State for Pillows
-    let currentPShape = 'Heart';
-    let currentPColor = 'Red';
-
-    function updatePillowShape(shape) {
-      currentPShape = shape;
-      document.getElementById('label-pshape').innerText = shape;
-      if(shape === 'Heart') {
-        document.getElementById('btn-pheart').classList.add('active');
-        document.getElementById('btn-psquare').classList.remove('active');
-      } else {
-        document.getElementById('btn-psquare').classList.add('active');
-        document.getElementById('btn-pheart').classList.remove('active');
+      if (imgId) {
+        const newImgSrc = selectedOption.getAttribute('data-img');
+        if (newImgSrc) {
+          document.getElementById(imgId).src = newImgSrc;
+        }
       }
-      updatePillowImage();
     }
 
-    function updatePillowColor(color) {
-      currentPColor = color;
-      document.getElementById('label-pcolor').innerText = color;
-      updatePillowImage();
+    function updatePillowImage(selectId, imgId, type) {
+      const select = document.getElementById(selectId);
+      const selectedOption = select.options[select.selectedIndex];
+      const newImgSrc = selectedOption.getAttribute('data-img');
+      if (newImgSrc) {
+        document.getElementById(imgId).src = newImgSrc;
+      }
     }
 
-    function updatePillowImage() {
-      const shapeSlug = currentPShape.toLowerCase();
-      const colorSlug = currentPColor.toLowerCase();
-      const imgPath = `images/fur-${shapeSlug}-${colorSlug}.webp`;
-      document.getElementById('img-pillow').src = imgPath;
+    function sendFrameOrder(productName, selectId, qtyId, extraCharge = 0) {
+      const select = document.getElementById(selectId);
+      const selectedOption = select.options[select.selectedIndex];
+      const sizeName = selectedOption.value;
+      const basePrice = parseInt(selectedOption.getAttribute('data-price'));
+      const unitPrice = basePrice + extraCharge;
+      const qty = parseInt(document.getElementById(qtyId).value) || 1;
+      const total = unitPrice * qty;
+
+      const message = `Hi! I want to order from www.presentgifts.store:
+
+- Product: ${productName}
+- Size: ${sizeName} inches
+- Unit Price: ₹${unitPrice}
+- Quantity: ${qty}
+- Total Price: ₹${total.toLocaleString('en-IN')}
+
+(Note: I will attach my photo(s) in this WhatsApp chat now.)`;
+
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://wa.me/${PHONE_NUMBER}?text=${encodedMessage}`, '_blank');
     }
 
-    function orderWhatsAppPillow() {
-      const phone = "919000000000";
-      const message = `Hello PRESENT, I would like to order: Fur Pillow (Shape: ${currentPShape}, Color: ${currentPColor}). Please share details.`;
-      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
-    }
+    function sendOrder(productName, qtyId, variantIds = []) {
+      const qty = document.getElementById(qtyId).value;
+      let variations = [];
 
-    // State for Sipper
-    let currentSipper = '600ml (9x5)';
-    function updateSipper(size, imgPath) {
-      currentSipper = size;
-      document.getElementById('img-sipper').src = imgPath;
-      document.querySelectorAll('.sipper-btn').forEach(btn => {
-        if(btn.innerText.includes(size)) btn.classList.add('active');
-        else btn.classList.remove('active');
+      variantIds.forEach(id => {
+        const elem = document.getElementById(id);
+        if (elem) {
+          variations.push(elem.value);
+        }
       });
-    }
-    function orderWhatsAppSipper() {
-      const phone = "919000000000";
-      window.open(`https://wa.me/${phone}?text=${encodeURIComponent('Hello PRESENT, I want to order Sipper Bottle (' + currentSipper + ').')}`, '_blank');
+
+      const varText = variations.length > 0 ? variations.join(', ') : 'Standard';
+
+      const message = `Hi! I want to order from www.presentgifts.store:
+
+- Product: ${productName}
+- Quantity: ${qty}
+- Variation: ${varText}
+
+(Note: I will attach my photo(s) in this WhatsApp chat now.)`;
+
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://wa.me/${PHONE_NUMBER}?text=${encodedMessage}`, '_blank');
     }
 
-    // State for T-Shirt
-    let currentTSize = 'S';
-    function updateTshirt(size) {
-      currentTSize = size;
-      document.querySelectorAll('.t-btn').forEach(btn => {
-        if(btn.innerText === size) btn.classList.add('active');
-        else btn.classList.remove('active');
-      });
-    }
-    function orderWhatsAppTshirt() {
-      const phone = "919000000000";
-      window.open(`https://wa.me/${phone}?text=${encodeURIComponent('Hello PRESENT, I want to order White Sublimation T-Shirt (Size: ' + currentTSize + ').')}`, '_blank');
-    }
-
-    // General order function
-    function orderWhatsApp(productName) {
-      const phone = "919000000000";
-      window.open(`https://wa.me/${phone}?text=${encodeURIComponent('Hello PRESENT, I would like to order: ' + productName + '.')}`, '_blank');
-    }
+    window.onload = function() {
+      calcFramePrice('size-frame1', 'qty-frame1', 'price-display-f1', 'total-frame1', 0, 'img-frame1');
+      calcFramePrice('size-frame2', 'qty-frame2', 'price-display-f2', 'total-frame2', 300, 'img-frame2');
+      calcFramePrice('size-frame3', 'qty-frame3', 'price-display-f3', 'total-frame3', 500, 'img-frame3');
+    };
   </script>
 </body>
 </html>
