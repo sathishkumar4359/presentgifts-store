@@ -12,11 +12,6 @@
       color: #065f46;
       font-weight: 600;
     }
-    .color-btn.active {
-      ring: 2px;
-      ring-color: #059669;
-      transform: scale(1.1);
-    }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
@@ -41,221 +36,177 @@
   <main class="max-w-7xl mx-auto px-4 py-10">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="product-grid">
 
-      <!-- 1. Sipper Bottle -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-sipper">
+      <!-- 1. Photo Frames -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-photofram">
         <div class="p-4">
-          <img id="img-sipper" src="images/sipper-600ml.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Sipper+Bottle';" alt="Sipper Bottle" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">Sipper Bottle</h3>
-          <p class="text-xs text-gray-500 mb-3">Custom printed aluminum sipper bottle.</p>
-          <label class="text-xs font-semibold text-gray-600 block mb-1">Select Capacity:</label>
+          <img id="img-photofram" src="images/photo-frame.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?Text=Photo+Frame';" alt="Photo Frames" class="w-full h-64 object-cover rounded-lg mb-4">
+          <h3 class="text-lg font-bold text-gray-900 mb-1">Custom Photo Frames</h3>
+          <p id="price-photofram" class="text-emerald-700 font-bold text-base mb-2">₹250</p>
+          
+          <label class="text-xs font-semibold text-gray-600 block mb-1">Select Size & Price:</label>
+          <div class="grid grid-cols-2 gap-1.5 mb-3">
+            <button onclick="updatePhotoFrame('8x6', 250)" class="pf-btn active text-xs py-1.5 border rounded-lg active">8x6 (₹250)</button>
+            <button onclick="updatePhotoFrame('12x8', 450)" class="pf-btn text-xs py-1.5 border rounded-lg">12x8 (₹450)</button>
+            <button onclick="updatePhotoFrame('12x15', 750)" class="pf-btn text-xs py-1.5 border rounded-lg">12x15 (₹750)</button>
+            <button onclick="updatePhotoFrame('12x18', 900)" class="pf-btn text-xs py-1.5 border rounded-lg">12x18 (₹900)</button>
+            <button onclick="updatePhotoFrame('16x24', 1800)" class="pf-btn text-xs py-1.5 border rounded-lg">16x24 (₹1800)</button>
+            <button onclick="updatePhotoFrame('20x30', 2800)" class="pf-btn text-xs py-1.5 border rounded-lg">20x30 (₹2800)</button>
+          </div>
+
+          <label class="text-xs font-semibold text-gray-600 block mb-1">Design Style:</label>
+          <select id="style-photofram" class="w-full text-xs p-2 border rounded-lg mb-4 bg-gray-50">
+            <option value="Normal">Normal Print (₹0)</option>
+            <option value="Collage (+₹200)">Collage Frame (+₹200)</option>
+            <option value="Digital Painting / Art (+₹400)">Digital Painting / Art (+₹400)</option>
+          </select>
+        </div>
+        <div class="p-4 pt-0">
+          <button onclick="orderWhatsAppPhotoFrame()" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
+        </div>
+      </div>
+
+      <!-- 2. Mugs -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-mug">
+        <div class="p-4">
+          <img id="img-mug" src="images/mug-white.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Coffee+Mug';" alt="Mug" class="w-full h-64 object-cover rounded-lg mb-4">
+          <h3 class="text-lg font-bold text-gray-900 mb-1">Custom Mugs</h3>
+          <p id="price-mug" class="text-emerald-700 font-bold text-base mb-2">₹250</p>
+
+          <label class="text-xs font-semibold text-gray-600 block mb-1">Select Type:</label>
+          <div class="grid grid-cols-2 gap-1.5 mb-4">
+            <button onclick="updateMug('White Mug', 250, 'images/mug-white.webp')" class="mug-btn active text-xs py-1.5 border rounded-lg">White Mug</button>
+            <button onclick="updateMug('Heart Handle White', 350, 'images/mug-heart.webp')" class="mug-btn text-xs py-1.5 border rounded-lg">Heart Handle</button>
+            <button onclick="updateMug('Magic Mug', 350, 'images/mug-magic.webp')" class="mug-btn text-xs py-1.5 border rounded-lg">Magic Mug</button>
+            <button onclick="updateMug('Heart Handle Magic', 400, 'images/mug-heartmagic.webp')" class="mug-btn text-xs py-1.5 border rounded-lg">Magic + Heart</button>
+          </div>
+        </div>
+        <div class="p-4 pt-0">
+          <button onclick="orderWhatsAppMug()" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
+        </div>
+      </div>
+
+      <!-- 3. Pillows (Heart & Square with Colors) -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-pillows">
+        <div class="p-4">
+          <img id="img-pillow" src="images/fur-heart-red.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Fur+Pillow';" alt="Pillows" class="w-full h-64 object-cover rounded-lg mb-4">
+          <h3 class="text-lg font-bold text-gray-900 mb-1">Custom Fur Pillows</h3>
+          <p class="text-xs text-gray-500 mb-2">Shape: <span id="label-pshape" class="font-semibold text-emerald-700">Heart</span> | Color: <span id="label-pcolor" class="font-semibold text-emerald-700">Red</span></p>
+
+          <label class="text-xs font-semibold text-gray-600 block mb-1">Shape:</label>
+          <div class="flex gap-2 mb-2">
+            <button onclick="updatePillowShape('Heart')" id="btn-pheart" class="variant-btn active text-xs px-3 py-1 border rounded-lg flex-1">Heart</button>
+            <button onclick="updatePillowShape('Square')" id="btn-psquare" class="variant-btn text-xs px-3 py-1 border rounded-lg flex-1">Square</button>
+          </div>
+
+          <label class="text-xs font-semibold text-gray-600 block mb-1">Color Options:</label>
           <div class="flex gap-2 mb-4">
-            <button onclick="updateVariant('sipper', '600ml (9x5)', 'images/sipper-600ml.webp')" class="variant-btn active text-xs px-3 py-1.5 border rounded-lg flex-1">600ml (9x5)</button>
-            <button onclick="updateVariant('sipper', '750ml (9x7)', 'images/sipper-750ml.webp')" class="variant-btn text-xs px-3 py-1.5 border rounded-lg flex-1">750ml (9x7)</button>
+            <button onclick="updatePillowColor('Red')" class="w-6 h-6 rounded-full bg-red-600 border border-gray-300"></button>
+            <button onclick="updatePillowColor('Pink')" class="w-6 h-6 rounded-full bg-pink-400 border border-gray-300"></button>
+            <button onclick="updatePillowColor('Blue')" class="w-6 h-6 rounded-full bg-blue-500 border border-gray-300"></button>
+            <button onclick="updatePillowColor('Yellow')" class="w-6 h-6 rounded-full bg-yellow-400 border border-gray-300"></button>
+            <button onclick="updatePillowColor('Violet')" class="w-6 h-6 rounded-full bg-purple-600 border border-gray-300"></button>
+            <button onclick="updatePillowColor('White')" class="w-6 h-6 rounded-full bg-white border border-gray-400"></button>
           </div>
         </div>
         <div class="p-4 pt-0">
-          <button onclick="orderWhatsApp('Sipper Bottle')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
+          <button onclick="orderWhatsAppPillow()" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
         </div>
       </div>
 
-      <!-- 2. Sublimation Glass Frame -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-glassframe">
-        <div class="p-4">
-          <img id="img-glassframe" src="images/glass-frame.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Glass+Frame';" alt="Sublimation Glass Frame" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">Sublimation Glass Frame</h3>
-          <p class="text-xs text-gray-500 mb-3">Glossy photo printed directly on tempered glass frame.</p>
-        </div>
-        <div class="p-4 pt-0">
-          <button onclick="orderWhatsApp('Sublimation Glass Frame')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
-        </div>
-      </div>
-
-      <!-- 3. Sublimation Crystal Frame -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-crystalframe">
-        <div class="p-4">
-          <img id="img-crystalframe" src="images/crystal-frame.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Crystal+Frame';" alt="Sublimation Crystal Frame" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">Sublimation Crystal Frame</h3>
-          <p class="text-xs text-gray-500 mb-3">Premium high-clarity crystal photo frame.</p>
-        </div>
-        <div class="p-4 pt-0">
-          <button onclick="orderWhatsApp('Sublimation Crystal Frame')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
-        </div>
-      </div>
-
-      <!-- 4. Rock Photo Frame -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-rockframe">
-        <div class="p-4">
-          <img id="img-rockframe" src="images/rock-frame.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Rock+Photo+Frame';" alt="Rock Photo Frame" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">Rock Photo Frame</h3>
-          <p class="text-xs text-gray-500 mb-3">Natural slate stone frame with customized photo print.</p>
-        </div>
-        <div class="p-4 pt-0">
-          <button onclick="orderWhatsApp('Rock Photo Frame')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
-        </div>
-      </div>
-
-      <!-- 5. Heart Fur Pillow (Multi-Color) -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-furheart">
-        <div class="p-4">
-          <img id="img-furheart" src="images/fur-heart-red.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Heart+Fur+Pillow';" alt="Heart Fur Pillow" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">Heart Fur Pillow</h3>
-          <p class="text-xs text-gray-500 mb-2">Soft personalized plush heart cushion.</p>
-          <label class="text-xs font-semibold text-gray-600 block mb-1">Select Color: <span id="label-furheart" class="font-normal text-emerald-700">Red</span></label>
-          <div class="flex gap-2 mb-4">
-            <button onclick="updateColor('furheart', 'Red', 'images/fur-heart-red.webp')" class="w-6 h-6 rounded-full bg-red-600 border border-gray-300"></button>
-            <button onclick="updateColor('furheart', 'Pink', 'images/fur-heart-pink.webp')" class="w-6 h-6 rounded-full bg-pink-400 border border-gray-300"></button>
-            <button onclick="updateColor('furheart', 'Blue', 'images/fur-heart-blue.webp')" class="w-6 h-6 rounded-full bg-blue-500 border border-gray-300"></button>
-            <button onclick="updateColor('furheart', 'Yellow', 'images/fur-heart-yellow.webp')" class="w-6 h-6 rounded-full bg-yellow-400 border border-gray-300"></button>
-            <button onclick="updateColor('furheart', 'Violet', 'images/fur-heart-violet.webp')" class="w-6 h-6 rounded-full bg-purple-600 border border-gray-300"></button>
-            <button onclick="updateColor('furheart', 'White', 'images/fur-heart-white.webp')" class="w-6 h-6 rounded-full bg-white border border-gray-400"></button>
-          </div>
-        </div>
-        <div class="p-4 pt-0">
-          <button onclick="orderWhatsApp('Heart Fur Pillow')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
-        </div>
-      </div>
-
-      <!-- 6. Square Fur Pillow (Multi-Color) -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-fursquare">
-        <div class="p-4">
-          <img id="img-fursquare" src="images/fur-square-red.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Square+Fur+Pillow';" alt="Square Fur Pillow" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">Square Fur Pillow</h3>
-          <p class="text-xs text-gray-500 mb-2">Fluffy square cushion with custom photo print.</p>
-          <label class="text-xs font-semibold text-gray-600 block mb-1">Select Color: <span id="label-fursquare" class="font-normal text-emerald-700">Red</span></label>
-          <div class="flex gap-2 mb-4">
-            <button onclick="updateColor('fursquare', 'Red', 'images/fur-square-red.webp')" class="w-6 h-6 rounded-full bg-red-600 border border-gray-300"></button>
-            <button onclick="updateColor('fursquare', 'Pink', 'images/fur-square-pink.webp')" class="w-6 h-6 rounded-full bg-pink-400 border border-gray-300"></button>
-            <button onclick="updateColor('fursquare', 'Blue', 'images/fur-square-blue.webp')" class="w-6 h-6 rounded-full bg-blue-500 border border-gray-300"></button>
-            <button onclick="updateColor('fursquare', 'Yellow', 'images/fur-square-yellow.webp')" class="w-6 h-6 rounded-full bg-yellow-400 border border-gray-300"></button>
-            <button onclick="updateColor('fursquare', 'Violet', 'images/fur-square-violet.webp')" class="w-6 h-6 rounded-full bg-purple-600 border border-gray-300"></button>
-            <button onclick="updateColor('fursquare', 'White', 'images/fur-square-white.webp')" class="w-6 h-6 rounded-full bg-white border border-gray-400"></button>
-          </div>
-        </div>
-        <div class="p-4 pt-0">
-          <button onclick="orderWhatsApp('Square Fur Pillow')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
-        </div>
-      </div>
-
-      <!-- 7. Magic Mirror -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-magicmirror">
-        <div class="p-4">
-          <img id="img-magicmirror" src="images/magic-mirror-round.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Magic+Mirror';" alt="Magic Mirror" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">LED Magic Mirror</h3>
-          <p class="text-xs text-gray-500 mb-3">Mirror when OFF, photo frame when LED turns ON.</p>
-          <label class="text-xs font-semibold text-gray-600 block mb-1">Select Shape:</label>
-          <div class="grid grid-cols-2 gap-2 mb-4">
-            <button onclick="updateVariant('magicmirror', 'Round', 'images/magic-mirror-round.webp')" class="variant-btn active text-xs py-1.5 border rounded-lg">Round</button>
-            <button onclick="updateVariant('magicmirror', 'Heart', 'images/magic-mirror-heart.webp')" class="variant-btn text-xs py-1.5 border rounded-lg">Heart</button>
-            <button onclick="updateVariant('magicmirror', 'Round with Clock', 'images/magic-mirror-clock.webp')" class="variant-btn text-xs py-1.5 border rounded-lg">Round + Clock</button>
-            <button onclick="updateVariant('magicmirror', 'Rectangle', 'images/magic-mirror-rectangle.webp')" class="variant-btn text-xs py-1.5 border rounded-lg">Rectangle</button>
-          </div>
-        </div>
-        <div class="p-4 pt-0">
-          <button onclick="orderWhatsApp('LED Magic Mirror')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
-        </div>
-      </div>
-
-      <!-- 8. White Sublimation T-Shirt -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-tshirt">
-        <div class="p-4">
-          <img id="img-tshirt" src="images/tshirt-white.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=White+T-Shirt';" alt="White Sublimation T-Shirt" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">Custom White T-Shirt</h3>
-          <p class="text-xs text-gray-500 mb-3">Premium polyester white t-shirt with custom photo/text print.</p>
-          <label class="text-xs font-semibold text-gray-600 block mb-1">Select Size:</label>
-          <div class="flex gap-1.5 mb-4">
-            <button onclick="updateVariant('tshirt', 'S', 'images/tshirt-white.webp')" class="variant-btn active text-xs px-2.5 py-1 border rounded-lg flex-1">S</button>
-            <button onclick="updateVariant('tshirt', 'M', 'images/tshirt-white.webp')" class="variant-btn text-xs px-2.5 py-1 border rounded-lg flex-1">M</button>
-            <button onclick="updateVariant('tshirt', 'L', 'images/tshirt-white.webp')" class="variant-btn text-xs px-2.5 py-1 border rounded-lg flex-1">L</button>
-            <button onclick="updateVariant('tshirt', 'XL', 'images/tshirt-white.webp')" class="variant-btn text-xs px-2.5 py-1 border rounded-lg flex-1">XL</button>
-            <button onclick="updateVariant('tshirt', '2XL', 'images/tshirt-white.webp')" class="variant-btn text-xs px-2.5 py-1 border rounded-lg flex-1">2XL</button>
-          </div>
-        </div>
-        <div class="p-4 pt-0">
-          <button onclick="orderWhatsApp('Custom White T-Shirt')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
-        </div>
-      </div>
-
-      <!-- 9. Fridge Magnets -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-magnet">
-        <div class="p-4">
-          <img id="img-magnet" src="images/fridge-magnet.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Fridge+Magnet';" alt="Fridge Magnets" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">Custom Fridge Magnet</h3>
-          <p class="text-xs text-gray-500 mb-3">Glossy photo printed wooden/acrylic magnets.</p>
-        </div>
-        <div class="p-4 pt-0">
-          <button onclick="orderWhatsApp('Custom Fridge Magnet')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
-        </div>
-      </div>
-
-      <!-- 10. Personalized Calendar -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-calendar">
-        <div class="p-4">
-          <img id="img-calendar" src="images/photo-calendar.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Photo+Calendar';" alt="Personalized Calendar" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">Personalized Photo Calendar</h3>
-          <p class="text-xs text-gray-500 mb-3">Desk or wall calendar with your custom photos for each month.</p>
-        </div>
-        <div class="p-4 pt-0">
-          <button onclick="orderWhatsApp('Personalized Photo Calendar')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
-        </div>
-      </div>
-
-      <!-- 11. Rotating Lamp -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-lamp">
-        <div class="p-4">
-          <img id="img-lamp" src="images/rotating-lamp.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Rotating+Lamp';" alt="Rotating Lamp" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">Rotating Photo Lamp</h3>
-          <p class="text-xs text-gray-500 mb-3">360-degree rotating light lamp with multiple custom photos.</p>
-        </div>
-        <div class="p-4 pt-0">
-          <button onclick="orderWhatsApp('Rotating Photo Lamp')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
-        </div>
-      </div>
-
-      <!-- 12. Caricature -->
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-caricature">
-        <div class="p-4">
-          <img id="img-caricature" src="images/caricature.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Custom+Caricature';" alt="Caricature" class="w-full h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-lg font-bold text-gray-900 mb-1">Custom Photo Caricature</h3>
-          <p class="text-xs text-gray-500 mb-3">Fun personalized acrylic caricature standees with face photos.</p>
-        </div>
-        <div class="p-4 pt-0">
-          <button onclick="orderWhatsApp('Custom Photo Caricature')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
-        </div>
-      </div>
-
-      <!-- 13. Gold Plastic Keychain -->
+      <!-- 4. Keychains -->
       <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-keychain">
         <div class="p-4">
-          <img id="img-keychain" src="images/gold-keychain.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Gold+Keychain';" alt="Gold Plastic Keychain" class="w-full h-64 object-cover rounded-lg mb-4">
+          <img src="images/gold-keychain.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Gold+Keychain';" alt="Gold Plastic Keychains" class="w-full h-64 object-cover rounded-lg mb-4">
           <h3 class="text-lg font-bold text-gray-900 mb-1">Gold Plastic Keychain</h3>
-          <p class="text-xs text-gray-500 mb-3">Premium metallic gold finish keychain with double-sided photo print.</p>
+          <p class="text-xs text-gray-500 mb-3">Double-sided photo printed glossy gold finish keychain.</p>
         </div>
         <div class="p-4 pt-0">
           <button onclick="orderWhatsApp('Gold Plastic Keychain')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
         </div>
       </div>
 
-      <!-- 14. Wall Hanging -->
+      <!-- 5. Sipper Bottles -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-sipper">
+        <div class="p-4">
+          <img id="img-sipper" src="images/sipper-600ml.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Sipper+Bottle';" alt="Sipper Bottle" class="w-full h-64 object-cover rounded-lg mb-4">
+          <h3 class="text-lg font-bold text-gray-900 mb-1">Sipper Bottle</h3>
+          <p class="text-xs text-gray-500 mb-3">Aluminum sipper bottle with custom print.</p>
+          <label class="text-xs font-semibold text-gray-600 block mb-1">Select Size:</label>
+          <div class="flex gap-2 mb-4">
+            <button onclick="updateSipper('600ml (9x5)', 'images/sipper-600ml.webp')" class="sipper-btn active text-xs px-3 py-1.5 border rounded-lg flex-1">600ml (9x5)</button>
+            <button onclick="updateSipper('750ml (9x7)', 'images/sipper-750ml.webp')" class="sipper-btn text-xs px-3 py-1.5 border rounded-lg flex-1">750ml (9x7)</button>
+          </div>
+        </div>
+        <div class="p-4 pt-0">
+          <button onclick="orderWhatsAppSipper()" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
+        </div>
+      </div>
+
+      <!-- 6. Glass Frames -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-glass">
+        <div class="p-4">
+          <img src="images/glass-frame.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Glass+Frame';" alt="Sublimation Glass Frame" class="w-full h-64 object-cover rounded-lg mb-4">
+          <h3 class="text-lg font-bold text-gray-900 mb-1">Sublimation Glass Frame</h3>
+          <p class="text-xs text-gray-500 mb-3">Glossy photo printed directly on tempered glass.</p>
+        </div>
+        <div class="p-4 pt-0">
+          <button onclick="orderWhatsApp('Sublimation Glass Frame')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
+        </div>
+      </div>
+
+      <!-- 7. Crystal Frames -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-crystal">
+        <div class="p-4">
+          <img src="images/crystal-frame.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Crystal+Frame';" alt="Sublimation Crystal Frame" class="w-full h-64 object-cover rounded-lg mb-4">
+          <h3 class="text-lg font-bold text-gray-900 mb-1">Sublimation Crystal Frame</h3>
+          <p class="text-xs text-gray-500 mb-3">High-clarity sparkling crystal photo frame.</p>
+        </div>
+        <div class="p-4 pt-0">
+          <button onclick="orderWhatsApp('Sublimation Crystal Frame')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
+        </div>
+      </div>
+
+      <!-- 8. Wall Hangings -->
       <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-wallhanging">
         <div class="p-4">
-          <img id="img-wallhanging" src="images/wall-hanging.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Wall+Hanging';" alt="Wall Hanging" class="w-full h-64 object-cover rounded-lg mb-4">
+          <img src="images/wall-hanging.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Wall+Hanging';" alt="Wall Hangings" class="w-full h-64 object-cover rounded-lg mb-4">
           <h3 class="text-lg font-bold text-gray-900 mb-1">Personalized Wall Hanging</h3>
-          <p class="text-xs text-gray-500 mb-3">Multi-panel wooden photo hanging decor for walls.</p>
+          <p class="text-xs text-gray-500 mb-3">Multi-panel wooden photo wall decor.</p>
         </div>
         <div class="p-4 pt-0">
           <button onclick="orderWhatsApp('Personalized Wall Hanging')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
         </div>
       </div>
 
-      <!-- 15. Wall Clock -->
+      <!-- 9. Wall Clocks -->
       <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-wallclock">
         <div class="p-4">
-          <img id="img-wallclock" src="images/wall-clock.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Wall+Clock';" alt="Wall Clock" class="w-full h-64 object-cover rounded-lg mb-4">
+          <img src="images/wall-clock.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=Wall+Clock';" alt="Wall Clocks" class="w-full h-64 object-cover rounded-lg mb-4">
           <h3 class="text-lg font-bold text-gray-900 mb-1">Custom Photo Wall Clock</h3>
-          <p class="text-xs text-gray-500 mb-3">Sublimation printed wooden/acrylic custom wall clock.</p>
+          <p class="text-xs text-gray-500 mb-3">Sublimation printed custom wall clock.</p>
         </div>
         <div class="p-4 pt-0">
           <button onclick="orderWhatsApp('Custom Photo Wall Clock')" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
+        </div>
+      </div>
+
+      <!-- 10. T-Shirts -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between" id="prod-tshirt">
+        <div class="p-4">
+          <img src="images/tshirt-white.webp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/475569?text=White+T-Shirt';" alt="T-Shirts" class="w-full h-64 object-cover rounded-lg mb-4">
+          <h3 class="text-lg font-bold text-gray-900 mb-1">White Sublimation T-Shirt</h3>
+          <p class="text-xs text-gray-500 mb-3">Premium white polyester custom t-shirt.</p>
+          <label class="text-xs font-semibold text-gray-600 block mb-1">Select Size:</label>
+          <div class="flex gap-1 mb-4">
+            <button onclick="updateTshirt('S')" class="t-btn active text-xs px-2 py-1 border rounded-lg flex-1">S</button>
+            <button onclick="updateTshirt('M')" class="t-btn text-xs px-2 py-1 border rounded-lg flex-1">M</button>
+            <button onclick="updateTshirt('L')" class="t-btn text-xs px-2 py-1 border rounded-lg flex-1">L</button>
+            <button onclick="updateTshirt('XL')" class="t-btn text-xs px-2 py-1 border rounded-lg flex-1">XL</button>
+            <button onclick="updateTshirt('2XL')" class="t-btn text-xs px-2 py-1 border rounded-lg flex-1">2XL</button>
+          </div>
+        </div>
+        <div class="p-4 pt-0">
+          <button onclick="orderWhatsAppTshirt()" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition">Order via WhatsApp</button>
         </div>
       </div>
 
@@ -263,63 +214,121 @@
   </main>
 
   <script>
-    // Store selected variants/colors
-    const selections = {
-      sipper: '600ml (9x5)',
-      furheart: 'Red',
-      fursquare: 'Red',
-      magicmirror: 'Round',
-      tshirt: 'S'
-    };
+    // State for Photo Frames
+    let currentPFSize = '8x6';
+    let currentPFRate = 250;
 
-    function updateVariant(productId, variantName, imagePath) {
-      selections[productId] = variantName;
-      
-      // Update image
-      const imgElement = document.getElementById(`img-${productId}`);
-      if (imgElement && imagePath) {
-        imgElement.src = imagePath;
-      }
+    function updatePhotoFrame(size, price) {
+      currentPFSize = size;
+      currentPFRate = price;
+      document.getElementById('price-photofram').innerText = `₹${price}`;
 
-      // Update active button state
-      const container = document.getElementById(`prod-${productId}`);
-      const buttons = container.querySelectorAll('.variant-btn');
+      const buttons = document.querySelectorAll('#prod-photofram .pf-btn');
       buttons.forEach(btn => {
-        if (btn.innerText.includes(variantName)) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
+        if(btn.innerText.includes(size)) btn.classList.add('active');
+        else btn.classList.remove('active');
       });
     }
 
-    function updateColor(productId, colorName, imagePath) {
-      selections[productId] = colorName;
-
-      // Update text label
-      const label = document.getElementById(`label-${productId}`);
-      if (label) label.innerText = colorName;
-
-      // Update image
-      const imgElement = document.getElementById(`img-${productId}`);
-      if (imgElement && imagePath) {
-        imgElement.src = imagePath;
-      }
+    function orderWhatsAppPhotoFrame() {
+      const style = document.getElementById('style-photofram').value;
+      const phone = "919000000000";
+      const message = `Hello PRESENT, I would like to order: Custom Photo Frames (Size: ${currentPFSize}, Style: ${style}, Base Price: ₹${currentPFRate}). Please share details.`;
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
     }
 
+    // State for Mugs
+    let currentMugName = 'White Mug';
+    let currentMugPrice = 250;
+
+    function updateMug(name, price, imgPath) {
+      currentMugName = name;
+      currentMugPrice = price;
+      document.getElementById('price-mug').innerText = `₹${price}`;
+      document.getElementById('img-mug').src = imgPath;
+
+      const buttons = document.querySelectorAll('.mug-btn');
+      buttons.forEach(btn => {
+        if(btn.innerText.toLowerCase().includes(name.split(' ')[0].toLowerCase())) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+    }
+
+    function orderWhatsAppMug() {
+      const phone = "919000000000";
+      const message = `Hello PRESENT, I would like to order: ${currentMugName} (Price: ₹${currentMugPrice}). Please share details.`;
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    // State for Pillows
+    let currentPShape = 'Heart';
+    let currentPColor = 'Red';
+
+    function updatePillowShape(shape) {
+      currentPShape = shape;
+      document.getElementById('label-pshape').innerText = shape;
+      if(shape === 'Heart') {
+        document.getElementById('btn-pheart').classList.add('active');
+        document.getElementById('btn-psquare').classList.remove('active');
+      } else {
+        document.getElementById('btn-psquare').classList.add('active');
+        document.getElementById('btn-pheart').classList.remove('active');
+      }
+      updatePillowImage();
+    }
+
+    function updatePillowColor(color) {
+      currentPColor = color;
+      document.getElementById('label-pcolor').innerText = color;
+      updatePillowImage();
+    }
+
+    function updatePillowImage() {
+      const shapeSlug = currentPShape.toLowerCase();
+      const colorSlug = currentPColor.toLowerCase();
+      const imgPath = `images/fur-${shapeSlug}-${colorSlug}.webp`;
+      document.getElementById('img-pillow').src = imgPath;
+    }
+
+    function orderWhatsAppPillow() {
+      const phone = "919000000000";
+      const message = `Hello PRESENT, I would like to order: Fur Pillow (Shape: ${currentPShape}, Color: ${currentPColor}). Please share details.`;
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    // State for Sipper
+    let currentSipper = '600ml (9x5)';
+    function updateSipper(size, imgPath) {
+      currentSipper = size;
+      document.getElementById('img-sipper').src = imgPath;
+      document.querySelectorAll('.sipper-btn').forEach(btn => {
+        if(btn.innerText.includes(size)) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+    }
+    function orderWhatsAppSipper() {
+      const phone = "919000000000";
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent('Hello PRESENT, I want to order Sipper Bottle (' + currentSipper + ').')}`, '_blank');
+    }
+
+    // State for T-Shirt
+    let currentTSize = 'S';
+    function updateTshirt(size) {
+      currentTSize = size;
+      document.querySelectorAll('.t-btn').forEach(btn => {
+        if(btn.innerText === size) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+    }
+    function orderWhatsAppTshirt() {
+      const phone = "919000000000";
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent('Hello PRESENT, I want to order White Sublimation T-Shirt (Size: ' + currentTSize + ').')}`, '_blank');
+    }
+
+    // General order function
     function orderWhatsApp(productName) {
-      const phone = "919000000000"; // Replace with your official WhatsApp number
-      let detail = "";
-
-      if (productName === "Sipper Bottle") detail = ` (Capacity: ${selections.sipper})`;
-      if (productName === "Heart Fur Pillow") detail = ` (Color: ${selections.furheart})`;
-      if (productName === "Square Fur Pillow") detail = ` (Color: ${selections.fursquare})`;
-      if (productName === "LED Magic Mirror") detail = ` (Shape: ${selections.magicmirror})`;
-      if (productName === "Custom White T-Shirt") detail = ` (Size: ${selections.tshirt})`;
-
-      const message = `Hello PRESENT, I would like to order: ${productName}${detail}. Please share pricing and photo upload details.`;
-      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-      window.open(url, '_blank');
+      const phone = "919000000000";
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent('Hello PRESENT, I would like to order: ' + productName + '.')}`, '_blank');
     }
   </script>
 </body>
