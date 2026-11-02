@@ -51,7 +51,7 @@
 
       <!-- Live Search Bar -->
       <div class="flex-1 max-w-xs sm:max-w-md relative">
-        <input type="text" id="live-search-input" onkeyup="filterProductsBySearch()" placeholder="Search frames, mugs, pillows..." class="w-full text-xs pl-8 pr-3 py-2 rounded-full border border-slate-300 bg-slate-100 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-800 transition">
+        <input type="text" id="live-search-input" onkeyup="filterProductsBySearch()" placeholder="Search frames, mugs, pillows, keychains..." class="w-full text-xs pl-8 pr-3 py-2 rounded-full border border-slate-300 bg-slate-100 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-800 transition">
         <i class="fa-solid fa-magnifying-glass text-slate-400 text-xs absolute left-3 top-2.5"></i>
       </div>
 
@@ -66,6 +66,17 @@
       </div>
 
       <div class="flex items-center gap-2.5 shrink-0">
+        <!-- Live Support Pulse Badge -->
+        <div class="hidden md:flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-semibold px-2.5 py-1 rounded-full">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Sathish Online</span>
+        </div>
+
+        <!-- Account / Saved Profile Button -->
+        <button onclick="toggleAccountModal()" class="relative bg-slate-100 hover:bg-slate-200 text-slate-700 p-2 rounded-full shadow-sm transition flex items-center justify-center w-9 h-9" title="My Account">
+          <i class="fa-solid fa-user text-xs"></i>
+        </button>
+
         <!-- Social Icons -->
         <div class="hidden sm:flex items-center gap-1.5 text-slate-600">
           <a href="https://www.instagram.com/presentgifts555/" target="_blank" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center hover:bg-pink-100 hover:text-pink-600 transition" title="Instagram">
@@ -101,7 +112,74 @@
       <a href="#sipper" class="px-3 py-1 bg-white rounded-full border border-slate-200 whitespace-nowrap hover:bg-teal-800 hover:text-white transition">Sippers</a>
       <a href="#tshirts" class="px-3 py-1 bg-white rounded-full border border-slate-200 whitespace-nowrap hover:bg-teal-800 hover:text-white transition">T-Shirts</a>
     </div>
+
+    <!-- Chennai Delivery Pincode Estimator Bar -->
+    <div class="bg-teal-900 text-white px-4 py-1.5 text-xs flex items-center justify-between max-w-7xl mx-auto flex-wrap gap-2">
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-truck-fast text-accent"></i>
+        <span>Check Delivery Speed:</span>
+        <input type="text" id="pincode-input" placeholder="Enter Pincode (e.g. 600110)" class="text-slate-800 text-[11px] px-2 py-0.5 rounded border border-slate-300 w-36 focus:outline-none">
+        <button onclick="checkPincodeDelivery()" class="bg-accent hover:bg-yellow-500 text-slate-900 font-bold px-2.5 py-0.5 rounded text-[11px] transition">Check</button>
+      </div>
+      <span id="pincode-result" class="text-accent font-semibold text-[11px]">📍 Chennai & Tamil Nadu: Express 24-48 Hr Dispatch</span>
+    </div>
   </header>
+
+  <!-- Animated Floating Toast Notification -->
+  <div id="toast-notification" class="fixed top-20 right-4 z-50 transform translate-y-[-150%] opacity-0 transition-all duration-300 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-2xl border border-slate-700 flex items-center gap-3">
+    <div class="bg-emerald-500 text-white w-7 h-7 rounded-full flex items-center justify-center shrink-0">
+      <i class="fa-solid fa-check text-xs"></i>
+    </div>
+    <div>
+      <h4 class="font-bold text-xs" id="toast-title">Item Added to Cart!</h4>
+      <p class="text-[10px] text-slate-300" id="toast-msg">Custom Photo Frame has been added.</p>
+    </div>
+    <button onclick="toggleCartDrawer()" class="bg-teal-700 hover:bg-teal-600 text-white font-bold text-[11px] px-3 py-1 rounded-xl transition ml-2">View Cart</button>
+  </div>
+
+  <!-- User Account & Saved Profile Modal -->
+  <div id="account-modal" class="fixed inset-0 bg-slate-900/60 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b pb-3">
+        <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2">
+          <i class="fa-solid fa-address-card text-teal-800"></i> My Account & Shipping Profile
+        </h3>
+        <button onclick="toggleAccountModal()" class="text-slate-400 hover:text-slate-600 font-bold"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-600 mb-1">Full Name:</label>
+          <input type="text" id="user-name" placeholder="Sathish Kumar" class="w-full p-2 rounded-lg border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-600 mb-1">WhatsApp Mobile Number:</label>
+          <input type="tel" id="user-phone" placeholder="9123555902" class="w-full p-2 rounded-lg border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-600 mb-1">Security PIN (4-Digits for Google Sheet DB Sync):</label>
+          <input type="password" maxlength="4" id="user-pin" placeholder="****" class="w-full p-2 rounded-lg border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-600 mb-1">Delivery Address:</label>
+          <textarea id="user-address" rows="2" placeholder="Door No, Street, Madhavaram, Chennai" class="w-full p-2 rounded-lg border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none"></textarea>
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-600 mb-1">Pincode:</label>
+          <input type="text" id="user-pincode" placeholder="600110" class="w-full p-2 rounded-lg border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none">
+        </div>
+      </div>
+
+      <p id="db-status-label" class="text-[11px] text-slate-500 bg-teal-50 p-2.5 rounded-xl border border-teal-200">
+        🔒 Profiles sync securely to your Google Drive Sheet database & local browser cache!
+      </p>
+
+      <div class="grid grid-cols-2 gap-2 pt-2 border-t">
+        <button type="button" onclick="loginUserFromSheetsDB()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-xs transition">Login via PIN</button>
+        <button type="button" onclick="registerUserToSheetsDB()" class="px-3 py-2 bg-teal-800 hover:bg-teal-900 text-white font-semibold rounded-xl text-xs shadow transition">Save / Register</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Slide-Over Cart Drawer -->
   <div id="cart-drawer-overlay" onclick="toggleCartDrawer()" class="fixed inset-0 bg-slate-900/60 z-50 hidden transition-opacity"></div>
@@ -211,6 +289,97 @@
         <div class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-accent"></i><span>Instant WhatsApp Ordering</span></div>
         <div class="flex items-center gap-2"><i class="fa-solid fa-star text-accent"></i><span>Verified Local Studio</span></div>
       </div>
+    </div>
+  </section>
+
+  <!-- Amazon-Style 4-Grid Quad Cards Section -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      
+      <!-- Quad 1: Gifts Under ₹290 -->
+      <div class="bg-amber-50/60 p-4 rounded-2xl border border-amber-200/80 shadow-sm flex flex-col justify-between space-y-3">
+        <div>
+          <h3 class="font-extrabold text-slate-800 text-base">Gifts Under ₹290</h3>
+          <p class="text-slate-500 text-[11px]">Budget personalized gift ideas</p>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <a href="#mugs" class="bg-white p-2 rounded-xl border border-amber-100 text-center hover:shadow transition">
+            <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/1_mug/white%20mug/Mug-printing.webp" alt="White Mug" class="h-20 mx-auto object-contain mb-1">
+            <span class="block text-[11px] font-bold text-slate-700">White Mug</span>
+            <span class="text-[10px] text-teal-800 font-extrabold">₹250</span>
+          </a>
+          <a href="#tshirts" class="bg-white p-2 rounded-xl border border-amber-100 text-center hover:shadow transition">
+            <img src="https://tiimg.tistatic.com/fp/2/009/582/printed-sublimation-t-shirts-858.jpg" alt="T-Shirt" class="h-20 mx-auto object-contain mb-1">
+            <span class="block text-[11px] font-bold text-slate-700">T-Shirt</span>
+            <span class="text-[10px] text-teal-800 font-extrabold">₹290</span>
+          </a>
+        </div>
+        <a href="#mugs" class="text-xs font-bold text-teal-800 hover:underline">See more budget gifts →</a>
+      </div>
+
+      <!-- Quad 2: Bestsellers in Mugs -->
+      <div class="bg-amber-50/60 p-4 rounded-2xl border border-amber-200/80 shadow-sm flex flex-col justify-between space-y-3">
+        <div>
+          <h3 class="font-extrabold text-slate-800 text-base">Bestsellers in Mugs</h3>
+          <p class="text-slate-500 text-[11px]">Magic & Heart handle collections</p>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <a href="#mugs" class="bg-white p-2 rounded-xl border border-amber-100 text-center hover:shadow transition">
+            <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/1_mug/magic_mug/magicMug.webp" alt="Magic Mug" class="h-20 mx-auto object-contain mb-1">
+            <span class="block text-[11px] font-bold text-slate-700">Magic Reveal</span>
+            <span class="text-[10px] text-teal-800 font-extrabold">₹350</span>
+          </a>
+          <a href="#mugs" class="bg-white p-2 rounded-xl border border-amber-100 text-center hover:shadow transition">
+            <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/1_mug/heart_handle_magic_mug/Sublimation-heart-handle-magic-mug-02-1.webp" alt="Heart Magic" class="h-20 mx-auto object-contain mb-1">
+            <span class="block text-[11px] font-bold text-slate-700">Heart Magic</span>
+            <span class="text-[10px] text-teal-800 font-extrabold">₹400</span>
+          </a>
+        </div>
+        <a href="#mugs" class="text-xs font-bold text-teal-800 hover:underline">Explore all mugs →</a>
+      </div>
+
+      <!-- Quad 3: Custom Wall & Desktop Frames -->
+      <div class="bg-amber-50/60 p-4 rounded-2xl border border-amber-200/80 shadow-sm flex flex-col justify-between space-y-3">
+        <div>
+          <h3 class="font-extrabold text-slate-800 text-base">Custom Photo Frames</h3>
+          <p class="text-slate-500 text-[11px]">8x6" to 20x30" grand sizes</p>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <a href="#frames" class="bg-white p-2 rounded-xl border border-amber-100 text-center hover:shadow transition">
+            <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x8_collage%20frame.webp" alt="Collage Frame" class="h-20 mx-auto object-contain mb-1">
+            <span class="block text-[11px] font-bold text-slate-700">Grid Collage</span>
+            <span class="text-[10px] text-teal-800 font-extrabold">₹450</span>
+          </a>
+          <a href="#frames" class="bg-white p-2 rounded-xl border border-amber-100 text-center hover:shadow transition">
+            <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x18_frame%20(1).webp" alt="12x18 Frame" class="h-20 mx-auto object-contain mb-1">
+            <span class="block text-[11px] font-bold text-slate-700">12x18 Frame</span>
+            <span class="text-[10px] text-teal-800 font-extrabold">₹900</span>
+          </a>
+        </div>
+        <a href="#frames" class="text-xs font-bold text-teal-800 hover:underline">View frame dimensions →</a>
+      </div>
+
+      <!-- Quad 4: Romantic Couple Gifts -->
+      <div class="bg-amber-50/60 p-4 rounded-2xl border border-amber-200/80 shadow-sm flex flex-col justify-between space-y-3">
+        <div>
+          <h3 class="font-extrabold text-slate-800 text-base">Romantic Couple Gifts</h3>
+          <p class="text-slate-500 text-[11px]">Plush fur & magic sequin cushions</p>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <a href="#pillows" class="bg-white p-2 rounded-xl border border-amber-100 text-center hover:shadow transition">
+            <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/2_pillow/fur%20pillow/fur_pillow%20(1).webp" alt="Fur Pillow" class="h-20 mx-auto object-contain mb-1">
+            <span class="block text-[11px] font-bold text-slate-700">Fur Cushion</span>
+            <span class="text-[10px] text-teal-800 font-extrabold">₹590</span>
+          </a>
+          <a href="#pillows" class="bg-white p-2 rounded-xl border border-amber-100 text-center hover:shadow transition">
+            <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/2_pillow/magic/magic_pillow%20(1).webp" alt="Magic Pillow" class="h-20 mx-auto object-contain mb-1">
+            <span class="block text-[11px] font-bold text-slate-700">Sequin Pillow</span>
+            <span class="text-[10px] text-teal-800 font-extrabold">₹650</span>
+          </a>
+        </div>
+        <a href="#pillows" class="text-xs font-bold text-teal-800 hover:underline">Select pillow colors →</a>
+      </div>
+
     </div>
   </section>
 
@@ -566,24 +735,34 @@
   <div id="photo-modal" class="fixed inset-0 bg-slate-900/70 z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-md w-full p-5 shadow-2xl space-y-4">
       <div class="flex items-center justify-between border-b pb-3">
-        <h3 class="font-bold text-slate-800 text-sm"><i class="fa-solid fa-crop text-teal-800"></i> Adjust Print Photo</h3>
+        <h3 class="font-bold text-slate-800 text-sm"><i class="fa-solid fa-crop text-teal-800"></i> Adjust & Inspect Photo</h3>
         <button onclick="closePhotoModal()" class="text-slate-400 hover:text-slate-600 font-bold"><i class="fa-solid fa-xmark text-lg"></i></button>
       </div>
 
       <div class="relative bg-slate-100 rounded-xl h-64 flex items-center justify-center overflow-hidden border">
-        <img id="modal-preview-img" src="" alt="Crop Preview" class="max-h-full max-w-full object-contain transition-transform duration-200" style="transform: rotate(0deg);">
+        <img id="modal-preview-img" src="" alt="Crop Preview" class="max-h-full max-w-full object-contain transition-transform duration-200" style="transform: rotate(0deg) scale(1);">
       </div>
 
-      <div class="flex items-center justify-center gap-3">
-        <button type="button" onclick="rotateImage(-90)" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition">
-          <i class="fa-solid fa-rotate-left"></i> Rotate Left
-        </button>
-        <button type="button" onclick="rotateImage(90)" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition">
-          Rotate Right <i class="fa-solid fa-rotate-right"></i>
-        </button>
+      <!-- Resolution Inspection Badge -->
+      <div id="photo-resolution-badge" class="p-2 rounded-xl text-xs font-semibold text-center bg-slate-100 border border-slate-200 text-slate-700">
+        Inspecting image resolution...
       </div>
 
-      <p class="text-[11px] text-slate-500 text-center">Ensure your subject is properly aligned before confirming.</p>
+      <!-- Rotation & Scale Controls -->
+      <div class="flex items-center justify-between gap-2 text-xs">
+        <div class="flex items-center gap-1">
+          <button type="button" onclick="rotateImage(-90)" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1.5 rounded-lg font-semibold transition">
+            <i class="fa-solid fa-rotate-left"></i> Left
+          </button>
+          <button type="button" onclick="rotateImage(90)" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1.5 rounded-lg font-semibold transition">
+            Right <i class="fa-solid fa-rotate-right"></i>
+          </button>
+        </div>
+        <div class="flex items-center gap-1">
+          <button type="button" onclick="zoomImage(-0.1)" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1.5 rounded-lg font-semibold transition"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+          <button type="button" onclick="zoomImage(0.1)" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1.5 rounded-lg font-semibold transition"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+        </div>
+      </div>
 
       <div class="grid grid-cols-2 gap-2 pt-2 border-t">
         <button type="button" onclick="closePhotoModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2.5 rounded-xl text-xs transition">Cancel</button>
@@ -655,8 +834,8 @@
   <!-- JavaScript System -->
   <script>
     const PHONE_NUMBER = "919123555902";
-    // UPDATE YOUR REAL VPA / UPI ID HERE (e.g. 9123555902@okbizaxis or 9123555902@ybl)
     const UPI_ID = "9123555902@paytm"; 
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz61HJ3yRgeXebLDM8aQ9FKE0BLIE6uF2mdoiPOFah88mBFngKn10vjLLXycno5Jl6b/exec";
     let cart = [];
 
     let selectedFrameBasePrice = 250;
@@ -670,9 +849,162 @@
     let heroTimer = null;
 
     let currentRotation = 0;
+    let currentZoom = 1;
     let activeFileInput = null;
     let activeCardPreviewImg = null;
     let activeLoadedImage = null;
+
+    // Toast Notification System
+    function showToast(title, msg) {
+      const toast = document.getElementById('toast-notification');
+      document.getElementById('toast-title').innerText = title;
+      document.getElementById('toast-msg').innerText = msg;
+
+      toast.classList.remove('translate-y-[-150%]', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-[-150%]', 'opacity-0');
+      }, 3500);
+    }
+
+    // Client SHA-256 Hashing helper
+    async function sha256(message) {
+      const msgBuffer = new TextEncoder().encode(message);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    // Google Sheets DB Sync Functions
+    async function registerUserToSheetsDB() {
+      const name = document.getElementById('user-name').value.trim();
+      const phone = document.getElementById('user-phone').value.trim();
+      const pin = document.getElementById('user-pin').value.trim();
+      const address = document.getElementById('user-address').value.trim();
+      const pincode = document.getElementById('user-pincode').value.trim();
+      const statusLbl = document.getElementById('db-status-label');
+
+      if (!name || !phone || !pin) {
+        alert("Please enter Name, WhatsApp Number, and 4-Digit Security PIN!");
+        return;
+      }
+
+      statusLbl.innerText = "⏳ Registering profile with Google Drive Sheet DB...";
+      const pinHash = await sha256(pin);
+
+      try {
+        const res = await fetch(SCRIPT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: 'register',
+            name: name,
+            whatsapp: phone,
+            address: address,
+            pincode: pincode,
+            passwordHash: pinHash
+          })
+        });
+        const result = await res.json();
+        
+        if (result.success) {
+          const profile = { name, phone, address, pincode };
+          localStorage.setItem('present_user_profile', JSON.stringify(profile));
+          statusLbl.innerText = "✅ Profile registered & saved to Google Drive Sheet DB!";
+          showToast("Registered!", "Profile synced to Google Drive Sheet DB.");
+          setTimeout(toggleAccountModal, 1500);
+        } else {
+          statusLbl.innerText = `⚠️ ${result.message || 'Registration failed.'}`;
+        }
+      } catch (err) {
+        // Fallback to local storage if API network fails
+        const profile = { name, phone, address, pincode };
+        localStorage.setItem('present_user_profile', JSON.stringify(profile));
+        statusLbl.innerText = "💾 Saved locally to browser cache!";
+        showToast("Profile Saved!", "Saved in browser cache.");
+      }
+    }
+
+    async function loginUserFromSheetsDB() {
+      const phone = document.getElementById('user-phone').value.trim();
+      const pin = document.getElementById('user-pin').value.trim();
+      const statusLbl = document.getElementById('db-status-label');
+
+      if (!phone || !pin) {
+        alert("Please enter WhatsApp Number & PIN to login!");
+        return;
+      }
+
+      statusLbl.innerText = "⏳ Verifying login credentials...";
+      const pinHash = await sha256(pin);
+
+      try {
+        const res = await fetch(SCRIPT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: 'login',
+            whatsapp: phone,
+            passwordHash: pinHash
+          })
+        });
+        const result = await res.json();
+
+        if (result.success) {
+          const u = result.user;
+          document.getElementById('user-name').value = u.name || '';
+          document.getElementById('user-address').value = u.address || '';
+          document.getElementById('user-pincode').value = u.pincode || '';
+
+          const profile = { name: u.name, phone: u.whatsapp, address: u.address, pincode: u.pincode };
+          localStorage.setItem('present_user_profile', JSON.stringify(profile));
+          statusLbl.innerText = `✅ Welcome back, ${u.name}!`;
+          showToast(`Welcome ${u.name}`, "Logged in via Google Sheet DB.");
+          setTimeout(toggleAccountModal, 1500);
+        } else {
+          statusLbl.innerText = `⚠️ ${result.message || 'Invalid PIN or WhatsApp Number.'}`;
+        }
+      } catch (err) {
+        statusLbl.innerText = "⚠️ Network timeout or connection issue.";
+      }
+    }
+
+    // LocalStorage User Account Manager Modal Toggle
+    function toggleAccountModal() {
+      const modal = document.getElementById('account-modal');
+      modal.classList.toggle('hidden');
+      if (!modal.classList.contains('hidden')) {
+        loadUserProfile();
+      }
+    }
+
+    function loadUserProfile() {
+      const saved = localStorage.getItem('present_user_profile');
+      if (saved) {
+        const profile = JSON.parse(saved);
+        document.getElementById('user-name').value = profile.name || '';
+        document.getElementById('user-phone').value = profile.phone || '';
+        document.getElementById('user-address').value = profile.address || '';
+        document.getElementById('user-pincode').value = profile.pincode || '';
+      }
+    }
+
+    // Pincode Delivery Estimator
+    function checkPincodeDelivery() {
+      const pin = document.getElementById('pincode-input').value.trim();
+      const result = document.getElementById('pincode-result');
+      if (pin.length === 6 && !isNaN(pin)) {
+        if (pin.startsWith('600')) {
+          result.innerHTML = `⚡ <strong>Pincode ${pin}:</strong> Express Next-Day Delivery available across Chennai!`;
+        } else {
+          result.innerHTML = `🚚 <strong>Pincode ${pin}:</strong> Standard Courier Delivery in 3-5 Business Days.`;
+        }
+      } else {
+        result.innerHTML = `⚠️ Please enter a valid 6-digit Pincode.`;
+      }
+    }
 
     // Cart System
     function toggleCartDrawer() {
@@ -690,10 +1022,7 @@
         cart.push({ name, price, variation, qty: 1 });
       }
       renderCart();
-      const drawer = document.getElementById('cart-drawer');
-      if (drawer.classList.contains('translate-x-full')) {
-        toggleCartDrawer();
-      }
+      showToast(`${name}`, `${variation} added to cart.`);
     }
 
     function updateCartItemQty(index, delta) {
@@ -753,6 +1082,16 @@
         alert("Your cart is empty!");
         return;
       }
+
+      const saved = localStorage.getItem('present_user_profile');
+      let userStr = "";
+      if (saved) {
+        const profile = JSON.parse(saved);
+        if (profile.name || profile.address) {
+          userStr = `\n\n*Delivery Address:*\nName: ${profile.name || 'N/A'}\nPhone: ${profile.phone || 'N/A'}\nAddress: ${profile.address || 'N/A'}\nPincode: ${profile.pincode || 'N/A'}`;
+        }
+      }
+
       let message = `Hi! I want to order from www.presentgifts.store:\n\n`;
       let grandTotal = 0;
       cart.forEach((item, i) => {
@@ -760,9 +1099,52 @@
         grandTotal += itemTotal;
         message += `${i + 1}. ${item.name} (${item.variation})\n   Qty: ${item.qty} | Price: ₹${item.price} = ₹${itemTotal}\n`;
       });
-      message += `\n*Total Amount: ₹${grandTotal.toLocaleString('en-IN')}*\n\n(Note: I will attach my photo(s) in this WhatsApp chat now.)`;
+      message += `\n*Total Amount: ₹${grandTotal.toLocaleString('en-IN')}*${userStr}\n\n(Note: I will attach my photo(s) in this WhatsApp chat now.)`;
       const encoded = encodeURIComponent(message);
       window.open(`https://wa.me/${PHONE_NUMBER}?text=${encoded}`, '_blank');
+    }
+
+    // Photo Inspection & Quality Inspector
+    function openPhotoModal(input) {
+      activeFileInput = input;
+      const wrapper = input.closest('.border-dashed');
+      activeCardPreviewImg = wrapper.querySelector('.preview-container canvas');
+      
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const modalImg = document.getElementById('modal-preview-img');
+        modalImg.src = e.target.result;
+        currentRotation = 0;
+        currentZoom = 1;
+        modalImg.style.transform = `rotate(${currentRotation}deg) scale(${currentZoom})`;
+        
+        activeLoadedImage = new Image();
+        activeLoadedImage.onload = function() {
+          inspectPhotoQuality(this.width, this.height);
+        };
+        activeLoadedImage.src = e.target.result;
+        
+        document.getElementById('photo-modal').classList.remove('hidden');
+      }
+      reader.readAsDataURL(file);
+    }
+
+    function inspectPhotoQuality(width, height) {
+      const badge = document.getElementById('photo-resolution-badge');
+      if (width < 800 || height < 800) {
+        badge.className = "p-2 rounded-xl text-xs font-semibold text-center bg-amber-50 border border-amber-200 text-amber-800";
+        badge.innerHTML = `⚠️ Low resolution (${width}x${height}px) — High resolution photos print clearest!`;
+      } else {
+        badge.className = "p-2 rounded-xl text-xs font-semibold text-center bg-emerald-50 border border-emerald-200 text-emerald-800";
+        badge.innerHTML = `✅ High resolution print quality (${width}x${height}px)`;
+      }
+    }
+
+    function zoomImage(delta) {
+      currentZoom = Math.max(0.5, Math.min(2.5, currentZoom + delta));
+      const modalImg = document.getElementById('modal-preview-img');
+      modalImg.style.transform = `rotate(${currentRotation}deg) scale(${currentZoom})`;
     }
 
     // Hero Carousel Auto-Play System
@@ -859,31 +1241,10 @@
       }
     }
 
-    function openPhotoModal(input) {
-      activeFileInput = input;
-      const wrapper = input.closest('.border-dashed');
-      activeCardPreviewImg = wrapper.querySelector('.preview-container canvas');
-      
-      const file = input.files[0];
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const modalImg = document.getElementById('modal-preview-img');
-        modalImg.src = e.target.result;
-        currentRotation = 0;
-        modalImg.style.transform = `rotate(${currentRotation}deg)`;
-        
-        activeLoadedImage = new Image();
-        activeLoadedImage.src = e.target.result;
-        
-        document.getElementById('photo-modal').classList.remove('hidden');
-      }
-      reader.readAsDataURL(file);
-    }
-
     function rotateImage(angle) {
       currentRotation = (currentRotation + angle) % 360;
       const modalImg = document.getElementById('modal-preview-img');
-      modalImg.style.transform = `rotate(${currentRotation}deg)`;
+      modalImg.style.transform = `rotate(${currentRotation}deg) scale(${currentZoom})`;
     }
 
     function closePhotoModal() {
