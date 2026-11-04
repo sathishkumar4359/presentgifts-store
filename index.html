@@ -45,6 +45,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #ec008c;outline-offset:2p
       <span class="flex gap-0.5"><i class="h-2 w-2 rounded-full bg-cy"></i><i class="h-2 w-2 rounded-full bg-mg"></i><i class="h-2 w-2 rounded-full bg-yl"></i></span></a>
     <button onclick="openCart()" class="btn flex items-center gap-2"><i class="fa-solid fa-bag-shopping"></i> Bag <span id="badge" class="bg-yl text-ink rounded-full h-5 min-w-5 px-1 text-xs flex items-center justify-center font-black">0</span></button>
   </div>
+  <div id="catBar" class="max-w-6xl mx-auto px-4 pb-2.5 flex gap-2 overflow-x-auto no-sb text-sm font-semibold"></div>
 </header>
 
 <main class="max-w-6xl mx-auto px-4">
@@ -58,7 +59,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #ec008c;outline-offset:2p
           <label for="heroText" class="lbl">Name or message</label>
           <input id="heroText" class="inp" maxlength="24" value="Priya" oninput="drawMug()" />
           <div class="flex gap-3 mt-3 flex-wrap">
-            <button class="btn btn-y" onclick="addToCart('p4',1,'Print: '+heroText.value.trim())">Add this mug to bag</button>
+            <button class="btn btn-y" onclick="addToCart('mug',1,'Print: '+heroText.value.trim(),{Type:'White Mug'})">Add this mug to bag</button>
             <button class="btn" onclick="document.getElementById('catalog').scrollIntoView({behavior:'smooth'})">Shop everything</button>
           </div>
         </div>
@@ -67,17 +68,15 @@ button:focus-visible,a:focus-visible{outline:2px solid #ec008c;outline-offset:2p
     </section>
 
     <section id="catalog" class="py-8 scroll-mt-24">
-      <h2 class="text-3xl font-extrabold mb-1">Everything we print</h2>
-      <p class="text-ink/60 text-sm mb-5">Pick a product, add your photo or text, and we send a preview on WhatsApp before printing.</p>
-      <div class="flex flex-col sm:flex-row gap-3 mb-5">
-        <input id="search" type="search" class="inp sm:max-w-xs" placeholder="Search products" aria-label="Search products" oninput="applyFilters()" />
-        <div id="cats" class="flex gap-2 overflow-x-auto no-sb text-sm font-semibold"></div>
-      </div>
-      <div id="grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+      <h2 class="text-3xl font-extrabold mb-1">Shop by category</h2>
+      <p class="text-ink/60 text-sm mb-5">Open a category to see every style, size and price. We send a print preview on WhatsApp before printing.</p>
+      <input id="search" type="search" class="inp sm:max-w-xs mb-8" placeholder="Search products" aria-label="Search products" oninput="renderHome()" />
+      <div id="tiles"></div>
     </section>
   </div>
 
   <!-- PRODUCT DETAIL -->
+  <div id="viewCat" class="hidden py-8"></div>
   <div id="viewProduct" class="hidden py-8"></div>
 </main>
 
@@ -184,126 +183,162 @@ const A={
  painting:ik('4_photo_frame',['painting_12x18_frame%20(3).webp','painting_photo_frame1.webp']),
  tee:ik('5_t%20shirts',['41bmniKaCEL._AC_UY1100_.jpg'])
 };
-const FB={mugs:'1514432324607-a09d9b4aefdd',pillows:'1584100936595-c0654b55a2e2',frames:'1544717305-2782549b5136',keychains:'1618005182384-a83a8bd57fbe'};
-// price null = "Price on request" (shows an Ask on WhatsApp button). Set a number to make it orderable.
-const P=(id,name,short,price,cat,desc,imgs=[],file='',fb)=>({id,name,short,price,cat,desc,imgs,file,fb:fb||FB[cat]});
-const products=[
-P('p1','Magic Mug (Color Changing)','Magic Mug',290,'mugs','Looks plain black until you pour something hot, then your photo appears.',A.magic),
-P('p2','Heart Fur Photo Pillow','Heart Fur',450,'pillows','A soft, heart-shaped fur pillow printed with your photo.',A.fur),
-P('p3','Rock Slate Frame (7x7 inch)','Rock Slate',490,'frames','A natural slate stone frame, 7x7 inch, printed with your photo.',[],'slate','1583847268964-b28dc8f51f92'),
-P('p4','Custom White Ceramic Mug','White Mug',190,'mugs','A classic white ceramic mug printed with your photo, name or design.',A.white),
-P('p5','Acrylic Desk Photo Frame','Acrylic',390,'frames','A clear acrylic desk frame with your photo printed sharp and glossy.',[],'acrylic'),
-P('p6','Custom Printed T-Shirt','Photo Shirt',390,'apparel','A T-shirt with your photo or design printed on the front.',A.tee,'tshirt','1521572267360-ee0c2909d518'),
-P('p7','Steel Sipper Water Bottle','Sipper',350,'bottles','A steel sipper bottle with your name, photo or design printed on it.',[],'sipper','1602143407151-7111542de6e8'),
-P('p8','LED Light Acrylic Frame','LED Frame',590,'frames','An acrylic frame with a built-in LED light that makes your photo glow.',[],'led-frame','1507679799987-c73779587ccf'),
-P('p9','Custom Sublimation Keychain','Keychain',150,'keychains','A small keychain printed with your photo. Easy to carry, easy to gift.',A.wood),
-P('p10','Wooden 3D Carving Relief','Wood Relief',890,'decor','A CNC-carved wooden relief made from your picture, with real depth you can feel.',[],'wood-relief','1513519245088-0e12902e5a38'),
-P('p11','Square Velvet Pillow','Square Pillow',390,'pillows','A square velvet pillow printed with your photo.',[],'square-pillow','1579656381226-5fc0f0100c3b'),
-P('p12','LED Glowing Pillow','LED Pillow',550,'pillows','A pillow with a glowing LED effect and your photo printed on it.',A.led),
-P('p13','Magic Sequin Cushion','Sequin',490,'pillows','Brush the sequins one way to reveal your photo, brush back to hide it.',A.magicp),
-P('p14','Couple Mug Set (2 Pcs)','Couple Set',490,'mugs','Two matching mugs, each printed for one of you.',[],'couple-set'),
-P('p15','Temperature Display Flask','Temp Bottle',590,'bottles','A steel flask that shows the temperature on the lid, with your print on the body.',[],'temp-bottle','1602143407151-7111542de6e8'),
-P('p16','Customized Desk Calendar','Calendar',290,'decor','A desk calendar printed with your own photos and dates.',[],'calendar','1506784983877-45594efa4cbe'),
-P('p17','Heart Handle Magic Mug','Heart Magic',null,'mugs','A heart-handle magic mug. Looks plain until you pour something hot, then your photo appears.',A.heartMagic),
-P('p18','Heart Handle White Mug','Heart Mug',null,'mugs','A white ceramic mug with a heart-shaped handle, printed with your photo or message.',A.heartWhite),
-P('p19','Inner Color Mug','Inner Color',null,'mugs','A mug with a coloured inside and handle, printed on the outside with your photo.',A.inner),
-P('p20','Gold & Silver Mug','Gold Mug',null,'mugs','A gold or silver finish mug printed with your photo or message.',A.gold),
-P('p21','Radium Mug','Radium Mug',null,'mugs','A radium-finish mug printed with your photo or message.',A.radium),
-P('p22','Coin Collector Mug','Coin Mug',null,'mugs','A coin collector mug with your photo or message printed on it.',A.coin),
-P('p23','Clear Glass Mug','Glass Mug',null,'mugs','A clear glass mug printed with your photo or message.',A.clear),
-P('p24','Teddy Photo Pillow','Teddy Pillow',null,'pillows','A soft teddy-style pillow printed with your photo.',A.teddy),
-P('p25','Emoji Photo Pillow','Emoji Pillow',null,'pillows','An emoji-shaped pillow printed with your photo.',A.emoji),
-P('p26','Silver Keychain','Silver Key',null,'keychains','A silver-finish keychain printed with your photo.',A.silver),
-P('p27','Collage Photo Frame','Collage Frame',null,'frames','A collage frame that holds many photos together. Sizes include 12x8, 12x15 and 24x16 inch.',A.collage),
-P('p28','Mosaic Photo Frame','Mosaic Frame',null,'frames','A mosaic photo frame for showing several photos together.',A.mosaic),
-P('p29','Large Photo Frame (12x18)','12x18 Frame',null,'frames','A large photo frame in 12x18 and 12x15 inch sizes, printed with your picture.',A.f1218),
-P('p30','Painting Photo Frame','Painting Frame',null,'frames','A painting-style photo frame, 12x18 inch, for your favourite picture.',A.painting)
-];
-const byId=Object.fromEntries(products.map(p=>[p.id,p]));
-const cats=[['all','All'],['frames','Photo Frames'],['mugs','Photo Mugs'],['pillows','Cushions & Pillows'],['keychains','Keychains'],['apparel','T-Shirts'],['bottles','Sippers & Flasks'],['decor','More Gifts']];
 
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const src=(p,w,i=0)=>p.imgs.length?`${p.imgs[i]}?tr=w-${w},q-80`:`${GH}${p.file}.jpg`;
-const img=(p,w,cls,i=0)=>`<img src="${src(p,w,i)}" onerror="this.onerror=null;this.src='${UN}${p.fb}?auto=format&fit=crop&w=${w}&q=80'" class="${cls}" alt="${esc(p.name)}" loading="lazy">`;
 const lsGet=(k,d)=>{try{const v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch{return d}};
 const lsSet=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}};
 const lsDel=k=>{try{localStorage.removeItem(k)}catch{}};
 const profile=()=>lsGet('present_user_profile',null);
 
-/* ---------- Cart: [{id, qty, note}] ---------- */
+/* ---------- Placeholder images (used when a real photo is missing) ---------- */
+const SH={heart:'<path d="M200 335C70 240 60 120 140 105c35-6 55 15 60 35 5-20 25-41 60-35 80 15 70 135-60 230z"',circle:'<circle cx="200" cy="190" r="140"',rect:'<rect x="60" y="50" width="280" height="280" rx="28"'};
+const ph=(t,hex='#d1d5db',shape='rect')=>'data:image/svg+xml,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect width="400" height="400" fill="#f3f4f6"/>${SH[shape]||SH.rect} fill="${hex}" stroke="#16161d" stroke-width="3"/><text x="200" y="205" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#16161d" opacity=".6">Photo coming soon</text><text x="200" y="378" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="700" fill="#16161d">${esc(t.length>34?t.slice(0,33)+'…':t)}</text></svg>`);
+const fb=e=>{e.onerror=null;e.src=ph(e.alt)};
+const urlOf=(u,w)=>u.startsWith('data:')?u:u.includes('imagekit.io')?`${u}?tr=w-${w},q-80`:u;
+const imgTag=(src,w,cls,alt)=>`<img src="${urlOf(src,w)}" onerror="fb(this)" class="${cls}" alt="${esc(alt)}" loading="lazy">`;
+
+/* ---------- Catalog: sections, products, options ---------- */
+// Choice fields: v = label, p = price (replaces base), d = extra charge (adds), img / hex / shape = what to show.
+// A product with no price (base null and no p) shows "Price on request" and an Ask on WhatsApp button.
+const secs=[['frames','Photo Frames','fa-image'],['mugs','Photo Mugs','fa-mug-hot'],['pillows','Pillows','fa-heart'],['keychains','Keychains','fa-key'],['bottles','Sipper Bottles','fa-bottle-water'],['glass','Glass Frames','fa-border-all'],['crystal','Crystal Frames','fa-gem'],['wallhang','Wall Hangings','fa-panorama'],['clocks','Wall Clocks','fa-clock'],['apparel','T-Shirts','fa-shirt'],['rock','Rock Frames','fa-mountain'],['more','More Gifts','fa-gift']];
+const secLabel=id=>secs.find(x=>x[0]===id)[1];
+// pick:true = chosen on the product page (e.g. T-shirt size); otherwise every choice is shown as its own card
+const G=(key,label,choices,visual,note,pick)=>({key,label,choices,visual,note,pick});
+const P=(id,cat,name,base,desc,o={})=>({id,cat,name,base,desc,groups:o.g||[],imgs:o.i||[],shape:o.s||'rect'});
+const cols=first=>['Red|#ef4444','Pink|#f9a8d4','Blue|#60a5fa','Yellow|#fde047','Violet|#a78bfa','White|#ffffff'].map((x,i)=>{const[v,hex]=x.split('|');return{v,hex,...(i===0&&first?{img:first}:{})}});
+const products=[
+P('frame','frames','Photo Frame',null,'Your photo printed on a sublimation frame. Pick a size and a design style.',{i:[A.f1218[0],...A.collage,...A.painting,...A.mosaic],g:[
+ G('Design','Design type',[{v:'Photo frame',d:0,img:A.f1218[0]},{v:'Collage',d:200,img:A.collage[0]},{v:'Digital painting / art',d:400,img:A.painting[0]}],true,'Collage adds ₹200 and digital painting or digital art adds ₹400 as a design charge.'),
+ G('Size','Size',[{v:'8x6 in',p:250},{v:'12x8 in',p:450},{v:'12x15 in',p:750},{v:'12x18 in',p:900},{v:'16x24 in',p:1800},{v:'20x30 in',p:2800}])]}),
+P('mug','mugs','Photo Mug',null,'A mug printed with your photo or message. Choose the mug type.',{i:[...A.white.slice(0,3),...A.heartWhite.slice(0,3),...A.magic.slice(0,3),...A.heartMagic.slice(0,3)],g:[
+ G('Type','Mug type',[{v:'White Mug',p:250,img:A.white[0]},{v:'Heart Handle White Mug',p:350,img:A.heartWhite[0]},{v:'Magic Mug',p:350,img:A.magic[0]},{v:'Heart Handle Magic Mug',p:400,img:A.heartMagic[0]},{v:'Inner Color Mug',img:A.inner[0]},{v:'Gold & Silver Mug',img:A.gold[0]},{v:'Radium Mug',img:A.radium[0]},{v:'Coin Collector Mug',img:A.coin[0]},{v:'Clear Glass Mug',img:A.clear[0]}],true,'Magic mugs look plain until you pour something hot. For types without a price, ask on WhatsApp.')]}),
+P('furheart','pillows','Fur Heart Pillow',450,'A soft, heart-shaped fur pillow printed with your photo.',{s:'heart',g:[G('Color','Color',cols(A.fur[0]),true)]}),
+P('fursquare','pillows','Fur Square Pillow',450,'A soft, square fur pillow printed with your photo.',{g:[G('Color','Color',cols(),true)]}),
+P('sequin','pillows','Magic Sequin Cushion',490,'Brush the sequins one way to reveal your photo, brush back to hide it.',{i:A.magicp}),
+P('ledpillow','pillows','LED Glowing Pillow',550,'A pillow with a glowing LED effect and your photo printed on it.',{g:[G('Shape','Shape',[{v:'Square',img:A.led[0]},{v:'Heart',img:A.led[1]}],true)]}),
+P('teddy','pillows','Teddy Photo Pillow',null,'A soft teddy-style pillow printed with your photo.',{i:A.teddy}),
+P('emoji','pillows','Emoji Photo Pillow',null,'An emoji-shaped pillow printed with your photo.',{i:A.emoji}),
+P('keychain','keychains','Photo Keychain',null,'A keychain printed with your photo. Pick the material.',{i:[...A.wood.slice(0,4),...A.silver.slice(0,4)],g:[G('Type','Type',[{v:'Wood (MDF)',p:100,img:A.wood[0]},{v:'Silver',p:150,img:A.silver[0]},{v:'Gold plastic',p:200,hex:'#fcd34d'}],true)]}),
+P('sipper','bottles','Steel Sipper Bottle',490,'A steel sipper bottle with your name, photo or design printed on it.',{i:[GH+'sipper.jpg'],g:[G('Size','Size',[{v:'9x5 in · 600 ml'},{v:'9x7 in · 750 ml'}])]}),
+P('glass','glass','Sublimation Glass Frame',490,'A glass photo frame with your picture printed using sublimation.'),
+P('crystal','crystal','Sublimation Crystal Frame',null,'A crystal photo frame with your picture printed using sublimation.'),
+P('wallhang','wallhang','Photo Wall Hanging',null,'A wall hanging printed with your photo or design.'),
+P('clock','clocks','Photo Wall Clock',null,'A wall clock with your photo printed on the face.'),
+P('tshirt','apparel','Custom White T-Shirt',350,'A white T-shirt with your photo or design printed on the front. White only.',{i:A.tee,g:[G('Size','Size',['S','M','L','XL','2XL'].map(v=>({v})),false,'',true)]}),
+P('rock','rock','Rock Photo Frame (7x7 inch)',490,'A natural rock slate frame, 7x7 inch, printed with your photo.',{i:[GH+'slate.jpg']}),
+P('magnet','more','Fridge Magnet',null,'A fridge magnet printed with your photo.'),
+P('calendar','more','Customized Desk Calendar',290,'A desk calendar printed with your own photos and dates.',{i:[GH+'calendar.jpg']}),
+P('lamp','more','Rotating Lamp',null,'A rotating photo lamp printed with your pictures.'),
+P('caricature','more','Caricature',null,'A caricature artwork made from your photo.'),
+P('mirror','more','Magic Mirror',null,'A magic mirror with your photo or message. Choose the shape.',{g:[G('Shape','Shape',[{v:'Round',shape:'circle'},{v:'Heart',shape:'heart'},{v:'Round with clock',shape:'circle'},{v:'Rectangle',shape:'rect'}].map(c=>({...c,hex:'#bfdbfe'})),true)]}),
+P('relief','more','Wooden 3D Carving Relief',890,'A CNC-carved wooden relief made from your picture, with real depth you can feel.',{i:[GH+'wood-relief.jpg']})
+];
+const byId=Object.fromEntries(products.map(p=>[p.id,p]));
+
+/* ---------- Options and pricing ---------- */
+const defSel=p=>Object.fromEntries(p.groups.map(g=>[g.key,g.choices[0].v]));
+const choice=(g,v)=>g.choices.find(c=>c.v===v)||g.choices[0];
+function priceFor(p,sel){let pr=p.base;for(const g of p.groups){const c=choice(g,sel[g.key]);if(c.p!=null)pr=c.p}for(const g of p.groups){const c=choice(g,sel[g.key]);if(c.d&&pr!=null)pr+=c.d}return pr}
+function allPrices(p){const out=[];const walk=(i,sel)=>{if(i===p.groups.length){const x=priceFor(p,sel);if(x!=null)out.push(x);return}const g=p.groups[i];g.choices.forEach(c=>walk(i+1,{...sel,[g.key]:c.v}))};walk(0,{});return out}
+function imageFor(p,sel){let r=null;for(const g of p.groups){if(!g.visual)continue;const c=choice(g,sel[g.key]);r=c.img||ph(p.name+' · '+c.v,c.hex,c.shape||p.shape)}return r||p.imgs[0]||ph(p.name,undefined,p.shape)}
+const optText=(p,o)=>p.groups.map(g=>choice(g,o[g.key]).v).join(' · ');
+
+/* ---------- Cart: [{id, qty, opts, note}] ---------- */
+const lineKey=(id,o,n)=>id+'|'+JSON.stringify(o)+'|'+n;
 function normalize(raw){
   if(typeof raw==='string'){try{raw=JSON.parse(raw)}catch{raw=[]}}
   if(!Array.isArray(raw))return[];
   const m=new Map();
-  raw.forEach(i=>{if(!i||!byId[i.id]||byId[i.id].price==null)return;const note=String(i.note||'').slice(0,120),k=i.id+'|'+note,q=Math.max(1,parseInt(i.qty)||1);
-    m.set(k,{id:i.id,note,qty:(m.get(k)?.qty||0)+q})});
+  raw.forEach(i=>{const p=i&&byId[i.id];if(!p)return;const opts={};p.groups.forEach(g=>opts[g.key]=choice(g,(i.opts||{})[g.key]).v);
+    if(priceFor(p,opts)==null)return;
+    const note=String(i.note||'').slice(0,120),k=lineKey(i.id,opts,note),q=Math.max(1,parseInt(i.qty)||1);
+    m.set(k,{id:i.id,opts,note,qty:(m.get(k)?.qty||0)+q})});
   return[...m.values()];
 }
-function merge(a,b){const m=new Map();[...a,...b].forEach(i=>{const k=i.id+'|'+i.note,c=m.get(k);m.set(k,{...i,qty:Math.max(c?.qty||0,i.qty)})});return[...m.values()]}
+function merge(a,b){const m=new Map();[...a,...b].forEach(i=>{const k=lineKey(i.id,i.opts,i.note),c=m.get(k);m.set(k,{...i,qty:Math.max(c?.qty||0,i.qty)})});return[...m.values()]}
 let cart=normalize(lsGet('present_cart',[]));
-const count=()=>cart.reduce((s,i)=>s+i.qty,0),total=()=>cart.reduce((s,i)=>s+byId[i.id].price*i.qty,0);
+const count=()=>cart.reduce((s,i)=>s+i.qty,0),total=()=>cart.reduce((s,i)=>s+priceFor(byId[i.id],i.opts)*i.qty,0);
 function save(){lsSet('present_cart',cart);drawCart();syncCart()}
 let st;function syncCart(){clearTimeout(st);st=setTimeout(async()=>{const p=profile();if(!p||!p.whatsapp)return;
   try{await fetch(SCRIPT_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'updateCart',whatsapp:p.whatsapp,cartItems:cart})})}catch{}},500)}
-function addToCart(id,qty=1,note=''){
-  const p=byId[id];if(!p)return;if(p.price==null)return askPrice(id);note=note.trim().slice(0,120);
-  const l=cart.find(i=>i.id===id&&i.note===note);l?l.qty+=qty:cart.push({id,qty,note});
-  save();toast('Added to bag',p.name);
+function addToCart(id,qty=1,note='',opts){
+  const p=byId[id];if(!p)return;opts=opts||defSel(p);
+  if(priceFor(p,opts)==null)return askPrice(id,opts);
+  note=note.trim().slice(0,120);const k=lineKey(id,opts,note),l=cart.find(i=>lineKey(i.id,i.opts,i.note)===k);
+  l?l.qty+=qty:cart.push({id,qty,opts:{...opts},note});save();toast('Added to bag',p.name+(p.groups.length?' · '+optText(p,opts):''));
 }
 function qtyChange(i,d){cart[i].qty+=d;if(cart[i].qty<1)cart.splice(i,1);save()}
 function removeLine(i){cart.splice(i,1);save()}
 function drawCart(){
   $('badge').textContent=count();$('total').textContent='₹'+total();
-  $('cartList').innerHTML=cart.length?cart.map((l,i)=>{const p=byId[l.id];return `
+  $('cartList').innerHTML=cart.length?cart.map((l,i)=>{const p=byId[l.id],pr=priceFor(p,l.opts);return `
   <div class="flex gap-3 border border-ink/10 bg-white rounded-2xl p-3">
-    <a href="#/p/${p.id}" onclick="closeCart()">${img(p,120,'w-16 h-16 object-cover rounded-xl')}</a>
+    <a href="#/p/${p.id}" onclick="closeCart()">${imgTag(imageFor(p,l.opts),120,'w-16 h-16 object-cover rounded-xl',p.name)}</a>
     <div class="flex-1 min-w-0"><b class="text-sm block">${esc(p.name)}</b>
-      ${l.note?`<p class="text-xs text-ink/60 truncate">${esc(l.note)}</p>`:''}
-      <p class="text-sm font-bold mt-0.5">₹${p.price*l.qty}</p>
+      ${p.groups.length?`<p class="text-xs text-ink/60">${esc(optText(p,l.opts))}</p>`:''}
+      ${l.note?`<p class="text-xs text-ink/60 truncate">Print: ${esc(l.note)}</p>`:''}
+      <p class="text-sm font-bold mt-0.5">₹${pr*l.qty}</p>
       <div class="flex items-center gap-2 mt-1"><button onclick="qtyChange(${i},-1)" aria-label="Decrease" class="h-6 w-6 rounded-full border border-ink/20">−</button><span class="text-xs font-bold w-4 text-center">${l.qty}</span><button onclick="qtyChange(${i},1)" aria-label="Increase" class="h-6 w-6 rounded-full border border-ink/20">+</button></div></div>
     <button onclick="removeLine(${i})" aria-label="Remove" class="text-ink/40 hover:text-red-600 self-start p-1"><i class="fa-solid fa-trash text-xs"></i></button></div>`}).join('')
   :'<p class="text-center text-ink/50 text-sm py-12">Your bag is empty. Pick something to print.</p>';
 }
 
-/* ---------- Home: catalog ---------- */
-let activeCat='all';
-function drawCats(){$('cats').innerHTML=cats.map(([id,l])=>`<button onclick="setCat('${id}')" class="whitespace-nowrap rounded-full px-3.5 py-2 border-[1.5px] ${id===activeCat?'bg-ink text-white border-ink':'border-ink/20 hover:border-ink'}">${l}</button>`).join('');
-  $('footCats').innerHTML=cats.slice(1,6).map(([id,l])=>`<li><button onclick="setCat('${id}',true)" class="hover:text-white">${l}</button></li>`).join('')}
-function setCat(id,scroll){activeCat=id;if(location.hash.startsWith('#/p/'))goHome();drawCats();applyFilters();if(scroll)setTimeout(()=>$('catalog').scrollIntoView({behavior:'smooth'}),30)}
-function applyFilters(){const q=$('search').value.trim().toLowerCase();
-  const list=products.filter(p=>(activeCat==='all'||p.cat===activeCat)&&p.name.toLowerCase().includes(q));
-  $('grid').innerHTML=list.length?list.map(card).join(''):'<p class="col-span-full text-center text-ink/50 py-12">Nothing matches that search. Try another word or category.</p>'}
-const card=p=>`<div class="card flex flex-col overflow-hidden">
-  <a href="#/p/${p.id}" class="block"><div class="reg bg-gray-100 border-b-[1.5px] border-ink">${img(p,500,'w-full aspect-square object-cover')}</div>
-  <div class="p-3 pb-1"><h3 class="font-bold text-sm leading-tight">${esc(p.name)}</h3><p class="text-xs text-ink/60 mt-1"><i class="fa-solid fa-star text-yl"></i> 4.9 · Tomorrow in Chennai</p></div></a>
-  <div class="flex items-center justify-between p-3 pt-2 mt-auto">${p.price==null?'<span class="text-xs font-bold text-ink/60">Price on request</span>':`<b class="disp text-lg font-extrabold">₹${p.price}</b>`}
-  <button onclick="${p.price==null?'askPrice':'addToCart'}('${p.id}')" class="btn btn-y !py-1.5 !px-3.5 text-xs">${p.price==null?'Ask price':'+ Add'}</button></div></div>`;
-
-/* ---------- Hero mug ---------- */
+/* ---------- Home: category boxes, category pages ---------- */
+const gridCls='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4';
+function variants(p){let out=[{}];p.groups.filter(g=>!g.pick).forEach(g=>{out=out.flatMap(o=>g.choices.map(c=>({...o,[g.key]:c.v})))});return out.map(o=>({...defSel(p),...o}))}
+const entries=list=>list.flatMap(p=>variants(p).map((sel,n)=>({p,sel,n})));
+const catList=id=>entries(products.filter(p=>p.cat===id));
+const catHref=id=>{const l=catList(id);return l.length===1?`#/p/${l[0].p.id}/0`:`#/c/${id}`};
+const subText=(p,sel)=>p.groups.filter(g=>!g.pick).map(g=>sel[g.key]).join(' · ');
+const vcard=({p,sel,n})=>{const pr=priceFor(p,sel),sub=subText(p,sel),pick=p.groups.some(g=>g.pick);
+  const btn=pick?`<a href="#/p/${p.id}/${n}" class="btn btn-y !py-1.5 !px-3.5 text-xs">Select size</a>`:pr==null?`<button onclick="askV('${p.id}',${n})" class="btn btn-y !py-1.5 !px-3.5 text-xs">Ask price</button>`:`<button onclick="addV('${p.id}',${n})" class="btn btn-y !py-1.5 !px-3.5 text-xs">+ Add</button>`;
+  return `<div class="card flex flex-col overflow-hidden">
+  <a href="#/p/${p.id}/${n}" class="block"><div class="reg bg-gray-100 border-b-[1.5px] border-ink">${imgTag(imageFor(p,sel),500,'w-full aspect-square object-cover',p.name+(sub?' · '+sub:''))}</div>
+  <div class="p-3 pb-1"><h3 class="font-bold text-sm leading-tight">${esc(p.name)}</h3>${sub?`<p class="text-xs font-semibold text-ink/70 mt-0.5">${esc(sub)}</p>`:''}</div></a>
+  <div class="flex items-center justify-between gap-2 p-3 pt-2 mt-auto">${pr==null?'<span class="text-xs font-bold text-ink/60">Price on request</span>':`<b class="disp text-lg font-extrabold">₹${pr}</b>`}${btn}</div></div>`};
+const addV=(id,n)=>addToCart(id,1,'',variants(byId[id])[n]);
+const askV=(id,n)=>askPrice(id,variants(byId[id])[n]);
+function renderHome(){
+  const q=$('search').value.trim().toLowerCase();
+  if(q){const l=entries(products.filter(p=>(p.name+' '+p.desc+' '+secLabel(p.cat)).toLowerCase().includes(q)));
+    $('tiles').innerHTML=l.length?`<div class="${gridCls}">${l.map(vcard).join('')}</div>`:'<p class="text-center text-ink/50 py-12">Nothing matches that search. Try another word.</p>';return}
+  $('tiles').innerHTML=`<div class="${gridCls}">${secs.map(([id,label,icon])=>{const p=products.find(x=>x.cat===id);
+    return `<a href="${catHref(id)}" class="card block overflow-hidden"><div class="reg bg-gray-100 border-b-[1.5px] border-ink">${imgTag(imageFor(p,defSel(p)),500,'w-full aspect-square object-cover',label)}</div><div class="p-3 flex items-center justify-between gap-2"><h3 class="font-bold text-sm"><i class="fa-solid ${icon} text-mg mr-1.5"></i>${label}</h3><i class="fa-solid fa-arrow-right text-xs"></i></div></a>`}).join('')}</div>`;
+}
+function renderNav(){
+  $('catBar').innerHTML=secs.map(([id,l])=>`<a href="${catHref(id)}" class="whitespace-nowrap rounded-full px-3 py-1.5 border border-ink/20 hover:border-ink">${l}</a>`).join('');
+  $('footCats').innerHTML=secs.slice(0,6).map(([id,l])=>`<li><a href="${catHref(id)}" class="hover:text-white">${l}</a></li>`).join('');
+}
+function showCat(id){
+  const l=catList(id),sec=secs.find(x=>x[0]===id);
+  $('viewCat').innerHTML=`<a href="#" class="text-sm font-semibold hover:underline"><i class="fa-solid fa-arrow-left mr-1"></i> All categories</a>
+  <h1 class="text-3xl md:text-4xl font-extrabold mt-4 mb-1">${sec[1]}</h1><p class="text-sm text-ink/60 mb-6">${l.length} options. Tap a photo for details.</p>
+  <div class="${gridCls}">${l.map(vcard).join('')}</div>`;
+  document.title=sec[1]+' | PRESENT Chennai';
+}
 function drawMug(){$('mugText').textContent=$('heroText').value.trim()||'Your name'}
 
 /* ---------- Product detail ---------- */
-let dQty=1;
-function showProduct(id){
-  const p=byId[id];dQty=1;
-  const rel=products.filter(x=>x.cat===p.cat&&x.id!==id);
-  const more=[...rel,...products.filter(x=>x.cat!==p.cat&&x.id!==id)].slice(0,4);
+let dP,dSel,dQty=1,dOver=null;
+function showProduct(id,n){
+  dP=byId[id];dSel=n==null?defSel(dP):(variants(dP)[n]||defSel(dP));dQty=1;dOver=null;const p=dP;
+  const mo=entries(products.filter(x=>x.cat===p.cat&&x.id!==id)),more=(mo.length?mo:entries(products.filter(x=>x.id!==id))).slice(0,4);
+  const multi=catList(p.cat).length>1;
   $('viewProduct').innerHTML=`
-  <button onclick="goHome()" class="text-sm font-semibold mb-5 hover:underline"><i class="fa-solid fa-arrow-left mr-1"></i> All products</button>
+  <a href="${multi?'#/c/'+p.cat:'#'}" class="inline-block text-sm font-semibold mb-5 hover:underline"><i class="fa-solid fa-arrow-left mr-1"></i> ${multi?'Back to '+secLabel(p.cat):'All categories'}</a>
   <div class="grid md:grid-cols-2 gap-8 md:gap-12">
-    <div class="self-start"><div class="reg border-[1.5px] border-ink rounded-3xl overflow-hidden bg-gray-100">${img(p,900,'w-full aspect-square object-cover" id="mainImg')}</div>${p.imgs.length>1?`<div class="flex gap-2 mt-3 overflow-x-auto no-sb pb-1">${p.imgs.map((u,i)=>`<button onclick="swapImg('${p.id}',${i})" aria-label="Photo ${i+1}" class="shrink-0 border-[1.5px] border-ink/30 hover:border-ink rounded-xl overflow-hidden">${img(p,120,'h-16 w-16 object-cover',i)}</button>`).join('')}</div>`:''}</div>
+    <div class="self-start"><div class="reg border-[1.5px] border-ink rounded-3xl overflow-hidden bg-gray-100"><img id="mainImg" class="w-full aspect-square object-cover" alt=""></div>
+      ${p.imgs.length>1?`<div class="flex gap-2 mt-3 overflow-x-auto no-sb pb-1">${p.imgs.map((u,i)=>`<button onclick="setOver(${i})" aria-label="Photo ${i+1}" class="shrink-0 border-[1.5px] border-ink/30 hover:border-ink rounded-xl overflow-hidden">${imgTag(u,120,'h-16 w-16 object-cover',p.name)}</button>`).join('')}</div>`:''}</div>
     <div>
       <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">${esc(p.name)}</h1>
-      <p class="text-sm mt-2 text-ink/60"><i class="fa-solid fa-star text-yl"></i> 4.9 rating · ${cats.find(c=>c[0]===p.cat)[1]}</p>
-      <p class="disp text-4xl font-extrabold mt-4">${p.price==null?'Price on request':'₹'+p.price}</p>
+      <p class="text-sm mt-2 text-ink/60"><i class="fa-solid fa-star text-yl"></i> 4.9 rating · ${secLabel(p.cat)}</p>
+      <div id="priceBox" class="mt-4"></div>
       <p class="mt-4 text-ink/80 leading-relaxed">${esc(p.desc)}</p>
+      <div id="optsBox"></div>
       <div class="mt-6"><label for="note" class="lbl">Name or message to print (optional)</label>
         <input id="note" class="inp" maxlength="120" placeholder="e.g. Happy Birthday Amma">
         <p class="text-xs text-ink/60 mt-1.5">You’ll send your photo on WhatsApp after ordering. We share a print preview before we start.</p></div>
-      ${p.price==null?`<button onclick="askPrice('${p.id}')" class="btn btn-y w-full mt-5 !py-3 flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp text-lg"></i> Ask the price on WhatsApp</button>`:`<div class="mt-5 flex items-center gap-4">
-        <div class="flex items-center gap-3 border-[1.5px] border-ink rounded-full px-2 py-1"><button onclick="dq(-1)" aria-label="Decrease quantity" class="h-8 w-8 text-lg">−</button><b id="dQty" class="w-5 text-center">1</b><button onclick="dq(1)" aria-label="Increase quantity" class="h-8 w-8 text-lg">+</button></div>
-        <button onclick="addToCart('${p.id}',dQty,$('note').value)" class="btn btn-y flex-1 !py-3">Add to bag</button></div>
-      <button onclick="buyNow('${p.id}')" class="btn w-full mt-3 !py-3 flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp text-lg"></i> Order this now on WhatsApp</button>`}
+      <div id="actBox"></div>
       <ul class="mt-6 space-y-2 text-sm text-ink/80 border-t border-ink/10 pt-5">
         <li><i class="fa-solid fa-truck-fast w-5 text-cy"></i> Next-day delivery in Chennai on orders before 4 PM</li>
         <li><i class="fa-solid fa-eye w-5 text-mg"></i> Print preview on WhatsApp before dispatch</li>
@@ -311,20 +346,34 @@ function showProduct(id){
     </div>
   </div>
   <h2 class="text-2xl font-extrabold mt-14 mb-4">You might also like</h2>
-  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">${more.map(card).join('')}</div>`;
-  document.title=p.name+' | PRESENT Chennai';
+  <div class="${gridCls}">${more.map(vcard).join('')}</div>`;
+  refreshDetail();document.title=p.name+' | PRESENT Chennai';
 }
-function swapImg(id,i){const p=byId[id],e=$('mainImg');e.onerror=()=>{e.onerror=null;e.src=`${UN}${p.fb}?auto=format&fit=crop&w=900&q=80`};e.src=src(p,900,i)}
-function askPrice(id){const p=byId[id];window.open(`https://wa.me/${WA}?text=${encodeURIComponent('Hi PRESENT, what is the price for '+p.name+'?')}`,'_blank','noopener')}
-function dq(d){dQty=Math.max(1,dQty+d);$('dQty').textContent=dQty}
-function buyNow(id){const note=$('note').value.trim().slice(0,120);openWA([{id,qty:dQty,note}])}
+function refreshDetail(){
+  const p=dP,pr=priceFor(p,dSel);
+  $('optsBox').innerHTML=p.groups.map((g,gi)=>`<div class="mt-5"><span class="lbl">${esc(g.label)}: <b class="text-ink/70">${esc(dSel[g.key])}</b></span>${g.note?`<p class="text-xs text-ink/60 mb-2">${esc(g.note)}</p>`:''}<div class="flex flex-wrap gap-2">${g.choices.map((c,ci)=>{const on=dSel[g.key]===c.v,sub=c.p!=null?' · ₹'+c.p:c.d?' +₹'+c.d:'';
+    return `<button onclick="pick(${gi},${ci})" aria-pressed="${on}" class="rounded-full px-3.5 py-2 text-sm font-semibold border-[1.5px] flex items-center gap-2 ${on?'bg-ink text-white border-ink':'border-ink/25 hover:border-ink'}">${c.hex?`<i class="h-4 w-4 rounded-full border border-ink/40" style="background:${c.hex}"></i>`:''}${esc(c.v)}${sub}</button>`}).join('')}</div></div>`).join('');
+  $('priceBox').innerHTML=pr==null?'<p class="disp text-3xl font-extrabold">Price on request</p>':`<p class="disp text-4xl font-extrabold">₹${pr}${dQty>1?` <span class="text-base font-semibold text-ink/60">× ${dQty} = ₹${pr*dQty}</span>`:''}</p>`;
+  $('actBox').innerHTML=pr==null?`<button onclick="askPrice('${p.id}',dSel)" class="btn btn-y w-full mt-5 !py-3 flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp text-lg"></i> Ask the price on WhatsApp</button>`
+  :`<div class="mt-5 flex items-center gap-4"><div class="flex items-center gap-3 border-[1.5px] border-ink rounded-full px-2 py-1"><button onclick="dq(-1)" aria-label="Decrease quantity" class="h-8 w-8 text-lg">−</button><b class="w-5 text-center">${dQty}</b><button onclick="dq(1)" aria-label="Increase quantity" class="h-8 w-8 text-lg">+</button></div>
+    <button onclick="addToCart('${p.id}',dQty,$('note').value,dSel)" class="btn btn-y flex-1 !py-3">Add to bag</button></div>
+    <button onclick="buyNow()" class="btn w-full mt-3 !py-3 flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp text-lg"></i> Order this now on WhatsApp</button>`;
+  const e=$('mainImg');e.alt=p.name;e.onerror=()=>{e.onerror=null;e.src=ph(p.name)};e.src=urlOf(dOver||imageFor(p,dSel),900);
+}
+function pick(gi,ci){const g=dP.groups[gi];dSel[g.key]=g.choices[ci].v;dOver=null;refreshDetail()}
+function setOver(i){dOver=dP.imgs[i];refreshDetail()}
+function dq(d){dQty=Math.max(1,dQty+d);refreshDetail()}
+function buyNow(){openWA([{id:dP.id,qty:dQty,opts:{...dSel},note:$('note').value.trim().slice(0,120)}])}
+function askPrice(id,opts){const p=byId[id];window.open(`https://wa.me/${WA}?text=${encodeURIComponent('Hi PRESENT, what is the price for '+p.name+(opts&&p.groups.length?' ('+optText(p,opts)+')':'')+'?')}`,'_blank','noopener')}
 
-/* ---------- Routing (#/p/p1) ---------- */
+/* ---------- Routing: #/c/frames (category), #/p/frame/3 (product + variant) ---------- */
 function goHome(){if(location.hash)history.pushState('',document.title,location.pathname+location.search);route()}
 function route(){
-  const m=location.hash.match(/^#\/p\/(p\d+)$/);
-  if(m&&byId[m[1]]){$('viewHome').classList.add('hidden');$('viewProduct').classList.remove('hidden');showProduct(m[1]);window.scrollTo(0,0)}
-  else{$('viewProduct').classList.add('hidden');$('viewHome').classList.remove('hidden');document.title='PRESENT | Custom Photo Gifts & Sublimation Printing, Chennai'}
+  const m=location.hash.match(/^#\/p\/([a-z0-9-]+)(?:\/(\d+))?$/),c=location.hash.match(/^#\/c\/([a-z0-9-]+)$/);
+  ['viewHome','viewCat','viewProduct'].forEach(v=>$(v).classList.add('hidden'));
+  if(m&&byId[m[1]]){$('viewProduct').classList.remove('hidden');showProduct(m[1],m[2]==null?null:+m[2]);window.scrollTo(0,0)}
+  else if(c&&secs.some(x=>x[0]===c[1])){$('viewCat').classList.remove('hidden');showCat(c[1]);window.scrollTo(0,0)}
+  else{$('viewHome').classList.remove('hidden');document.title='PRESENT | Custom Photo Gifts & Sublimation Printing, Chennai'}
 }
 window.addEventListener('hashchange',route);window.addEventListener('popstate',route);
 
@@ -380,16 +429,16 @@ async function handleSignIn(e){
 }
 
 /* ---------- WhatsApp checkout ---------- */
+function lineText(l){const p=byId[l.id];return `• ${p.name}${p.groups.length?` (${optText(p,l.opts)})`:''} x${l.qty} - ₹${priceFor(p,l.opts)*l.qty}`+(l.note?`\n   Print: ${l.note}`:'')}
 function openWA(lines){
-  const p=profile()||{},sum=lines.reduce((s,l)=>s+byId[l.id].price*l.qty,0);
-  const items=lines.map(l=>`• ${byId[l.id].name} x${l.qty} - ₹${byId[l.id].price*l.qty}`+(l.note?`\n   Print: ${l.note}`:'')).join('\n');
-  const msg=`*NEW ORDER - PRESENT CHENNAI*\n----------------------------\n*Items:*\n${items}\n\n*Total Amount:* ₹${sum}\n----------------------------\n*Customer Details:*\nName: ${p.name||'Not provided'}\nPhone: ${p.whatsapp||'Not provided'}\nAddress: ${p.address||'Not provided'}\nPincode: ${p.pincode||'Not provided'}\n\nI will send my photo here.`;
+  const p=profile()||{},sum=lines.reduce((s,l)=>s+priceFor(byId[l.id],l.opts)*l.qty,0);
+  const msg=`*NEW ORDER - PRESENT CHENNAI*\n----------------------------\n*Items:*\n${lines.map(lineText).join('\n')}\n\n*Total Amount:* ₹${sum}\n----------------------------\n*Customer Details:*\nName: ${p.name||'Not provided'}\nPhone: ${p.whatsapp||'Not provided'}\nAddress: ${p.address||'Not provided'}\nPincode: ${p.pincode||'Not provided'}\n\nI will send my photo here.`;
   window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,'_blank','noopener');
 }
 function checkout(){if(!cart.length)return toast('Bag is empty','Add a product to place an order.');openWA(cart)}
 
 /* ---------- Init ---------- */
-window.addEventListener('DOMContentLoaded',()=>{drawCats();applyFilters();drawCart();drawMug();sessionUI(profile());route();flushPending()});
+window.addEventListener('DOMContentLoaded',()=>{renderNav();renderHome();drawCart();drawMug();sessionUI(profile());route();flushPending()});
 </script>
 </body>
 </html>
