@@ -1,708 +1,742 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PRESENT | Custom Gifts & Sublimation Printing Chennai</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRESENT | Custom Gifts & Sublimation Printing</title>
+  
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/brand_logo_favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/brand_logo_favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/brand_logo_favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/brand_logo_favicon_io/site.webmanifest">
+  
+  <!-- Tailwind CSS & FontAwesome -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: {
+              800: '#1b4d4f',
+              900: '#123738',
+            },
+            accent: '#d4af37'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f5f5f7; color: #1d1d1f; }
-    .apple-glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    .apple-card-hover { transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
-    .apple-card-hover:hover { transform: scale(1.02); box-shadow: 0 20px 30px rgba(0,0,0,0.08); }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
   </style>
 </head>
-<body class="pb-20 md:pb-0">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
 
-  <!-- Apple Store Top Banner -->
-  <div class="bg-slate-900 text-white text-xs py-2 px-4 flex justify-between items-center border-b border-slate-800">
-    <div class="flex items-center gap-2 max-w-7xl mx-auto w-full justify-between">
-      <div class="flex items-center gap-2">
-        <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-        </span>
-        <span class="font-semibold text-emerald-400">Sathish Online</span>
-        <span class="text-gray-400 hidden sm:inline">| Fast Sublimation Printing & Delivery in Chennai</span>
-      </div>
-      <div class="flex items-center gap-4 text-xs">
-        <span id="headerPincodeText" class="text-gray-300 hidden sm:inline"><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> Deliver to Chennai 600110</span>
-        <button onclick="toggleAuthModal()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-3 py-1 rounded-full transition text-xs flex items-center gap-1.5 shadow-sm">
-          <i class="fa-solid fa-user"></i> <span id="authHeaderBtnText">Sign In / Sign Up</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Apple Store Sticky Header -->
-  <header class="sticky top-0 z-40 apple-glass border-b border-gray-200/80">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-      <a href="#" class="text-2xl font-black tracking-tight text-slate-950 flex items-center gap-1">
-        PRESENT<span class="text-amber-500 text-3xl leading-none">.</span>
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-50 glass-nav border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/brand_logo_favicon_io/android-chrome-192x192.png" alt="PRESENT Logo" class="h-10 w-10 object-contain">
+        <span class="text-2xl font-bold tracking-widest text-teal-800">PRESENT</span>
       </a>
 
-      <!-- Search Bar -->
-      <div class="flex-1 max-w-md relative hidden sm:block">
-        <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Search magic mugs, photo frames, cushions..." class="w-full px-4 py-2 rounded-full bg-gray-100/80 border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition pl-10" />
-        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+      <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600">
+        <a href="#frames" class="hover:text-teal-800 transition">Photo Frames</a>
+        <a href="#mugs" class="hover:text-teal-800 transition">Mugs</a>
+        <a href="#pillows" class="hover:text-teal-800 transition">Pillows</a>
+        <a href="#keychains" class="hover:text-teal-800 transition">Keychains</a>
+        <a href="#contact" class="hover:text-teal-800 transition">Contact</a>
       </div>
 
-      <!-- Cart Button -->
-      <button onclick="openCartDrawer()" class="relative bg-slate-950 hover:bg-slate-800 text-white px-4 py-2 rounded-full font-bold flex items-center gap-2 transition text-sm shadow-md">
-        <i class="fa-solid fa-bag-shopping text-amber-400"></i>
-        <span>Bag</span>
-        <span id="cartBadgeCount" class="bg-amber-500 text-slate-950 text-xs font-black rounded-full h-5 w-5 flex items-center justify-center">0</span>
-      </button>
-    </div>
-
-    <!-- Category Bar -->
-    <div class="max-w-7xl mx-auto px-4 py-2 flex items-center gap-6 overflow-x-auto no-scrollbar border-t border-gray-100 text-xs font-semibold text-gray-600">
-      <button onclick="filterCategory('all')" class="whitespace-nowrap hover:text-amber-600 flex items-center gap-1.5 py-1 px-3 rounded-full bg-amber-500/10 text-amber-700 font-bold"><i class="fa-solid fa-grip"></i> All Products</button>
-      <button onclick="filterCategory('mugs')" class="whitespace-nowrap hover:text-amber-600 flex items-center gap-1.5 py-1"><i class="fa-solid fa-mug-hot"></i> Photo Mugs</button>
-      <button onclick="filterCategory('pillows')" class="whitespace-nowrap hover:text-amber-600 flex items-center gap-1.5 py-1"><i class="fa-solid fa-heart"></i> Cushions & Pillows</button>
-      <button onclick="filterCategory('frames')" class="whitespace-nowrap hover:text-amber-600 flex items-center gap-1.5 py-1"><i class="fa-solid fa-image"></i> Frames & Rock Slates</button>
-      <button onclick="filterCategory('apparel')" class="whitespace-nowrap hover:text-amber-600 flex items-center gap-1.5 py-1"><i class="fa-solid fa-shirt"></i> Custom T-Shirts</button>
-      <button onclick="filterCategory('bottles')" class="whitespace-nowrap hover:text-amber-600 flex items-center gap-1.5 py-1"><i class="fa-solid fa-bottle-water"></i> Sippers & Flasks</button>
+      <a href="https://wa.me/919123555902" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-full text-xs sm:text-sm font-semibold flex items-center gap-2 shadow transition">
+        <i class="fa-brands fa-whatsapp text-lg"></i>
+        <span>WhatsApp Order</span>
+      </a>
     </div>
   </header>
 
-  <!-- Toast Notification -->
-  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-5 py-4 rounded-2xl shadow-2xl flex items-center gap-4 transform translate-y-32 opacity-0 transition-all duration-300 border border-slate-700 max-w-sm">
-    <div class="bg-emerald-500/20 text-emerald-400 p-2.5 rounded-full">
-      <i class="fa-solid fa-check"></i>
-    </div>
-    <div class="flex-1">
-      <h4 id="toastTitle" class="font-bold text-sm text-white">Item Added</h4>
-      <p id="toastBody" class="text-xs text-gray-300 mt-0.5">Added to your shopping bag.</p>
-    </div>
-    <button onclick="openCartDrawer()" class="bg-amber-500 text-slate-950 text-xs font-bold px-3.5 py-2 rounded-xl hover:bg-amber-400 transition">View Bag</button>
-  </div>
-
-  <!-- Hero Feature Header -->
-  <section class="max-w-7xl mx-auto px-4 pt-8">
-    <div class="text-left mb-6">
-      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-950">
-        Store. <span class="text-gray-400 font-medium">The best way to buy the gifts you love.</span>
-      </h1>
-    </div>
-
-    <!-- Apple Carousel Highlight Banner -->
-    <div class="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 rounded-3xl p-6 md:p-10 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-slate-800 relative overflow-hidden">
-      <div class="relative z-10 max-w-xl">
-        <span class="bg-amber-500 text-slate-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Fast Dispatch Chennai</span>
-        <h2 class="text-2xl md:text-4xl font-extrabold mt-3 tracking-tight">Personalized Photo Gifts & Sublimation Printing</h2>
-        <p class="text-sm md:text-base text-gray-300 mt-2 font-normal">Order custom magic mugs, fur pillows, acrylic frames, and slate stone prints directly on WhatsApp with live print previews.</p>
-        <div class="mt-6 flex items-center gap-4">
-          <a href="#catalog" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3 rounded-full shadow-lg transition text-sm">Explore Collection</a>
-        </div>
-      </div>
-      <div class="relative z-10 w-full md:w-80 h-48 rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-        <img src="https://raw.githubusercontent.com/sathishgame/present-assets/main/magic-mug.jpg" onerror="this.src='https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80'" class="w-full h-full object-cover" alt="Sublimation Magic Mug" />
+  <!-- Hero Section -->
+  <section class="bg-teal-800 text-white py-12 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+    <div class="max-w-4xl mx-auto relative z-10">
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-3">Customized Photo Gifts For Every Occasion</h1>
+      <p class="text-teal-100 text-base sm:text-lg mb-6 max-w-2xl mx-auto">Premium Print Quality, Fast Delivery & Personalized Sublimation Merchandise</p>
+      <div class="inline-flex gap-4">
+        <a href="#mugs" class="bg-white text-teal-800 font-bold px-6 py-2.5 rounded-lg shadow hover:bg-teal-50 transition">Browse Products</a>
       </div>
     </div>
   </section>
 
-  <!-- Apple Quad Highlight Grid -->
-  <section class="max-w-7xl mx-auto px-4 py-10">
-    <div class="flex items-center justify-between mb-4">
-      <h3 class="text-xl md:text-2xl font-bold tracking-tight text-slate-950">
-        The latest. <span class="text-gray-400 font-normal">Take a look at what’s new.</span>
-      </h3>
-    </div>
+  <!-- Main Catalog -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <!-- Quad 1 -->
-      <div class="bg-white border border-gray-200/80 rounded-3xl p-5 shadow-sm apple-card-hover flex flex-col justify-between">
-        <div>
-          <span class="text-[10px] uppercase tracking-wider font-bold text-amber-600">Budget Favorites</span>
-          <h4 class="font-bold text-slate-900 text-base mb-3">Gifts Under ₹290</h4>
-          <div class="grid grid-cols-2 gap-2">
-            <div onclick="addToCart('p1')" class="bg-gray-50 p-2 rounded-2xl cursor-pointer hover:bg-amber-50/50 transition">
-              <img src="https://raw.githubusercontent.com/sathishgame/present-assets/main/magic-mug.jpg" onerror="this.src='https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=300&q=80'" class="w-full h-20 object-cover rounded-xl" alt="Magic Mug" />
-              <p class="text-xs font-bold mt-1 text-slate-800 truncate">Magic Mug</p>
-              <p class="text-xs text-amber-600 font-extrabold">₹290</p>
-            </div>
-            <div onclick="addToCart('p9')" class="bg-gray-50 p-2 rounded-2xl cursor-pointer hover:bg-amber-50/50 transition">
-              <img src="https://raw.githubusercontent.com/sathishgame/present-assets/main/keychain.jpg" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=300&q=80'" class="w-full h-20 object-cover rounded-xl" alt="Keychain" />
-              <p class="text-xs font-bold mt-1 text-slate-800 truncate">Keychain</p>
-              <p class="text-xs text-amber-600 font-extrabold">₹150</p>
-            </div>
-            <div onclick="addToCart('p4')" class="bg-gray-50 p-2 rounded-2xl cursor-pointer hover:bg-amber-50/50 transition">
-              <img src="https://raw.githubusercontent.com/sathishgame/present-assets/main/white-mug.jpg" onerror="this.src='https://images.unsplash.com/photo-1577937927133-66ef06acdf18?auto=format&fit=crop&w=300&q=80'" class="w-full h-20 object-cover rounded-xl" alt="White Mug" />
-              <p class="text-xs font-bold mt-1 text-slate-800 truncate">White Mug</p>
-              <p class="text-xs text-amber-600 font-extrabold">₹190</p>
-            </div>
-            <div onclick="addToCart('p7')" class="bg-gray-50 p-2 rounded-2xl cursor-pointer hover:bg-amber-50/50 transition">
-              <img src="https://raw.githubusercontent.com/sathishgame/present-assets/main/sipper.jpg" onerror="this.src='https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=300&q=80'" class="w-full h-20 object-cover rounded-xl" alt="Sipper" />
-              <p class="text-xs font-bold mt-1 text-slate-800 truncate">Sipper</p>
-              <p class="text-xs text-amber-600 font-extrabold">₹350</p>
-            </div>
+    <!-- Section 1: Photo Frames -->
+    <section id="frames">
+      <div class="border-b border-slate-200 pb-3 mb-8">
+        <h2 class="text-2xl font-bold text-teal-800 tracking-wide uppercase">Photo Frames (1-Inch Frame)</h2>
+        <p class="text-slate-500 text-sm">High-definition glossy prints in durable 1-inch synthetic wood borders</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- 1. Standard Frame -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-60 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img id="img-frame1" src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x18_frame%20(1).webp" alt="Custom Photo Frame" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/600x400?text=Photo+Frame'">
           </div>
-        </div>
-      </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">1-Inch Custom Photo Frame</h3>
+                <span id="price-display-f1" class="text-sm font-black text-teal-800 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">₹230</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">Single photo print inside a durable 1-inch synthetic frame border.</p>
+            </div>
 
-      <!-- Quad 2 -->
-      <div class="bg-white border border-gray-200/80 rounded-3xl p-5 shadow-sm apple-card-hover flex flex-col justify-between">
-        <div>
-          <span class="text-[10px] uppercase tracking-wider font-bold text-amber-600">Home Decor</span>
-          <h4 class="font-bold text-slate-900 text-base mb-3">Custom Rock & Desk Frames</h4>
-          <div class="grid grid-cols-2 gap-2">
-            <div onclick="addToCart('p3')" class="bg-gray-50 p-2 rounded-2xl cursor-pointer hover:bg-amber-50/50 transition">
-              <img src="https://raw.githubusercontent.com/sathishgame/present-assets/main/slate.jpg" onerror="this.src='https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=300&q=80'" class="w-full h-20 object-cover rounded-xl" alt="Slate" />
-              <p class="text-xs font-bold mt-1 text-slate-800 truncate">Rock Slate</p>
-              <p class="text-xs text-amber-600 font-extrabold">₹490</p>
-            </div>
-            <div onclick="addToCart('p5')" class="bg-gray-50 p-2 rounded-2xl cursor-pointer hover:bg-amber-50/50 transition">
-              <img src="https://raw.githubusercontent.com/sathishgame/present-assets/main/acrylic.jpg" onerror="this.src='https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=300&q=80'" class="w-full h-20 object-cover rounded-xl" alt="Acrylic" />
-              <p class="text-xs font-bold mt-1 text-slate-800 truncate">Acrylic</p>
-              <p class="text-xs text-amber-600 font-extrabold">₹390</p>
-            </div>
-            <div onclick="addToCart('p10')" class="bg-gray-50 p-2 rounded-2xl cursor-pointer hover:bg-amber-50/50 transition">
-              <img src="https://raw.githubusercontent.com/sathishgame/present-assets/main/wood-relief.jpg" onerror="this.src='https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=300&q=80'" class="w-full h-20 object-cover rounded-xl" alt="Wood Carving" />
-              <p class="text-xs font-bold mt-1 text-slate-800 truncate">Wood Relief</p>
-              <p class="text-xs text-amber-600 font-extrabold">₹890</p>
-            </div>
-            <div onclick="addToCart('p8')" class="bg-gray-50 p-2 rounded-2xl cursor-pointer hover:bg-amber-50/50 transition">
-              <img src="https://raw.githubusercontent.com/sathishgame/present-assets/main/led-frame.jpg" onerror="this.src='https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=300&q=80'" class="w-full h-20 object-cover rounded-xl" alt="LED Frame" />
-              <p class="text-xs font-bold mt-1 text-slate-800 truncate">LED Frame</p>
-              <p class="text-xs text-amber-600 font-extrabold">₹590</p>
-            </div>
-          </div>
-        </div>
-      </div>
+            <div class="mt-4 space-y-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Select Size:</label>
+                <select id="size-frame1" onchange="calcFramePrice('size-frame1', 'qty-frame1', 'price-display-f1', 'total-frame1', 0, 'img-frame1')" class="w-full text-xs border border-slate-300 rounded p-1.5 bg-slate-50">
+                  <option value="8x6" data-price="230" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x8_collage%20frame.webp">8 x 6 inches - ₹230</option>
+                  <option value="10x8" data-price="270" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x8_collage%20frame%20(4).webp">10 x 8 inches - ₹270</option>
+                  <option value="12x8" data-price="400" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x8_collage%20frame.webp">12 x 8 inches - ₹400</option>
+                  <option value="12x10" data-price="450" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x15_frame%20(2).webp">12 x 10 inches - ₹450</option>
+                  <option value="10x15" data-price="550" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x15_frame%20(2).webp">10 x 15 inches - ₹550</option>
+                  <option value="12x15" data-price="700" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x15_frame%20(2).webp">12 x 15 inches - ₹700</option>
+                  <option value="12x18" data-price="1000" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x18_frame%20(1).webp" selected>12 x 18 inches - ₹1,000</option>
+                  <option value="16x24" data-price="1750" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/24x16%20collage_frame.webp">16 x 24 inches - ₹1,750</option>
+                  <option value="20x30" data-price="3000" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/24x16%20collage_frame.webp">20 x 30 inches - ₹3,000</option>
+                  <option value="24x36" data-price="4300" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/24x16%20collage_frame.webp">24 x 36 inches - ₹4,300</option>
+                </select>
+              </div>
 
-      <!-- Quad 3 -->
-      <div class="bg-white border border-gray-200/80 rounded-3xl p-5 shadow-sm apple-card-hover flex flex-col justify-between">
-        <div>
-          <span class="text-[10px] uppercase tracking-wider font-bold text-amber-600">Soft Keepsakes</span>
-          <h4 class="font-bold text-slate-900 text-base mb-3">Fur Pillows & Cushions</h4>
-          <div class="grid grid-cols-2 gap-2">
-            <div onclick="addToCart('p2')" class="bg-gray-50 p-2 rounded-2xl cursor-pointer hover:bg-amber-50/50 transition">
-              <img src="https://raw.githubusercontent.com/sathishgame/present-assets/main/heart-fur.jpg" onerror="this.src='https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=300&q=80'" class="w-full h-20 object-cover rounded-xl" alt="Heart Fur" />
-              <p class="text-xs font-bold mt-1 text-slate-800 truncate">Heart Fur</p>
-              <p class="text-xs text-amber-600 font-extrabold">₹450</p>
-            </div>
-            <div onclick="addToCart('p11')" class="bg-gray-50 p-2 rounded-2xl cursor-pointer hover:bg-amber-50/50 transition">
-              <img src="https://raw.githubusercontent.com/sathishgame/present-assets/main/square-pillow.jpg" onerror="this.src='https://images.unsplash.com/photo-1579656381226-5fc0f0100c3b?auto=format&fit=crop&w=300&q=80'" class="w-full h-20 object-cover rounded-xl" alt="Square Cushion" />
-              <p class="text-xs font-bold mt-1 text-slate-800 truncate">Square Pillow</p>
-              <p class="text-xs text-amber-600 font-extrabold">₹390</p>
-            </div>
-            <div onclick="addToCart('p12')" class="bg-gray-50 p-2 rounded-2xl cursor-pointer hover:bg-amber-50/50 transition">
-              <img src="https://raw.githubusercontent.com/sathishgame/present-assets/main/led-pillow.jpg" onerror="this.src='https://images.unsplash.com/photo-1520256862855-398228c41684?auto=format&fit=crop&w=300&q=80'" class="w-full h-20 object-cover rounded-xl" alt="LED Cushion" />
-              <p class="text-xs font-bold mt-1 text-slate-800 truncate">LED Pillow</p>
-              <p class="text-xs text-amber-600 font-extrabold">₹550</p>
-            </div>
-            <div onclick="addToCart('p13')" class="bg-gray-50 p-2 rounded-2xl cursor-pointer hover:bg-amber-50/50 transition">
-              <img src="https://raw.githubusercontent.com/sathishgame/present-assets/main/sequin-pillow.jpg" onerror="this.src='https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=300&q=80'" class="w-full h-20 object-cover rounded-xl" alt="Sequin Pillow" />
-              <p class="text-xs font-bold mt-1 text-slate-800 truncate">Sequin</p>
-              <p class="text-xs text-amber-600 font-extrabold">₹490</p>
-            </div>
-          </div>
-        </div>
-      </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="changeFrameQty('qty-frame1', -1, 'size-frame1', 'price-display-f1', 'total-frame1', 0, 'img-frame1')" class="px-2 py-0.5 text-xs font-bold">-</button>
+                  <input type="number" id="qty-frame1" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="changeFrameQty('qty-frame1', 1, 'size-frame1', 'price-display-f1', 'total-frame1', 0, 'img-frame1')" class="px-2 py-0.5 text-xs font-bold">+</button>
+                </div>
+              </div>
 
-      <!-- Quad 4 -->
-      <div class="bg-white border border-gray-200/80 rounded-3xl p-5 shadow-sm apple-card-hover flex flex-col justify-between">
-        <div>
-          <span class="text-[10px] uppercase tracking-wider font-bold text-amber-600">Personalized Wear</span>
-          <h4 class="font-bold text-slate-900 text-base mb-3">Apparel & Accessories</h4>
-          <div class="grid grid-cols-2 gap-2">
-            <div onclick="addToCart('p6')" class="bg-gray-50 p-2 rounded-2xl cursor-pointer hover:bg-amber-50/50 transition">
-              <img src="https://raw.githubusercontent.com/sathishgame/present-assets/main/tshirt.jpg" onerror="this.src='https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=300&q=80'" class="w-full h-20 object-cover rounded-xl" alt="T-Shirt" />
-              <p class="text-xs font-bold mt-1 text-slate-800 truncate">Photo Shirt</p>
-              <p class="text-xs text-amber-600 font-extrabold">₹390</p>
-            </div>
-            <div onclick="addToCart('p14')" class="bg-gray-50 p-2 rounded-2xl cursor-pointer hover:bg-amber-50/50 transition">
-              <img src="https://raw.githubusercontent.com/sathishgame/present-assets/main/couple-set.jpg" onerror="this.src='https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=300&q=80'" class="w-full h-20 object-cover rounded-xl" alt="Couples Set" />
-              <p class="text-xs font-bold mt-1 text-slate-800 truncate">Couple Set</p>
-              <p class="text-xs text-amber-600 font-extrabold">₹490</p>
-            </div>
-            <div onclick="addToCart('p15')" class="bg-gray-50 p-2 rounded-2xl cursor-pointer hover:bg-amber-50/50 transition">
-              <img src="https://raw.githubusercontent.com/sathishgame/present-assets/main/temp-bottle.jpg" onerror="this.src='https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=300&q=80'" class="w-full h-20 object-cover rounded-xl" alt="Temp Bottle" />
-              <p class="text-xs font-bold mt-1 text-slate-800 truncate">Temp Bottle</p>
-              <p class="text-xs text-amber-600 font-extrabold">₹590</p>
-            </div>
-            <div onclick="addToCart('p16')" class="bg-gray-50 p-2 rounded-2xl cursor-pointer hover:bg-amber-50/50 transition">
-              <img src="https://raw.githubusercontent.com/sathishgame/present-assets/main/calendar.jpg" onerror="this.src='https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=300&q=80'" class="w-full h-20 object-cover rounded-xl" alt="Desk Calendar" />
-              <p class="text-xs font-bold mt-1 text-slate-800 truncate">Calendar</p>
-              <p class="text-xs text-amber-600 font-extrabold">₹290</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+              <div class="flex items-center justify-between text-xs font-semibold text-slate-700 pt-1 border-t border-slate-100">
+                <span>Total Amount:</span>
+                <span id="total-frame1" class="font-bold text-teal-800">₹1,000</span>
+              </div>
 
-  <!-- Product Catalog Grid -->
-  <section id="catalog" class="max-w-7xl mx-auto px-4 py-6">
-    <div class="flex items-center justify-between mb-6">
-      <h3 class="text-2xl font-bold tracking-tight text-slate-950">
-        All Products. <span class="text-gray-400 font-normal">Explore custom sublimation items.</span>
-      </h3>
-    </div>
+              <p class="text-[11px] text-amber-700 bg-amber-50 p-1.5 rounded border border-amber-200 text-center font-medium">
+                📸 Please attach your photos in the WhatsApp chat after clicking order.
+              </p>
 
-    <div id="productGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
-      <!-- Dynamic JS Target -->
-    </div>
-  </section>
-
-  <!-- Apple Store Style Footer -->
-  <footer class="bg-slate-100 text-slate-500 text-xs border-t border-gray-200 mt-16 pt-10 pb-16">
-    <div class="max-w-7xl mx-auto px-4 space-y-6">
-      <div class="border-b border-gray-300 pb-6 space-y-3">
-        <p class="leading-relaxed">
-          1. Next-day express delivery available across Chennai metropolitan area including Madhavaram, Ponniammanmedu, Alwarpet, Anna Nagar, and surrounding pin codes. Order before 4 PM for prompt sublimation dispatch.
-        </p>
-        <p class="leading-relaxed">
-          PRESENT Chennai operates as a specialized custom sublimation printing and CNC wood carving studio. All transactions and custom artwork orders coordinate securely via WhatsApp (+91 9123555902).
-        </p>
-      </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 py-4">
-        <div>
-          <h4 class="font-bold text-slate-800 text-sm mb-3">Shop & Learn</h4>
-          <ul class="space-y-2">
-            <li><a href="#catalog" class="hover:text-slate-900 transition">Magic Mugs</a></li>
-            <li><a href="#catalog" class="hover:text-slate-900 transition">Rock Slates</a></li>
-            <li><a href="#catalog" class="hover:text-slate-900 transition">Fur Cushions</a></li>
-            <li><a href="#catalog" class="hover:text-slate-900 transition">Acrylic Frames</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-bold text-slate-800 text-sm mb-3">PRESENT Account</h4>
-          <ul class="space-y-2">
-            <li><button onclick="toggleAuthModal()" class="hover:text-slate-900 transition text-left">Manage Your Account</button></li>
-            <li><button onclick="openCartDrawer()" class="hover:text-slate-900 transition text-left">View Shopping Bag</button></li>
-            <li><a href="https://wa.me/919123555902" target="_blank" class="hover:text-slate-900 transition">WhatsApp Support</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-bold text-slate-800 text-sm mb-3">Connect With Us</h4>
-          <ul class="space-y-2 flex flex-col">
-            <li><a href="https://instagram.com" target="_blank" class="hover:text-amber-600 transition flex items-center gap-1.5"><i class="fa-brands fa-instagram"></i> Instagram (@present.chennai)</a></li>
-            <li><a href="https://wa.me/919123555902" target="_blank" class="hover:text-emerald-600 transition flex items-center gap-1.5"><i class="fa-brands fa-whatsapp"></i> WhatsApp Chat (+91 9123555902)</a></li>
-            <li><a href="mailto:presentgifts555@gmail.com" class="hover:text-slate-900 transition flex items-center gap-1.5"><i class="fa-solid fa-envelope"></i> presentgifts555@gmail.com</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-bold text-slate-800 text-sm mb-3">Studio Location</h4>
-          <p class="text-slate-600 leading-relaxed">
-            No. 31, 200ft Ring Road,<br />
-            Devaki Nagar, Ponniammanmedu,<br />
-            Madhavaram, Chennai - 600110
-          </p>
-        </div>
-      </div>
-
-      <div class="border-t border-gray-300 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p>Copyright © 2026 PRESENT Chennai Inc. All rights reserved.</p>
-        <div class="flex gap-4 text-slate-600">
-          <a href="#" class="hover:text-slate-950">Privacy Policy</a>
-          <span>|</span>
-          <a href="#" class="hover:text-slate-950">Terms of Use</a>
-          <span>|</span>
-          <a href="#" class="hover:text-slate-950">Sales Policy</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Redesigned Sign In / Create Account Drawer Modal -->
-  <div id="authModal" class="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-md flex items-center justify-center p-4 hidden">
-    <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
-      
-      <!-- Drawer Tabs -->
-      <div class="flex border-b border-gray-100 bg-gray-50/80">
-        <button id="tabBtnSignIn" onclick="switchAuthTab('signin')" class="flex-1 py-3.5 text-center text-sm font-bold text-amber-600 border-b-2 border-amber-500 bg-white">
-          <i class="fa-solid fa-right-to-bracket mr-1.5"></i> Sign In
-        </button>
-        <button id="tabBtnCreate" onclick="switchAuthTab('create')" class="flex-1 py-3.5 text-center text-sm font-bold text-gray-500 hover:text-gray-800">
-          <i class="fa-solid fa-user-plus mr-1.5"></i> Create Account
-        </button>
-      </div>
-
-      <div class="p-6 md:p-8">
-        <!-- Sign In Form -->
-        <form id="formSignIn" onsubmit="handleSignIn(event)" class="space-y-4">
-          <div>
-            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">WhatsApp Mobile Number</label>
-            <input type="tel" id="loginPhone" required placeholder="e.g. 9123555902" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-amber-500/50 focus:bg-white outline-none transition" />
-          </div>
-
-          <div>
-            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Password</label>
-            <div class="relative">
-              <input type="password" id="loginPassword" required placeholder="Enter your password" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-amber-500/50 focus:bg-white outline-none transition" />
-              <button type="button" onclick="togglePasswordVisibility('loginPassword', 'loginEyeIcon')" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1">
-                <i id="loginEyeIcon" class="fa-solid fa-eye"></i>
+              <button onclick="sendFrameOrder('1-Inch Custom Photo Frame', 'size-frame1', 'qty-frame1', 0)" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
               </button>
             </div>
           </div>
+        </div>
 
-          <button type="submit" class="w-full bg-slate-950 text-amber-400 font-bold py-3 rounded-xl text-sm hover:bg-slate-800 transition shadow-md">
-            Sign In
-          </button>
-        </form>
-
-        <!-- Create Account Form -->
-        <form id="formCreate" onsubmit="handleCreateAccount(event)" class="space-y-3 hidden">
-          <div>
-            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Full Name</label>
-            <input type="text" id="regName" required placeholder="e.g. Sathish Kumar" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-amber-500/50 focus:bg-white outline-none transition" />
+        <!-- 2. Collage Frame (+₹300) -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-60 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img id="img-frame2" src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x15_collage_frame.webp" alt="Collage Photo Frame" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/600x400?text=Collage+Frame'">
           </div>
-
-          <div>
-            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">WhatsApp Mobile Number</label>
-            <input type="tel" id="regPhone" required placeholder="e.g. 9123555902" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-amber-500/50 focus:bg-white outline-none transition" />
-          </div>
-
-          <div>
-            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Delivery Address</label>
-            <input type="text" id="regAddress" required placeholder="Door No, Street, Madhavaram, Chennai" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-amber-500/50 focus:bg-white outline-none transition" />
-          </div>
-
-          <div class="grid grid-cols-2 gap-2">
+          <div class="p-4 flex-1 flex flex-col justify-between">
             <div>
-              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Pincode</label>
-              <input type="text" id="regPincode" required placeholder="600110" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-amber-500/50 focus:bg-white outline-none transition" />
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Password</label>
-              <div class="relative">
-                <input type="password" id="regPassword" required placeholder="Create password" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-amber-500/50 focus:bg-white outline-none transition" />
-                <button type="button" onclick="togglePasswordVisibility('regPassword', 'regEyeIcon')" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1">
-                  <i id="regEyeIcon" class="fa-solid fa-eye"></i>
-                </button>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">Multi-Photo Collage Frame</h3>
+                <span id="price-display-f2" class="text-sm font-black text-teal-800 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">₹700</span>
               </div>
+              <p class="text-slate-500 text-xs mt-1">Combines multiple photos in an elegant grid layout (+₹300 collage charge included).</p>
+            </div>
+
+            <div class="mt-4 space-y-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Select Size:</label>
+                <select id="size-frame2" onchange="calcFramePrice('size-frame2', 'qty-frame2', 'price-display-f2', 'total-frame2', 300, 'img-frame2')" class="w-full text-xs border border-slate-300 rounded p-1.5 bg-slate-50">
+                  <option value="12x8" data-price="400" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x8_collage%20frame.webp">12 x 8 inches - ₹700 (400 + 300)</option>
+                  <option value="12x15" data-price="700" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x15_collage_frame.webp" selected>12 x 15 inches - ₹1,000 (700 + 300)</option>
+                  <option value="12x18" data-price="1000" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/12x18_frames%20(3).webp">12 x 18 inches - ₹1,300 (1000 + 300)</option>
+                  <option value="16x24" data-price="1750" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/24x16%20collage_frame.webp">16 x 24 inches - ₹2,050 (1750 + 300)</option>
+                </select>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="changeFrameQty('qty-frame2', -1, 'size-frame2', 'price-display-f2', 'total-frame2', 300, 'img-frame2')" class="px-2 py-0.5 text-xs font-bold">-</button>
+                  <input type="number" id="qty-frame2" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="changeFrameQty('qty-frame2', 1, 'size-frame2', 'price-display-f2', 'total-frame2', 300, 'img-frame2')" class="px-2 py-0.5 text-xs font-bold">+</button>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between text-xs font-semibold text-slate-700 pt-1 border-t border-slate-100">
+                <span>Total Amount:</span>
+                <span id="total-frame2" class="font-bold text-teal-800">₹1,000</span>
+              </div>
+
+              <p class="text-[11px] text-amber-700 bg-amber-50 p-1.5 rounded border border-amber-200 text-center font-medium">
+                📸 Please attach your photos in the WhatsApp chat after clicking order.
+              </p>
+
+              <button onclick="sendFrameOrder('Multi-Photo Collage Frame', 'size-frame2', 'qty-frame2', 300)" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
             </div>
           </div>
-
-          <button type="submit" class="w-full bg-amber-500 text-slate-950 font-bold py-3 rounded-xl text-sm hover:bg-amber-400 transition shadow-md mt-2">
-            Create Account & Save Profile
-          </button>
-        </form>
-
-        <div class="mt-5 pt-4 border-t border-gray-100 flex justify-between items-center text-xs text-gray-500">
-          <span>Profile auto-fills on WhatsApp checkout</span>
-          <button onclick="toggleAuthModal()" class="text-gray-400 hover:text-gray-700 font-bold">Close</button>
         </div>
+
+        <!-- 3. Digital Painting Frame (+₹500) -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-60 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img id="img-frame3" src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/painting_photo_frame1.webp" alt="Digital Painting Photo Frame" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/600x400?text=Digital+Painting+Frame'">
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">Digital Painting Frame</h3>
+                <span id="price-display-f3" class="text-sm font-black text-teal-800 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">₹1,500</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">Artistic digital oil artwork effect framed to perfection (+₹500 artwork charge included).</p>
+            </div>
+
+            <div class="mt-4 space-y-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Select Size:</label>
+                <select id="size-frame3" onchange="calcFramePrice('size-frame3', 'qty-frame3', 'price-display-f3', 'total-frame3', 500, 'img-frame3')" class="w-full text-xs border border-slate-300 rounded p-1.5 bg-slate-50">
+                  <option value="12x18" data-price="1000" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/painting_12x18_frame%20(3).webp" selected>12 x 18 inches - ₹1,500 (1000 + 500)</option>
+                  <option value="16x24" data-price="1750" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/painting_photo_frame1.webp">16 x 24 inches - ₹2,250 (1750 + 500)</option>
+                  <option value="20x30" data-price="3000" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/4_photo_frame/painting_photo_frame1.webp">20 x 30 inches - ₹3,500 (3000 + 500)</option>
+                </select>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="changeFrameQty('qty-frame3', -1, 'size-frame3', 'price-display-f3', 'total-frame3', 500, 'img-frame3')" class="px-2 py-0.5 text-xs font-bold">-</button>
+                  <input type="number" id="qty-frame3" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="changeFrameQty('qty-frame3', 1, 'size-frame3', 'price-display-f3', 'total-frame3', 500, 'img-frame3')" class="px-2 py-0.5 text-xs font-bold">+</button>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between text-xs font-semibold text-slate-700 pt-1 border-t border-slate-100">
+                <span>Total Amount:</span>
+                <span id="total-frame3" class="font-bold text-teal-800">₹1,500</span>
+              </div>
+
+              <p class="text-[11px] text-amber-700 bg-amber-50 p-1.5 rounded border border-amber-200 text-center font-medium">
+                📸 Please attach your photos in the WhatsApp chat after clicking order.
+              </p>
+
+              <button onclick="sendFrameOrder('Digital Painting Frame', 'size-frame3', 'qty-frame3', 500)" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 2: Mugs -->
+    <section id="mugs">
+      <div class="border-b border-slate-200 pb-3 mb-8">
+        <h2 class="text-2xl font-bold text-teal-800 tracking-wide uppercase">Sublimation Mugs</h2>
+        <p class="text-slate-500 text-sm">Ceramic, magic, glass, radium, coin-collector, and heart-handle mugs</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Classic White Mug -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-48 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/1_mug/white%20mug/Mug-printing.webp" alt="White Ceramic Mug" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/400x400?text=White+Mug'">
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">Classic White Ceramic Mug</h3>
+                <span class="text-sm font-bold text-teal-800">₹250</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">325ml premium glossy white sublimation mug.</p>
+            </div>
+            <div class="mt-4 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="updateQty('qty-mug1', -1)" class="px-2 py-0.5 text-xs">-</button>
+                  <input type="number" id="qty-mug1" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="updateQty('qty-mug1', 1)" class="px-2 py-0.5 text-xs">+</button>
+                </div>
+              </div>
+              <p class="text-[10px] text-amber-700 bg-amber-50 p-1 rounded text-center">📸 Attach photo in WhatsApp after order</p>
+              <button onclick="sendOrder('Classic White Ceramic Mug', 'qty-mug1')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Magic Color-Changing Mug -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-48 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/1_mug/magic_mug/magicMug.webp" alt="Magic Color Changing Mug" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/400x400?text=Magic+Mug'">
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">Magic Color-Changing Mug</h3>
+                <span class="text-sm font-bold text-teal-800">₹450</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">Photo reveals when hot beverage is poured.</p>
+            </div>
+            <div class="mt-4 space-y-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Finish:</label>
+                <select id="finish-mug2" class="w-full text-xs border border-slate-300 rounded p-1.5">
+                  <option value="Matte Black">Matte Black</option>
+                  <option value="Glossy Black">Glossy Black</option>
+                </select>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="updateQty('qty-mug2', -1)" class="px-2 py-0.5 text-xs">-</button>
+                  <input type="number" id="qty-mug2" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="updateQty('qty-mug2', 1)" class="px-2 py-0.5 text-xs">+</button>
+                </div>
+              </div>
+              <p class="text-[10px] text-amber-700 bg-amber-50 p-1 rounded text-center">📸 Attach photo in WhatsApp after order</p>
+              <button onclick="sendOrder('Magic Color-Changing Mug', 'qty-mug2', ['finish-mug2'])" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Heart-Handle Magic Mug -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-48 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/1_mug/heart_handle_magic_mug/Sublimation-heart-handle-magic-mug-02-1.webp" alt="Heart Handle Magic Mug" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/400x400?text=Heart+Handle+Mug'">
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">Heart-Handle Magic Mug</h3>
+                <span class="text-sm font-bold text-teal-800">₹490</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">Special heart-shaped handle magic color reveal mug.</p>
+            </div>
+            <div class="mt-4 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="updateQty('qty-mug3', -1)" class="px-2 py-0.5 text-xs">-</button>
+                  <input type="number" id="qty-mug3" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="updateQty('qty-mug3', 1)" class="px-2 py-0.5 text-xs">+</button>
+                </div>
+              </div>
+              <p class="text-[10px] text-amber-700 bg-amber-50 p-1 rounded text-center">📸 Attach photo in WhatsApp after order</p>
+              <button onclick="sendOrder('Heart-Handle Magic Mug', 'qty-mug3')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inner Color Mug -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-48 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/1_mug/inner_color_mug/inner-color-mug.webp" alt="Inner Color Ceramic Mug" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/400x400?text=Inner+Color+Mug'">
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">Inner Color Dual-Tone Mug</h3>
+                <span class="text-sm font-bold text-teal-800">₹320</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">White exterior with vivid colored interior and handle.</p>
+            </div>
+            <div class="mt-4 space-y-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Inner Color:</label>
+                <select id="color-mug4" class="w-full text-xs border border-slate-300 rounded p-1.5">
+                  <option value="Red">Red</option>
+                  <option value="Black">Black</option>
+                  <option value="Blue">Blue</option>
+                  <option value="Yellow">Yellow</option>
+                </select>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="updateQty('qty-mug4', -1)" class="px-2 py-0.5 text-xs">-</button>
+                  <input type="number" id="qty-mug4" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="updateQty('qty-mug4', 1)" class="px-2 py-0.5 text-xs">+</button>
+                </div>
+              </div>
+              <p class="text-[10px] text-amber-700 bg-amber-50 p-1 rounded text-center">📸 Attach photo in WhatsApp after order</p>
+              <button onclick="sendOrder('Inner Color Dual-Tone Mug', 'qty-mug4', ['color-mug4'])" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 3: Pillows & Cushions -->
+    <section id="pillows">
+      <div class="border-b border-slate-200 pb-3 mb-8">
+        <h2 class="text-2xl font-bold text-teal-800 tracking-wide uppercase">Custom Pillows & Cushions</h2>
+        <p class="text-slate-500 text-sm">Fur, LED light, magic sequin, emoji, and teddy cushions</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- 1. Fur Pillow (Heart & Square + 5 Colors) -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-56 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img id="img-fur-pillow" src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/2_pillow/fur%20pillow/fur_pillow%20(1).webp" alt="Fur Photo Pillow" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/400x400?text=Fur+Pillow'">
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">Custom Fur Photo Cushion</h3>
+                <span class="text-sm font-bold text-teal-800">₹590</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">Soft plush fur cushion border with glossy photo print.</p>
+            </div>
+            <div class="mt-4 space-y-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Shape:</label>
+                <select id="shape-fur" onchange="updatePillowImage('shape-fur', 'img-fur-pillow', 'fur')" class="w-full text-xs border border-slate-300 rounded p-1.5">
+                  <option value="Heart Shape" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/2_pillow/fur%20pillow/fur_pillow%20(1).webp">Heart Shape Pillow</option>
+                  <option value="Square Shape" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/2_pillow/fur%20pillow/fur_pillow%20(3).webp">Square Shape Pillow</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Fur Color:</label>
+                <select id="color-fur" class="w-full text-xs border border-slate-300 rounded p-1.5">
+                  <option value="Red">Red</option>
+                  <option value="Pink">Pink</option>
+                  <option value="Sky Blue">Sky Blue</option>
+                  <option value="White">White</option>
+                  <option value="Yellow">Yellow</option>
+                </select>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="updateQty('qty-fur', -1)" class="px-2 py-0.5 text-xs">-</button>
+                  <input type="number" id="qty-fur" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="updateQty('qty-fur', 1)" class="px-2 py-0.5 text-xs">+</button>
+                </div>
+              </div>
+              <p class="text-[10px] text-amber-700 bg-amber-50 p-1 rounded text-center">📸 Attach photo in WhatsApp after order</p>
+              <button onclick="sendOrder('Custom Fur Photo Cushion', 'qty-fur', ['shape-fur', 'color-fur'])" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Magic Sequin Pillow (Heart & Square - Red) -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-56 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img id="img-magic-pillow" src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/2_pillow/magic/magic_pillow%20(1).webp" alt="Magic Sequin Reversible Cushion" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/400x400?text=Magic+Pillow'">
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">Magic Sequin Reversible Cushion</h3>
+                <span class="text-sm font-bold text-teal-800">₹650</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">Swipe sequins up/down to reveal hidden photo artwork.</p>
+            </div>
+            <div class="mt-4 space-y-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Shape:</label>
+                <select id="shape-magic" onchange="updatePillowImage('shape-magic', 'img-magic-pillow', 'magic')" class="w-full text-xs border border-slate-300 rounded p-1.5">
+                  <option value="Heart Shape" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/2_pillow/magic/magic_pillow%20(1).webp">Heart Shape</option>
+                  <option value="Square Shape" data-img="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/2_pillow/magic/magic_pillow%20(2).webp">Square Shape</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Color:</label>
+                <input type="text" value="Red" readonly class="w-full text-xs border border-slate-200 rounded p-1.5 bg-slate-100 text-slate-600 cursor-not-allowed font-medium">
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="updateQty('qty-magic-pil', -1)" class="px-2 py-0.5 text-xs">-</button>
+                  <input type="number" id="qty-magic-pil" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="updateQty('qty-magic-pil', 1)" class="px-2 py-0.5 text-xs">+</button>
+                </div>
+              </div>
+              <p class="text-[10px] text-amber-700 bg-amber-50 p-1 rounded text-center">📸 Attach photo in WhatsApp after order</p>
+              <button onclick="sendOrder('Magic Sequin Reversible Cushion (Red)', 'qty-magic-pil', ['shape-magic'])" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. LED Glowing Pillow -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-56 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/2_pillow/led/led_pillow%20(1).webp" alt="LED Light Up Pillow" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/400x400?text=LED+Pillow'">
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">LED Light-Up Photo Cushion</h3>
+                <span class="text-sm font-bold text-teal-800">₹750</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">Battery-operated inner LED glowing cushion.</p>
+            </div>
+            <div class="mt-4 space-y-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Shape:</label>
+                <select id="shape-led" class="w-full text-xs border border-slate-300 rounded p-1.5">
+                  <option value="Heart Shape">Heart Shape</option>
+                  <option value="Square Shape">Square Shape</option>
+                </select>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="updateQty('qty-led', -1)" class="px-2 py-0.5 text-xs">-</button>
+                  <input type="number" id="qty-led" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="updateQty('qty-led', 1)" class="px-2 py-0.5 text-xs">+</button>
+                </div>
+              </div>
+              <p class="text-[10px] text-amber-700 bg-amber-50 p-1 rounded text-center">📸 Attach photo in WhatsApp after order</p>
+              <button onclick="sendOrder('LED Light-Up Photo Cushion', 'qty-led', ['shape-led'])" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 4: Keychains -->
+    <section id="keychains">
+      <div class="border-b border-slate-200 pb-3 mb-8">
+        <h2 class="text-2xl font-bold text-teal-800 tracking-wide uppercase">Custom Keychains</h2>
+        <p class="text-slate-500 text-sm">Wooden MDF, metallic silver, and acrylic photo keychains</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Wooden MDF Keychain -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-44 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/3_keychain/wood/mdf_keychain%20(1).webp" alt="Wooden MDF Keychain" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/400x400?text=MDF+Keychain'">
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">Wooden MDF Photo Keychain</h3>
+                <span class="text-sm font-bold text-teal-800">₹120</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">Glossy double-sided wooden photo keychain.</p>
+            </div>
+            <div class="mt-4 space-y-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Shape:</label>
+                <select id="shape-kc1" class="w-full text-xs border border-slate-300 rounded p-1.5">
+                  <option value="Heart Shape">Heart Shape</option>
+                  <option value="Square">Square</option>
+                  <option value="Circle">Circle</option>
+                  <option value="Rectangle">Rectangle</option>
+                </select>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="updateQty('qty-kc1', -1)" class="px-2 py-0.5 text-xs">-</button>
+                  <input type="number" id="qty-kc1" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="updateQty('qty-kc1', 1)" class="px-2 py-0.5 text-xs">+</button>
+                </div>
+              </div>
+              <p class="text-[10px] text-amber-700 bg-amber-50 p-1 rounded text-center">📸 Attach photo in WhatsApp after order</p>
+              <button onclick="sendOrder('Wooden MDF Photo Keychain', 'qty-kc1', ['shape-kc1'])" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metallic Silver Keychain -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 flex flex-col justify-between">
+          <div class="h-44 w-full bg-slate-100 p-2 flex items-center justify-center">
+            <img src="https://raw.githubusercontent.com/sathishkumar4359/presentgifts-store/refs/heads/main/images/3_keychain/silver/silverkeychain%20(1).webp" alt="Metallic Silver Keychain" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/400x400?text=Silver+Keychain'">
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-800">Metallic Silver Keychain</h3>
+                <span class="text-sm font-bold text-teal-800">₹180</span>
+              </div>
+              <p class="text-slate-500 text-xs mt-1">Durable metal casing with insert photo disc.</p>
+            </div>
+            <div class="mt-4 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-600">Qty:</span>
+                <div class="flex items-center border border-slate-300 rounded">
+                  <button onclick="updateQty('qty-kc2', -1)" class="px-2 py-0.5 text-xs">-</button>
+                  <input type="number" id="qty-kc2" value="1" min="1" class="w-8 text-center text-xs">
+                  <button onclick="updateQty('qty-kc2', 1)" class="px-2 py-0.5 text-xs">+</button>
+                </div>
+              </div>
+              <p class="text-[10px] text-amber-700 bg-amber-50 p-1 rounded text-center">📸 Attach photo in WhatsApp after order</p>
+              <button onclick="sendOrder('Metallic Silver Keychain', 'qty-kc2')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded text-xs flex items-center justify-center gap-1.5 shadow transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer id="contact" class="bg-teal-900 text-white pt-12 pb-8 border-t border-teal-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <h3 class="text-xl font-bold mb-3 tracking-wider">PRESENT</h3>
+        <p class="text-teal-200 text-xs leading-relaxed">
+          Your trusted local partner for customized sublimation gifts, photo frames, coffee mugs, cushions, and corporate merchandise.
+        </p>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold mb-3 uppercase tracking-wider text-teal-300">Contact Info</h4>
+        <ul class="text-xs space-y-2 text-teal-100">
+          <li class="flex items-center gap-2"><i class="fa-solid fa-user"></i> Sathish Kumar M (Proprietor)</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-phone"></i> +91 91235 55902</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-envelope"></i> presentgifts555@gmail.com</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-globe"></i> www.presentgifts.store</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold mb-3 uppercase tracking-wider text-teal-300">Address</h4>
+        <p class="text-xs text-teal-100 leading-relaxed">
+          Devaki Nagar, Ponniammanmedu,<br>
+          Madhavaram, Chennai - 600110,<br>
+          Tamil Nadu, India
+        </p>
       </div>
     </div>
-  </div>
-
-  <!-- Shopping Bag Drawer -->
-  <div id="cartDrawer" class="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-md flex justify-end hidden">
-    <div class="bg-white w-full max-w-md h-full flex flex-col justify-between shadow-2xl">
-      <div class="p-5 bg-slate-950 text-white flex justify-between items-center">
-        <h3 class="font-bold text-lg flex items-center gap-2"><i class="fa-solid fa-bag-shopping text-amber-400"></i> Your Shopping Bag</h3>
-        <button onclick="closeCartDrawer()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
-      </div>
-
-      <div id="cartItemsList" class="flex-1 overflow-y-auto p-5 space-y-3">
-        <!-- Dynamic JS Cart items -->
-      </div>
-
-      <div class="p-5 border-t border-gray-100 bg-gray-50 space-y-4">
-        <div class="flex justify-between items-center text-sm font-bold">
-          <span>Total Amount:</span>
-          <span id="cartTotalPrice" class="text-2xl text-amber-600 font-black">₹0</span>
-        </div>
-        <button onclick="checkoutToWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 rounded-2xl flex items-center justify-center gap-2 shadow-xl transition text-base">
-          <i class="fa-brands fa-whatsapp text-xl"></i> Order via WhatsApp
-        </button>
-      </div>
+    <div class="text-center text-xs text-teal-400 pt-6 border-t border-teal-800">
+      &copy; 2026 PRESENT Custom Printing. All rights reserved.
     </div>
-  </div>
+  </footer>
 
+  <!-- JavaScript Integration -->
   <script>
-    // Live Apps Script Endpoint linked to official account: presentgifts555@gmail.com
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwfdAM9zWQkRwfKbq0ryDqFnDkGPF6EtZCzOUABRefi_tWbexVA8TLXLoA8mgb_ZBCy/exec";
+    const PHONE_NUMBER = "919123555902";
 
-    // Products Database linked with GitHub raw image links and Unsplash fallbacks
-    const catalogProducts = [
-      { id: 'p1', name: 'Magic Mug (Color Changing)', price: 290, category: 'mugs', image: 'https://raw.githubusercontent.com/sathishgame/present-assets/main/magic-mug.jpg', fallback: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=500&q=80' },
-      { id: 'p2', name: 'Heart Fur Photo Pillow', price: 450, category: 'pillows', image: 'https://raw.githubusercontent.com/sathishgame/present-assets/main/heart-fur.jpg', fallback: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=500&q=80' },
-      { id: 'p3', name: 'Rock Slate Frame (7x7 inch)', price: 490, category: 'frames', image: 'https://raw.githubusercontent.com/sathishgame/present-assets/main/slate.jpg', fallback: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=500&q=80' },
-      { id: 'p4', name: 'Custom White Ceramic Mug', price: 190, category: 'mugs', image: 'https://raw.githubusercontent.com/sathishgame/present-assets/main/white-mug.jpg', fallback: 'https://images.unsplash.com/photo-1577937927133-66ef06acdf18?auto=format&fit=crop&w=500&q=80' },
-      { id: 'p5', name: 'Acrylic Desk Photo Frame', price: 390, category: 'frames', image: 'https://raw.githubusercontent.com/sathishgame/present-assets/main/acrylic.jpg', fallback: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=500&q=80' },
-      { id: 'p6', name: 'Custom Printed T-Shirt', price: 390, category: 'apparel', image: 'https://raw.githubusercontent.com/sathishgame/present-assets/main/tshirt.jpg', fallback: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=500&q=80' },
-      { id: 'p7', name: 'Steel Sipper Water Bottle', price: 350, category: 'bottles', image: 'https://raw.githubusercontent.com/sathishgame/present-assets/main/sipper.jpg', fallback: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=500&q=80' },
-      { id: 'p8', name: 'LED Light Acrylic Frame', price: 590, category: 'frames', image: 'https://raw.githubusercontent.com/sathishgame/present-assets/main/led-frame.jpg', fallback: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=500&q=80' },
-      { id: 'p9', name: 'Custom Sublimation Keychain', price: 150, category: 'frames', image: 'https://raw.githubusercontent.com/sathishgame/present-assets/main/keychain.jpg', fallback: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=500&q=80' },
-      { id: 'p10', name: 'Wooden 3D Carving Relief', price: 890, category: 'frames', image: 'https://raw.githubusercontent.com/sathishgame/present-assets/main/wood-relief.jpg', fallback: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=500&q=80' },
-      { id: 'p11', name: 'Square Velvet Pillow', price: 390, category: 'pillows', image: 'https://raw.githubusercontent.com/sathishgame/present-assets/main/square-pillow.jpg', fallback: 'https://images.unsplash.com/photo-1579656381226-5fc0f0100c3b?auto=format&fit=crop&w=500&q=80' },
-      { id: 'p12', name: 'LED Glowing Pillow', price: 550, category: 'pillows', image: 'https://raw.githubusercontent.com/sathishgame/present-assets/main/led-pillow.jpg', fallback: 'https://images.unsplash.com/photo-1520256862855-398228c41684?auto=format&fit=crop&w=500&q=80' },
-      { id: 'p13', name: 'Magic Sequin Cushion', price: 490, category: 'pillows', image: 'https://raw.githubusercontent.com/sathishgame/present-assets/main/sequin-pillow.jpg', fallback: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=500&q=80' },
-      { id: 'p14', name: 'Couple Mug Set (2 Pcs)', price: 490, category: 'mugs', image: 'https://raw.githubusercontent.com/sathishgame/present-assets/main/couple-set.jpg', fallback: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=500&q=80' },
-      { id: 'p15', name: 'Temperature Display Flask', price: 590, category: 'bottles', image: 'https://raw.githubusercontent.com/sathishgame/present-assets/main/temp-bottle.jpg', fallback: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=500&q=80' },
-      { id: 'p16', name: 'Customized Desk Calendar', price: 290, category: 'frames', image: 'https://raw.githubusercontent.com/sathishgame/present-assets/main/calendar.jpg', fallback: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=500&q=80' }
-    ];
-
-    let shoppingCart = [];
-
-    // Render Catalog
-    function renderCatalog(items = catalogProducts) {
-      const container = document.getElementById('productGrid');
-      container.innerHTML = items.map(p => `
-        <div class="bg-white rounded-3xl p-3 md:p-4 shadow-sm border border-gray-200/70 flex flex-col justify-between apple-card-hover">
-          <div>
-            <div class="relative overflow-hidden rounded-2xl bg-gray-100 mb-3">
-              <img src="${p.image}" onerror="this.src='${p.fallback}'" class="w-full h-36 sm:h-44 object-cover" alt="${p.name}" />
-            </div>
-            <h4 class="font-bold text-sm text-slate-900 line-clamp-1">${p.name}</h4>
-            <div class="flex items-center gap-1 text-amber-500 text-xs my-1">
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-              <span class="text-gray-400 text-[10px] ml-1">(4.9)</span>
-            </div>
-            <p class="text-[11px] text-emerald-600 font-bold mb-2">🚚 Tomorrow in Chennai</p>
-          </div>
-          <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-100">
-            <span class="font-black text-amber-600 text-base">₹${p.price}</span>
-            <button onclick="addToCart('${p.id}')" class="bg-slate-950 hover:bg-slate-800 text-amber-400 font-bold px-3.5 py-1.5 rounded-full text-xs transition shadow-sm">
-              + Add
-            </button>
-          </div>
-        </div>
-      `).join('');
+    function updateQty(id, change) {
+      const input = document.getElementById(id);
+      let current = parseInt(input.value) || 1;
+      current = Math.max(1, current + change);
+      input.value = current;
     }
 
-    // Filter Products
-    function filterProducts() {
-      const q = document.getElementById('searchInput').value.toLowerCase();
-      const filtered = catalogProducts.filter(p => p.name.toLowerCase().includes(q));
-      renderCatalog(filtered);
+    function changeFrameQty(qtyId, change, selectId, priceDisplayId, totalDisplayId, extraCharge = 0, imgId = null) {
+      updateQty(qtyId, change);
+      calcFramePrice(selectId, qtyId, priceDisplayId, totalDisplayId, extraCharge, imgId);
     }
 
-    function filterCategory(cat) {
-      if (cat === 'all') {
-        renderCatalog(catalogProducts);
-      } else {
-        const filtered = catalogProducts.filter(p => p.category === cat);
-        renderCatalog(filtered);
-      }
-    }
+    function calcFramePrice(selectId, qtyId, priceDisplayId, totalDisplayId, extraCharge = 0, imgId = null) {
+      const select = document.getElementById(selectId);
+      const selectedOption = select.options[select.selectedIndex];
+      const basePrice = parseInt(selectedOption.getAttribute('data-price')) || 230;
+      const unitPrice = basePrice + extraCharge;
+      const qty = parseInt(document.getElementById(qtyId).value) || 1;
+      const total = unitPrice * qty;
 
-    // Sync Cart across devices to Google Sheet DB
-    async function syncCartToCloud() {
-      const profile = JSON.parse(localStorage.getItem('present_user_profile') || '{}');
-      if (!profile.whatsapp) return;
+      document.getElementById(priceDisplayId).innerText = `₹${unitPrice.toLocaleString('en-IN')}`;
+      document.getElementById(totalDisplayId).innerText = `₹${total.toLocaleString('en-IN')}`;
 
-      try {
-        await fetch(SCRIPT_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify({
-            action: 'updateCart',
-            whatsapp: profile.whatsapp,
-            cartItems: shoppingCart
-          })
-        });
-      } catch (err) {
-        console.log("Cart background sync queued.");
-      }
-    }
-
-    // Cart Operations
-    function addToCart(productId) {
-      const item = catalogProducts.find(p => p.id === productId);
-      if (item) {
-        shoppingCart.push(item);
-        updateCartUI();
-        showToast("Added to Bag", `${item.name} is ready in your bag.`);
-        syncCartToCloud();
-      }
-    }
-
-    function removeFromCart(index) {
-      shoppingCart.splice(index, 1);
-      updateCartUI();
-      syncCartToCloud();
-    }
-
-    function updateCartUI() {
-      document.getElementById('cartBadgeCount').innerText = shoppingCart.length;
-      const total = shoppingCart.reduce((sum, item) => sum + item.price, 0);
-      document.getElementById('cartTotalPrice').innerText = `₹${total}`;
-
-      const listContainer = document.getElementById('cartItemsList');
-      if (shoppingCart.length === 0) {
-        listContainer.innerHTML = `<p class="text-center text-gray-400 text-sm py-12">Your bag is currently empty.</p>`;
-        return;
-      }
-
-      listContainer.innerHTML = shoppingCart.map((item, idx) => `
-        <div class="flex items-center gap-3.5 bg-gray-50 p-3.5 rounded-2xl border border-gray-100">
-          <img src="${item.image}" onerror="this.src='${item.fallback}'" class="w-14 h-14 object-cover rounded-xl" />
-          <div class="flex-1">
-            <h5 class="text-xs font-bold text-slate-900">${item.name}</h5>
-            <p class="text-xs text-amber-600 font-black mt-0.5">₹${item.price}</p>
-          </div>
-          <button onclick="removeFromCart(${idx})" class="text-gray-400 hover:text-red-500 text-xs p-2">
-            <i class="fa-solid fa-trash"></i>
-          </button>
-        </div>
-      `).join('');
-    }
-
-    function openCartDrawer() { document.getElementById('cartDrawer').classList.remove('hidden'); }
-    function closeCartDrawer() { document.getElementById('cartDrawer').classList.add('hidden'); }
-
-    // Toast Notification
-    function showToast(title, msg) {
-      const toast = document.getElementById('toastNotification');
-      document.getElementById('toastTitle').innerText = title;
-      document.getElementById('toastBody').innerText = msg;
-      toast.classList.remove('translate-y-32', 'opacity-0');
-      setTimeout(() => {
-        toast.classList.add('translate-y-32', 'opacity-0');
-      }, 3000);
-    }
-
-    // Modal & Auth Control
-    function toggleAuthModal() {
-      document.getElementById('authModal').classList.toggle('hidden');
-    }
-
-    function switchAuthTab(tab) {
-      const isSignIn = tab === 'signin';
-      document.getElementById('formSignIn').classList.toggle('hidden', !isSignIn);
-      document.getElementById('formCreate').classList.toggle('hidden', isSignIn);
-
-      document.getElementById('tabBtnSignIn').className = isSignIn
-        ? 'flex-1 py-3.5 text-center text-sm font-bold text-amber-600 border-b-2 border-amber-500 bg-white'
-        : 'flex-1 py-3.5 text-center text-sm font-bold text-gray-500 hover:text-gray-800';
-
-      document.getElementById('tabBtnCreate').className = !isSignIn
-        ? 'flex-1 py-3.5 text-center text-sm font-bold text-amber-600 border-b-2 border-amber-500 bg-white'
-        : 'flex-1 py-3.5 text-center text-sm font-bold text-gray-500 hover:text-gray-800';
-    }
-
-    function togglePasswordVisibility(inputId, iconId) {
-      const input = document.getElementById(inputId);
-      const icon = document.getElementById(iconId);
-      if (input.type === 'password') {
-        input.type = 'text';
-        icon.className = 'fa-solid fa-eye-slash';
-      } else {
-        input.type = 'password';
-        icon.className = 'fa-solid fa-eye';
-      }
-    }
-
-    // SHA-256 Hashing helper
-    async function hashString(str) {
-      const msgBuffer = new TextEncoder().encode(str);
-      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-      const hashArray = Array.from(new Uint8Array(hashBuffer));
-      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-    }
-
-    // Instant Create Account with Silent Cloud Sync
-    async function handleCreateAccount(e) {
-      e.preventDefault();
-      const name = document.getElementById('regName').value;
-      const phone = document.getElementById('regPhone').value;
-      const address = document.getElementById('regAddress').value;
-      const pincode = document.getElementById('regPincode').value;
-      const pass = document.getElementById('regPassword').value;
-
-      const profile = { name, whatsapp: phone, address, pincode };
-      localStorage.setItem('present_user_profile', JSON.stringify(profile));
-
-      updateUserSessionUI(profile);
-      toggleAuthModal();
-      showToast("Account Created", "Saved locally! Details will auto-fill at checkout.");
-
-      // Background payload to Google Apps Script
-      try {
-        const passwordHash = await hashString(pass);
-        fetch(SCRIPT_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify({ action: 'register', name, whatsapp: phone, address, pincode, passwordHash })
-        });
-      } catch (err) {
-        console.log("Background DB sync queued.");
-      }
-    }
-
-    // Handle Sign In & Load Device Cart
-    async function handleSignIn(e) {
-      e.preventDefault();
-      const phone = document.getElementById('loginPhone').value;
-      const pass = document.getElementById('loginPassword').value;
-
-      try {
-        const passwordHash = await hashString(pass);
-        const res = await fetch(SCRIPT_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify({ action: 'login', whatsapp: phone, passwordHash })
-        });
-        const data = await res.json();
-
-        if (data.success) {
-          localStorage.setItem('present_user_profile', JSON.stringify(data.user));
-          if (data.user.cartItems && Array.isArray(data.user.cartItems)) {
-            shoppingCart = data.user.cartItems;
-            updateCartUI();
-          }
-          updateUserSessionUI(data.user);
-          toggleAuthModal();
-          showToast("Welcome Back", `Signed in as ${data.user.name}`);
-        } else {
-          alert(data.message || "Invalid WhatsApp number or password!");
+      if (imgId) {
+        const newImgSrc = selectedOption.getAttribute('data-img');
+        if (newImgSrc) {
+          document.getElementById(imgId).src = newImgSrc;
         }
-      } catch (err) {
-        const fallbackProfile = { whatsapp: phone, name: "Customer", address: "Chennai", pincode: "600110" };
-        localStorage.setItem('present_user_profile', JSON.stringify(fallbackProfile));
-        updateUserSessionUI(fallbackProfile);
-        toggleAuthModal();
-        showToast("Signed In", "Profile active.");
       }
     }
 
-    function updateUserSessionUI(profile) {
-      if (profile && profile.name) {
-        document.getElementById('authHeaderBtnText').innerText = profile.name.split(' ')[0];
-        document.getElementById('headerPincodeText').innerHTML = `<i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> Deliver to ${profile.pincode || '600110'}`;
+    function updatePillowImage(selectId, imgId, type) {
+      const select = document.getElementById(selectId);
+      const selectedOption = select.options[select.selectedIndex];
+      const newImgSrc = selectedOption.getAttribute('data-img');
+      if (newImgSrc) {
+        document.getElementById(imgId).src = newImgSrc;
       }
     }
 
-    // WhatsApp Checkout Payload Generator
-    function checkoutToWhatsApp() {
-      if (shoppingCart.length === 0) {
-        alert("Your bag is empty!");
-        return;
-      }
-      const profile = JSON.parse(localStorage.getItem('present_user_profile') || '{}');
-      const itemsText = shoppingCart.map(i => `• ${i.name} - ₹${i.price}`).join('%0A');
-      const total = shoppingCart.reduce((sum, item) => sum + item.price, 0);
+    function sendFrameOrder(productName, selectId, qtyId, extraCharge = 0) {
+      const select = document.getElementById(selectId);
+      const selectedOption = select.options[select.selectedIndex];
+      const sizeName = selectedOption.value;
+      const basePrice = parseInt(selectedOption.getAttribute('data-price'));
+      const unitPrice = basePrice + extraCharge;
+      const qty = parseInt(document.getElementById(qtyId).value) || 1;
+      const total = unitPrice * qty;
 
-      const msg = `*NEW ORDER - PRESENT CHENNAI*%0A` +
-        `----------------------------%0A` +
-        `*Items:*%0A${itemsText}%0A%0A` +
-        `*Total Amount:* ₹${total}%0A` +
-        `----------------------------%0A` +
-        `*Customer Details:*%0A` +
-        `Name: ${profile.name || 'Not provided'}%0A` +
-        `Phone: ${profile.whatsapp || 'Not provided'}%0A` +
-        `Address: ${profile.address || 'Chennai'}%0A` +
-        `Pincode: ${profile.pincode || '600110'}`;
+      const message = `Hi! I want to order from www.presentgifts.store:
 
-      window.open(`https://wa.me/919123555902?text=${msg}`, '_blank');
+- Product: ${productName}
+- Size: ${sizeName} inches
+- Unit Price: ₹${unitPrice}
+- Quantity: ${qty}
+- Total Price: ₹${total.toLocaleString('en-IN')}
+
+(Note: I will attach my photo(s) in this WhatsApp chat now.)`;
+
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://wa.me/${PHONE_NUMBER}?text=${encodedMessage}`, '_blank');
     }
 
-    // Initialize Page
-    window.addEventListener('DOMContentLoaded', () => {
-      renderCatalog();
-      const savedProfile = JSON.parse(localStorage.getItem('present_user_profile') || 'null');
-      if (savedProfile) updateUserSessionUI(savedProfile);
-    });
+    function sendOrder(productName, qtyId, variantIds = []) {
+      const qty = document.getElementById(qtyId).value;
+      let variations = [];
+
+      variantIds.forEach(id => {
+        const elem = document.getElementById(id);
+        if (elem) {
+          variations.push(elem.value);
+        }
+      });
+
+      const varText = variations.length > 0 ? variations.join(', ') : 'Standard';
+
+      const message = `Hi! I want to order from www.presentgifts.store:
+
+- Product: ${productName}
+- Quantity: ${qty}
+- Variation: ${varText}
+
+(Note: I will attach my photo(s) in this WhatsApp chat now.)`;
+
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://wa.me/${PHONE_NUMBER}?text=${encodedMessage}`, '_blank');
+    }
+
+    window.onload = function() {
+      calcFramePrice('size-frame1', 'qty-frame1', 'price-display-f1', 'total-frame1', 0, 'img-frame1');
+      calcFramePrice('size-frame2', 'qty-frame2', 'price-display-f2', 'total-frame2', 300, 'img-frame2');
+      calcFramePrice('size-frame3', 'qty-frame3', 'price-display-f3', 'total-frame3', 500, 'img-frame3');
+    };
   </script>
 </body>
 </html>
